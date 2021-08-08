@@ -11,7 +11,7 @@ const Topbar = () => {
           <nav className="top-bar">
             <div className="top-bar-left">
               <ul className="dropdown menu" data-dropdown-menu>
-                <li className="menu-text">Site Title</li>
+                <li className="menu-text">Relak</li>
                 <li>
                   <Link to="/">Main</Link>
                 </li>
