@@ -1,0 +1,16 @@
+.watch-face {
+    height: 125px;
+    width: 125px;
+  }
+  
+.circle {
+    background: #fff;
+    height: 125px;
+    width: 125px;
+    border-radius: 50%;
+    position: absolute;
+    opacity: 0.75;
+    transform: translate(0, 0);
+  }
+  
+  
