@@ -1,6 +1,6 @@
-.App {
+/* .App {
   text-align: center;
-}
+} */
 
 .App-logo {
   height: 40vmin;
@@ -39,11 +39,12 @@
 
 body {
   background: #ff91a4;
-  display: flex;
+  /* display: flex; */
   align-items: center;
   height: 100vh;
   justify-content: center;
 }
+
 .watch-face {
   height: 125px;
   width: 125px;
