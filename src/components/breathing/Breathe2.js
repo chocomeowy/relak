@@ -4,6 +4,9 @@ import styled, { keyframes } from "styled-components";
 const Breathe2 = () => {
   return (
     <>
+      <a href="https://css-tricks.com/recreating-apple-watch-breathe-app-animation/">
+        Credits
+      </a>
       <div className="watch-face">
         <div className="circle"></div>
         <div className="circle"></div>
@@ -12,9 +15,6 @@ const Breathe2 = () => {
         <div className="circle"></div>
         <div className="circle"></div>
       </div>
-      <a href="https://css-tricks.com/recreating-apple-watch-breathe-app-animation/">
-        Credits
-      </a>
     </>
   );
 };

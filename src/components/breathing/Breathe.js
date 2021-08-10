@@ -1,20 +1,30 @@
 import React, { useState } from "react";
 import styled, { keyframes } from "styled-components";
+import Breathe2 from "./Breathe2";
 
 const Breathe = () => {
   const [counter, setCounter] = useState(0);
   const [circle, setCircle] = useState("");
-  const handleBox = () => {
+  const [description, setDescription] = useState("Focus on the present moment");
+  const handleEqualBreathing = () => {
     setCircle("a");
     setCounter((prev) => prev + 1);
+    setDescription("6-6 Sama Vritti or “equal breathing”");
   };
-  const handleCalming = () => {
+  const handleBox = () => {
     setCircle("b");
     setCounter((prev) => prev + 1);
+    setDescription("4-4-4 - box breathing");
   };
-  const handleEqual = () => {
+  const handleDeep = () => {
     setCircle("c");
     setCounter((prev) => prev + 1);
+    setDescription("4-7-8 - based on yoga’s pranayama - Deep Calming");
+  };
+  const handleApple = () => {
+    setCircle("d");
+    setCounter((prev) => prev + 1);
+    setDescription("Inspired by Apple Watch");
   };
 
   const displayCircle = () => {
@@ -28,21 +38,32 @@ const Breathe = () => {
     if (circle === "c") {
       return <Circle3 />;
     }
+    if (circle === "d") {
+      return <Breathe2 />;
+    }
     return <Circle />;
   };
   return (
     <>
       <Div>{counter}</Div>
       <Div>
-        <Button className="hollow button primary" onClick={handleBox}>
-          Box breathing
-        </Button>
-        <Button className="hollow button success" onClick={handleCalming}>
+        <Button
+          className="hollow button primary"
+          onClick={handleEqualBreathing}
+        >
           Equal breathing
         </Button>
-        <Button className="hollow button warning" onClick={handleEqual}>
+        <Button className="hollow button success" onClick={handleBox}>
+          Box breathing
+        </Button>
+        <Button className="hollow button warning" onClick={handleDeep}>
           Deep Calming
         </Button>
+        <Button className="hollow button warning" onClick={handleApple}>
+          Apple Watch Style
+        </Button>
+        <br />
+        {description}
       </Div>
       <Container>
         <br />
