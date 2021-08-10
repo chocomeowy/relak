@@ -31,33 +31,42 @@ const Breathe = () => {
     return <Circle />;
   };
   return (
-    <Container>
-      {counter}
+    <>
+      <Div>{counter}</Div>
+      <Div>
+        <Button className="hollow button primary" onClick={handleBox}>
+          Box breathing
+        </Button>
+        <Button className="hollow button success" onClick={handleCalming}>
+          Equal breathing
+        </Button>
+        <Button className="hollow button warning" onClick={handleEqual}>
+          Deep Calming
+        </Button>
+      </Div>
+      <Container>
+        <br />
+        <br />
+        <br />
 
-      <Button className="hollow button primary" onClick={handleBox}>
-        Box breathing
-      </Button>
-      <Button className="hollow button success" onClick={handleCalming}>
-        Equal breathing
-      </Button>
-      <Button className="hollow button warning" onClick={handleEqual}>
-        Deep Calming
-      </Button>
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-
-      {displayCircle()}
-    </Container>
+        {displayCircle()}
+      </Container>
+    </>
   );
 };
 
 export default Breathe;
 
-const Button = styled.a`
+const Div = styled.div`
+  text-align: center;
+`;
+
+const Button = styled.button`
   display: inline-block;
+  font-size: 1em;
+  margin: 1em;
+  padding: 0.25em 1em;
+  border: 2px solid palevioletred;
   border-radius: 3px;
 `;
 
