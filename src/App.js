@@ -8,6 +8,7 @@ import Gethelp from "./components/Gethelp";
 import Signup from "./components/Signup";
 import Profile from "./components/Profile";
 import Login from "./components/Login";
+import Journal from "./components/Journal";
 
 function App() {
   const token = useSelector((state) => state.auth.token);
@@ -22,6 +23,9 @@ function App() {
       </Switch>
       <Route path="/breathe">
         <Breathe />
+      </Route>
+      <Route path="/journal">
+        <Journal />
       </Route>
       <Route path="/login">
         <Login />
