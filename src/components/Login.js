@@ -26,7 +26,7 @@ const Login = () => {
     })
       .then((res) => {
         if (res.ok) {
-          console.log(res);
+          //console.log(res);
           return res.json();
         }
         throw new Error("Error in network");
@@ -36,7 +36,7 @@ const Login = () => {
         if (resJson.error) {
           return;
         } else {
-          console.log(resJson);
+          //console.log(resJson);
           dispatch({ ...logInAction(), payload: resJson.token });
 
           return history.push("/");

@@ -33,7 +33,9 @@ const Home = () => {
           </h3>
         </div>
         <div>
-          <h3 style={contentStyle}>3</h3>
+          <h3 style={contentStyle}>
+            <img src="https://media-exp1.licdn.com/dms/image/C5616AQF5xQhocuNdTg/profile-displaybackgroundimage-shrink_350_1400/0/1628592176980?e=1634169600&v=beta&t=u9_OYePWYxM07ZZmPUPr2KbHC_gjCszasIQJ46B8P90"></img>
+          </h3>
         </div>
         <div>
           <h3 style={contentStyle}>4</h3>
