@@ -16,20 +16,32 @@ const Gethelp = () => {
       content: `Let someone you can trust know. Take time to do what makes your
       soul happy`,
       link: `https://www.chat.mentalhealth.sg/`,
-      linkName: "chat SG",
+      linkName: "CHAT SG",
     },
     {
       title: "Be Present",
       content: `Focus on the present moment. It matters not what someone is born,
       but what they grow to be. - Albus Dumbledore`,
       link: "https://www.healthhub.sg/a-z/support-groups-and-others/20/call-on-these-when-you-need-help",
-      linkName: "healthhub",
+      linkName: "HealthHub",
     },
     {
       title: "Be Better",
       content: `It's not good to keep your feelings bottled up`,
       link: "https://www.healthhub.sg/a-z/support-groups-and-others/20/call-on-these-when-you-need-help",
-      linkName: "healthhub",
+      linkName: "HealthHub",
+    },
+    {
+      title: "Be Safe",
+      content: "It's dangerous to go alone! Take this.",
+      link: "https://www.imh.com.sg/wellness/page.aspx?id=1245",
+      linkName: "IMH",
+    },
+    {
+      title: "Be Sure",
+      content: "You are not alone",
+      link: "https://stayprepared.sg/mymentalhealth/i-need-support-now/",
+      linkName: "stayprepared.sg",
     },
   ];
   return (
