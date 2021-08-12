@@ -14,8 +14,21 @@ const Login = () => {
 
   return (
     <>
-      <Title>login.</Title>
-      <Text>welcome back.</Text>
+      <Title
+        style={{
+          textAlign: "center",
+        }}
+      >
+        login.
+      </Title>
+      <Title
+        level={4}
+        style={{
+          textAlign: "center",
+        }}
+      >
+        welcome back.
+      </Title>
       <Form
         name="basic"
         labelCol={{ span: 8 }}
@@ -54,8 +67,15 @@ const Login = () => {
           </Button>
         </Form.Item>
       </Form>
-      <Text>New here?</Text>
-      <a href="/signup">Register with us!</a>
+      <Title
+        level={5}
+        style={{
+          textAlign: "center",
+        }}
+      >
+        New here?
+        <a href="/signup"> Register with us!</a>
+      </Title>
     </>
   );
 };

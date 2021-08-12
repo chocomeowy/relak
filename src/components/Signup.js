@@ -13,8 +13,21 @@ const Signup = () => {
   };
   return (
     <>
-      <Title>sign up.</Title>
-      <Text>say hello. track your progress with us.</Text>
+      <Title
+        style={{
+          textAlign: "center",
+        }}
+      >
+        sign up.
+      </Title>
+      <Title
+        level={4}
+        style={{
+          textAlign: "center",
+        }}
+      >
+        say hello. track your progress with us.
+      </Title>
       <Form
         name="basic"
         labelCol={{ span: 8 }}
@@ -53,8 +66,15 @@ const Signup = () => {
           </Button>
         </Form.Item>
       </Form>
-      <Text>New here?</Text>
-      <a href="/signup">Register with us!</a>
+      <Title
+        level={5}
+        style={{
+          textAlign: "center",
+        }}
+      >
+        Already have an account?
+        <a href="/login"> Login!</a>
+      </Title>
     </>
   );
 };

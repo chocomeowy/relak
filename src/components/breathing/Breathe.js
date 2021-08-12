@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styled, { keyframes } from "styled-components";
 import Breathe2 from "./Breathe2";
 import { Button } from "antd";
-
+import Title from "antd/lib/typography/Title";
 const Breathe = () => {
   const [counter, setCounter] = useState(0);
   const [circle, setCircle] = useState("");
@@ -47,6 +47,13 @@ const Breathe = () => {
   };
   return (
     <>
+      <Title
+        style={{
+          textAlign: "center",
+        }}
+      >
+        breathe
+      </Title>
       <Div>{counter}</Div>
       <Div>
         <Button type="dashed" onClick={handleEqualBreathing}>

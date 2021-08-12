@@ -7,7 +7,11 @@ const { Title, Text } = Typography;
 
 const Home = () => {
   return (
-    <div>
+    <div
+      style={{
+        textAlign: "center",
+      }}
+    >
       <Title>time to relak</Title>
       <Text type="secondary">
         busy day? why not try out our breathing exercise, or listen to some

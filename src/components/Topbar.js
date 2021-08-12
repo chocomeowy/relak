@@ -36,9 +36,13 @@ const Topbar = () => {
             ) : (
               <> */}
             <Menu.Item key="7">
+              <Link to="/journal">Journal</Link>
+            </Menu.Item>
+
+            <Menu.Item key="8">
               <Link to="/profile">Profile</Link>
             </Menu.Item>
-            <Menu.Item key="8">
+            <Menu.Item key="9">
               <a href="/logout">Log Out</a>
             </Menu.Item>
             {/* </>
