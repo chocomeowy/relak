@@ -23,10 +23,14 @@ const Home = () => {
       <Title>time to relak</Title>
       <Carousel autoplay>
         <div>
-          <h3 style={contentStyle}>1</h3>
+          <h3 style={contentStyle}>
+            <img src="https://i.imgur.com/hJKUf3h.png"></img>
+          </h3>
         </div>
         <div>
-          <h3 style={contentStyle}>2</h3>
+          <h3 style={contentStyle}>
+            <img src="https://i.imgur.com/gFFbMBH.png"></img>
+          </h3>
         </div>
         <div>
           <h3 style={contentStyle}>3</h3>

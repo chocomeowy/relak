@@ -1,15 +1,47 @@
+import { Button, Checkbox, Form, Input, Typography } from "antd";
 import React from "react";
-import { Form, Input, Button, Checkbox } from "antd";
-import { Typography } from "antd";
+import { useSelector, useDispatch } from "react-redux";
+import { logInAction } from "../redux/ducks/accountAuth";
+import { useHistory } from "react-router-dom";
 const { Title, Text } = Typography;
 
 const Login = () => {
-  const onFinish = (values) => {
-    console.log("Success:", values);
-  };
+  const dispatch = useDispatch();
+  const url = "http://localhost:8000/user/login/";
+  const token = useSelector((state) => state.auth.token);
+  console.log(token);
+  let history = useHistory();
+  const onFinish = (event) => {
+    console.log(event);
 
-  const onFinishFailed = (errorInfo) => {
-    console.log("Failed:", errorInfo);
+    fetch(url, {
+      method: "POST",
+      body: JSON.stringify({
+        username: event.username,
+        password: event.password,
+      }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((res) => {
+        if (res.ok) {
+          console.log(res);
+          return res.json();
+        }
+        throw new Error("Error in network");
+      })
+      .then((resJson) => {
+        console.log(resJson);
+        if (resJson.error) {
+          return;
+        } else {
+          console.log(resJson);
+          dispatch({ ...logInAction(), payload: resJson.token });
+
+          return history.push("/");
+        }
+      });
   };
 
   return (
@@ -35,7 +67,6 @@ const Login = () => {
         wrapperCol={{ span: 10 }}
         initialValues={{ remember: true }}
         onFinish={onFinish}
-        onFinishFailed={onFinishFailed}
       >
         <Form.Item
           label="Username"

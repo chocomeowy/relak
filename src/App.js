@@ -1,18 +1,15 @@
-import "./App.css";
-import Topbar from "./components/Topbar";
 import { Route, Switch } from "react-router-dom";
-import { useSelector } from "react-redux";
+import "./App.css";
 import Breathe from "./components/breathing/Breathe";
-import Home from "./components/Home";
 import Gethelp from "./components/Gethelp";
-import Signup from "./components/Signup";
-import Profile from "./components/Profile";
-import Login from "./components/Login";
+import Home from "./components/Home";
 import Journal from "./components/Journal";
+import Login from "./components/Login";
+import Profile from "./components/Profile";
+import Signup from "./components/Signup";
+import Topbar from "./components/Topbar";
 
 function App() {
-  const token = useSelector((state) => state.auth.token);
-
   return (
     <div className="App">
       <Switch>

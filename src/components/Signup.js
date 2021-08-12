@@ -1,13 +1,33 @@
 import React from "react";
 import { Form, Input, Button, Checkbox } from "antd";
 import { Typography } from "antd";
+import { useHistory } from "react-router-dom";
+
 const { Title, Text } = Typography;
-
 const Signup = () => {
-  const onFinish = (values) => {
-    console.log("Success:", values);
-  };
+  let history = useHistory();
+  const url = "http://localhost:8000/user/signup/";
 
+  const onFinish = (event) => {
+    console.log(event);
+
+    fetch(url, {
+      method: "POST",
+      body: JSON.stringify({
+        username: event.username,
+        password: event.password,
+      }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }).then((res) => {
+      if (res.ok) {
+        console.log(res, "res");
+        return history.push("/login/");
+      }
+      throw new Error("Error in network");
+    });
+  };
   const onFinishFailed = (errorInfo) => {
     console.log("Failed:", errorInfo);
   };

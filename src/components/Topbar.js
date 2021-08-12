@@ -1,12 +1,16 @@
 import { Layout, Menu } from "antd";
 import React from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-
+import { logOutAction } from "../redux/ducks/accountAuth";
 const { Header } = Layout;
 
 const Topbar = () => {
   const token = useSelector((state) => state.auth.token);
+  const dispatch = useDispatch();
+  const signOut = () => {
+    dispatch(logOutAction());
+  };
   return (
     <>
       <Layout className="layout">
@@ -43,7 +47,7 @@ const Topbar = () => {
               <Link to="/profile">Profile</Link>
             </Menu.Item>
             <Menu.Item key="9">
-              <a href="/logout">Log Out</a>
+              <div onClick={signOut}>Log Out</div>
             </Menu.Item>
             {/* </>
             )} */}
