@@ -7,14 +7,23 @@ const Breathe2 = () => {
       <a href="https://css-tricks.com/recreating-apple-watch-breathe-app-animation/">
         Credits
       </a>
-      <div className="watch-face">
+      <WatchFace>
+        <Circle
+          style={{
+            backgroundColor: "#61bea2",
+          }}
+        />
+        <div
+          className="circle"
+          style={{
+            backgroundColor: "#529ca0",
+          }}
+        ></div>
         <div className="circle"></div>
         <div className="circle"></div>
         <div className="circle"></div>
         <div className="circle"></div>
-        <div className="circle"></div>
-        <div className="circle"></div>
-      </div>
+      </WatchFace>
     </>
   );
 };
@@ -131,3 +140,20 @@ export default Breathe2;
 //     transform: translate(35px, -50px);
 //   }
 // }
+
+const WatchFace = styled.div`
+  height: 125px;
+  width: 125px;
+  animation: pulse 4s cubic-bezier(0.5, 0, 0.5, 1) alternate infinite;
+  background-color: black;
+`;
+
+const Circle = styled.div`
+  height: 125px;
+  width: 125px;
+  border-radius: 100%;
+  position: absolute;
+  mix-blend-mode: screen;
+  transform: translate(0, 0);
+  animation: center 6s infinite;
+`;

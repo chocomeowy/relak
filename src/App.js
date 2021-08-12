@@ -1,9 +1,10 @@
 import "./App.css";
 import Topbar from "./components/Topbar";
-import { Route, Link } from "react-router-dom";
+import { Route } from "react-router-dom";
 import { useSelector } from "react-redux";
 import Breathe from "./components/breathing/Breathe";
 import Home from "./components/Home";
+import Gethelp from "./components/Gethelp";
 
 function App() {
   const token = useSelector((state) => state.auth.token);
@@ -17,6 +18,9 @@ function App() {
         </Route>
         <Route path="/breathe">
           <Breathe />
+        </Route>
+        <Route path="/gethelp">
+          <Gethelp />
         </Route>
       </main>
     </div>

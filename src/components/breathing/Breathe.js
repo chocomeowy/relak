@@ -1,11 +1,14 @@
 import React, { useState } from "react";
 import styled, { keyframes } from "styled-components";
 import Breathe2 from "./Breathe2";
+import { Button } from "antd";
 
 const Breathe = () => {
   const [counter, setCounter] = useState(0);
   const [circle, setCircle] = useState("");
   const [description, setDescription] = useState("Focus on the present moment");
+  const [reveal, setReveal] = useState(false);
+
   const handleEqualBreathing = () => {
     setCircle("a");
     setCounter((prev) => prev + 1);
@@ -27,6 +30,11 @@ const Breathe = () => {
     setDescription("Inspired by Apple Watch");
   };
 
+  // const handleReveal = () => {
+  //   setReveal(!reveal);
+
+  //   console.log(reveal);
+  // };
   const displayCircle = () => {
     if (circle === "") {
       return <div>Click button to start</div>;
@@ -47,23 +55,28 @@ const Breathe = () => {
     <>
       <Div>{counter}</Div>
       <Div>
-        <Button
-          className="hollow button primary"
-          onClick={handleEqualBreathing}
-        >
+        <Button type="dashed" onClick={handleEqualBreathing}>
           Equal breathing
         </Button>
-        <Button className="hollow button success" onClick={handleBox}>
+        <Button type="dashed" onClick={handleBox}>
           Box breathing
         </Button>
-        <Button className="hollow button warning" onClick={handleDeep}>
+        <Button type="dashed" onClick={handleDeep}>
           Deep Calming
         </Button>
-        <Button className="hollow button warning" onClick={handleApple}>
+        <Button type="dashed" onClick={handleApple}>
           Apple Watch Style
         </Button>
         <br />
-        {description}
+        {/* <div>
+          <Reveal isLarge={reveal} id="modal">
+            <div>This is the content that would be revealed</div>
+          </Reveal>
+          <Button onClick={() => handleReveal()} data-open="modal">
+            Reveal the content
+          </Button>
+        </div> */}
+        ​{description}
       </Div>
       <Container>
         <br />
@@ -82,7 +95,7 @@ const Div = styled.div`
   text-align: center;
 `;
 
-const Button = styled.button`
+const button = styled.button`
   display: inline-block;
   font-size: 1em;
   margin: 1em;
@@ -145,19 +158,19 @@ const breatheAnimation2 = keyframes`
  }`;
 
 const breatheAnimation3 = keyframes`
- 0% {box-shadow: 0 0 0 10px rgba(164, 148, 255, 0.3), 
-    0 0 0 20px rgba(164, 148, 255, 0.3), 
-    0 0 0 20px rgba(164, 148, 255, 0.3), 
-    0 0 0 20px rgba(164, 148, 255, 0.3), 
+ 0% {box-shadow: 0 0 0 10px rgba(174, 225, 225, 0.3), 
+    0 0 0 20px rgba(211, 224, 220, 0.3), 
+    0 0 0 20px rgba(236, 226, 225, 0.3), 
+    0 0 0 20px rgba(252, 209, 209, 0.3), 
     0 0 0 20px rgba(164, 148, 255, 0.3);
  }
 
  21% {
-    box-shadow: 0 0 0 25px rgba(164, 148, 255, 0.3), 
-    0 0 0 50px rgba(164, 148, 255, 0.3), 
-    0 0 0 75px rgba(164, 148, 255, 0.3), 
-    0 0 0 100px rgba(164, 148, 255, 0.3), 
-    0 0 0 125px rgba(164, 148, 255, 0.3);
+    box-shadow: 0 0 0 25px rgba(252, 209, 209, 0.3), 
+    0 0 0 50px rgba(252, 209, 209, 0.3), 
+    0 0 0 75px rgba(236, 226, 225, 0.3), 
+    0 0 0 100px rgba(211, 224, 220, 0.3), 
+    0 0 0 125px rgba(174, 225, 225, 0.3);
      }
 60% {
       box-shadow: 0 0 0 25px rgba(164, 148, 255, 0.3), 
