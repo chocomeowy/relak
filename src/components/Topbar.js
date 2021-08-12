@@ -24,25 +24,25 @@ const Topbar = () => {
             <Menu.Item key="4">
               <Link to="/gethelp">Get Help</Link>
             </Menu.Item>
-            {token === null ? (
-              <>
-                <Menu.Item key="5">
-                  <Link to="/login">Login</Link>
-                </Menu.Item>
-                <Menu.Item key="6">
-                  <Link to="/signup">Sign up</Link>
-                </Menu.Item>
-              </>
+            {/* {token === null ? (
+              <> */}
+            <Menu.Item key="5">
+              <Link to="/login">Login</Link>
+            </Menu.Item>
+            <Menu.Item key="6">
+              <Link to="/signup">Sign up</Link>
+            </Menu.Item>
+            {/* </>
             ) : (
-              <>
-                <Menu.Item key="7">
-                  <Link to="/profile">Profile</Link>
-                </Menu.Item>
-                <Menu.Item key="8">
-                  <a href="/logout">Log Out</a>
-                </Menu.Item>
-              </>
-            )}
+              <> */}
+            <Menu.Item key="7">
+              <Link to="/profile">Profile</Link>
+            </Menu.Item>
+            <Menu.Item key="8">
+              <a href="/logout">Log Out</a>
+            </Menu.Item>
+            {/* </>
+            )} */}
           </Menu>
         </Header>
       </Layout>
