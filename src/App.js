@@ -1,6 +1,6 @@
 import "./App.css";
 import Topbar from "./components/Topbar";
-import { Route } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import { useSelector } from "react-redux";
 import Breathe from "./components/breathing/Breathe";
 import Home from "./components/Home";
@@ -14,27 +14,27 @@ function App() {
 
   return (
     <div className="App">
-      <Topbar />
-      <main>
+      <Switch>
         <Route exact path="/">
           <Home />
         </Route>
-        <Route path="/breathe">
-          <Breathe />
-        </Route>
-        <Route path="/login">
-          <Login />
-        </Route>
-        <Route path="/signup">
-          <Signup />
-        </Route>
-        <Route path="/profile">
-          <Profile />
-        </Route>
-        <Route path="/gethelp">
-          <Gethelp />
-        </Route>
-      </main>
+        <Topbar />
+      </Switch>
+      <Route path="/breathe">
+        <Breathe />
+      </Route>
+      <Route path="/login">
+        <Login />
+      </Route>
+      <Route path="/signup">
+        <Signup />
+      </Route>
+      <Route path="/profile">
+        <Profile />
+      </Route>
+      <Route path="/gethelp">
+        <Gethelp />
+      </Route>
     </div>
   );
 }

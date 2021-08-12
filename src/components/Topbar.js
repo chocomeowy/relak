@@ -31,6 +31,9 @@ const Topbar = () => {
             <Menu.Item key="6">
               <Link to="/signup">Sign up</Link>
             </Menu.Item>
+            <Menu.Item key="7">
+              <Link to="/listen">Listen</Link>
+            </Menu.Item>
           </Menu>
         </Header>
         <Content style={{ padding: "0 50px" }}>
