@@ -4,21 +4,9 @@ import styled, { keyframes } from "styled-components";
 const Breathe2 = () => {
   return (
     <>
-      <a href="https://css-tricks.com/recreating-apple-watch-breathe-app-animation/">
-        Credits
-      </a>
       <WatchFace>
-        <Circle
-          style={{
-            backgroundColor: "#61bea2",
-          }}
-        />
-        <div
-          className="circle"
-          style={{
-            backgroundColor: "#529ca0",
-          }}
-        ></div>
+        <div className="circle" />
+        <div className="circle"></div>
         <div className="circle"></div>
         <div className="circle"></div>
         <div className="circle"></div>
@@ -145,7 +133,6 @@ const WatchFace = styled.div`
   height: 125px;
   width: 125px;
   animation: pulse 4s cubic-bezier(0.5, 0, 0.5, 1) alternate infinite;
-  background-color: black;
 `;
 
 const Circle = styled.div`

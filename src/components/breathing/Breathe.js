@@ -1,13 +1,26 @@
 import React, { useState } from "react";
 import styled, { keyframes } from "styled-components";
 import Breathe2 from "./Breathe2";
-import { Button } from "antd";
+import { Modal, Button } from "antd";
 import Title from "antd/lib/typography/Title";
 const Breathe = () => {
   const [counter, setCounter] = useState(0);
   const [circle, setCircle] = useState("");
   const [description, setDescription] = useState("Focus on the present moment");
+  const [isModalVisible, setIsModalVisible] = useState(false);
+  const appleWatch = false;
 
+  const showModal = () => {
+    setIsModalVisible(true);
+  };
+
+  const handleOk = () => {
+    setIsModalVisible(false);
+  };
+
+  const handleCancel = () => {
+    setIsModalVisible(false);
+  };
   const handleEqualBreathing = () => {
     setCircle("a");
     setCounter((prev) => prev + 1);
@@ -26,7 +39,11 @@ const Breathe = () => {
   const handleApple = () => {
     setCircle("d");
     setCounter((prev) => prev + 1);
-    setDescription("Inspired by Apple Watch");
+    setDescription(
+      <a href="https://css-tricks.com/recreating-apple-watch-breathe-app-animation/">
+        Credits
+      </a>
+    );
   };
 
   const displayCircle = () => {
@@ -68,15 +85,46 @@ const Breathe = () => {
         <Button type="dashed" onClick={handleApple}>
           Apple Watch Style
         </Button>
+        <Button type="dashed" onClick={showModal}>
+          Guided from Headspace
+        </Button>
+        <Modal
+          title="Headspace | Mini meditation | Breathe"
+          visible={isModalVisible}
+          onOk={handleOk}
+          onCancel={handleCancel}
+        >
+          <iframe
+            width="470"
+            height="280"
+            src="https://www.youtube.com/embed/cEqZthCaMpo"
+            title="Headspace | Mini meditation | Breathe"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+          ></iframe>
+        </Modal>
         <br />​{description}
       </Div>
-      <Container>
-        <br />
-        <br />
-        <br />
-
-        {displayCircle()}
-      </Container>
+      {circle === "d" ? (
+        <>
+          <Container style={{ background: "black" }}>
+            <br />
+            <br />
+            <br />
+            {displayCircle()}
+          </Container>
+        </>
+      ) : (
+        <>
+          <Container>
+            <br />
+            <br />
+            <br />
+            {displayCircle()}
+          </Container>
+        </>
+      )}
     </>
   );
 };
@@ -172,10 +220,10 @@ const breatheAnimation3 = keyframes`
       0 0 0 125px rgba(164, 148, 255, 0.3);
        }
      
- 100% {  box-shadow: 0 0 0 10px rgba(164, 148, 255, 0.3), 
-    0 0 0 20px rgba(164, 148, 255, 0.3), 
-    0 0 0 20px rgba(164, 148, 255, 0.3), 
-    0 0 0 20px rgba(164, 148, 255, 0.3), 
+ 100% {  box-shadow: 0 0 0 10px rgba(174, 225, 225, 0.3), 
+    0 0 0 20px rgba(211, 224, 220, 0.3), 
+    0 0 0 20px rgba(236, 226, 225, 0.3), 
+    0 0 0 20px rgba(252, 209, 209, 0.3), 
     0 0 0 20px rgba(164, 148, 255, 0.3);
  }`;
 
