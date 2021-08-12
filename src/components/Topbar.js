@@ -1,13 +1,12 @@
-import React, { useState } from "react";
-import { Route, Link } from "react-router-dom";
-// import Breathe from "./breathing/Breathe";
-// import Home from "./Home";
+import { Layout, Menu } from "antd";
+import React from "react";
+import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
-import { Layout, Menu, Breadcrumb } from "antd";
-
-const { Header, Content } = Layout;
+const { Header } = Layout;
 
 const Topbar = () => {
+  const token = useSelector((state) => state.auth.token);
   return (
     <>
       <Layout className="layout">
@@ -20,36 +19,32 @@ const Topbar = () => {
               <Link to="/breathe">Breathe</Link>
             </Menu.Item>
             <Menu.Item key="3">
-              <Link to="/gethelp">Get Help</Link>
-            </Menu.Item>
-            <Menu.Item key="4">
-              <Link to="/login">Login</Link>
-            </Menu.Item>
-            <Menu.Item key="5">
-              <Link to="/profile">Profile</Link>
-            </Menu.Item>
-            <Menu.Item key="6">
-              <Link to="/signup">Sign up</Link>
-            </Menu.Item>
-            <Menu.Item key="7">
               <Link to="/listen">Listen</Link>
             </Menu.Item>
+            <Menu.Item key="4">
+              <Link to="/gethelp">Get Help</Link>
+            </Menu.Item>
+            {token === null ? (
+              <>
+                <Menu.Item key="5">
+                  <Link to="/login">Login</Link>
+                </Menu.Item>
+                <Menu.Item key="6">
+                  <Link to="/signup">Sign up</Link>
+                </Menu.Item>
+              </>
+            ) : (
+              <>
+                <Menu.Item key="7">
+                  <Link to="/profile">Profile</Link>
+                </Menu.Item>
+                <Menu.Item key="8">
+                  <a href="/logout">Log Out</a>
+                </Menu.Item>
+              </>
+            )}
           </Menu>
         </Header>
-        <Content style={{ padding: "0 50px" }}>
-          <Breadcrumb style={{ margin: "16px 0" }}>
-            <Breadcrumb.Item>Home</Breadcrumb.Item>
-            <Breadcrumb.Item>
-              <Link to="/">Main</Link>
-            </Breadcrumb.Item>
-            <Breadcrumb.Item>
-              <Link to="/breathe">Breathe</Link>
-            </Breadcrumb.Item>
-            <Breadcrumb.Item>
-              <Link to="/gethelp">Get Help</Link>
-            </Breadcrumb.Item>
-          </Breadcrumb>
-        </Content>
       </Layout>
 
       {/* <div class="title-bar" data-responsive-toggle="example-menu" data-hide-for="medium">

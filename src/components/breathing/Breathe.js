@@ -7,7 +7,6 @@ const Breathe = () => {
   const [counter, setCounter] = useState(0);
   const [circle, setCircle] = useState("");
   const [description, setDescription] = useState("Focus on the present moment");
-  const [reveal, setReveal] = useState(false);
 
   const handleEqualBreathing = () => {
     setCircle("a");
@@ -30,11 +29,6 @@ const Breathe = () => {
     setDescription("Inspired by Apple Watch");
   };
 
-  // const handleReveal = () => {
-  //   setReveal(!reveal);
-
-  //   console.log(reveal);
-  // };
   const displayCircle = () => {
     if (circle === "") {
       return <div>Click button to start</div>;
@@ -67,16 +61,7 @@ const Breathe = () => {
         <Button type="dashed" onClick={handleApple}>
           Apple Watch Style
         </Button>
-        <br />
-        {/* <div>
-          <Reveal isLarge={reveal} id="modal">
-            <div>This is the content that would be revealed</div>
-          </Reveal>
-          <Button onClick={() => handleReveal()} data-open="modal">
-            Reveal the content
-          </Button>
-        </div> */}
-        ​{description}
+        <br />​{description}
       </Div>
       <Container>
         <br />
