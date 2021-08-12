@@ -1,7 +1,10 @@
 import React from "react";
+import NewJournal from "./NewJournal"
 
 const Journal = () => {
-  return <div>Journal</div>;
+  return (
+    <NewJournal />
+  );
 };
 
 export default Journal;
