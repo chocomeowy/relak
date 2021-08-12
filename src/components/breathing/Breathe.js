@@ -1,40 +1,31 @@
 import React, { useState } from "react";
 import styled, { keyframes } from "styled-components";
 import Breathe2 from "./Breathe2";
-import { Modal, Button } from "antd";
+import { Button } from "antd";
 import Title from "antd/lib/typography/Title";
+import Meditation from "./Meditation";
+import Sleep from "./Sleep";
+import BreathingTechniquesModal from "./BreathingTechniquesModal";
+import Headspace from "./Headspace";
 const Breathe = () => {
   const [counter, setCounter] = useState(0);
   const [circle, setCircle] = useState("");
   const [description, setDescription] = useState("Focus on the present moment");
-  const [isModalVisible, setIsModalVisible] = useState(false);
-  const appleWatch = false;
 
-  const showModal = () => {
-    setIsModalVisible(true);
-  };
-
-  const handleOk = () => {
-    setIsModalVisible(false);
-  };
-
-  const handleCancel = () => {
-    setIsModalVisible(false);
-  };
   const handleEqualBreathing = () => {
     setCircle("a");
     setCounter((prev) => prev + 1);
-    setDescription("6-6 Sama Vritti or “equal breathing”");
+    setDescription("4 x 6s-6s Sama Vritti or “equal breathing”");
   };
   const handleBox = () => {
     setCircle("b");
     setCounter((prev) => prev + 1);
-    setDescription("4-4-4 - box breathing");
+    setDescription("4 x 4s-4s-4s - box breathing");
   };
   const handleDeep = () => {
     setCircle("c");
     setCounter((prev) => prev + 1);
-    setDescription("4-7-8 - based on yoga’s pranayama - Deep Calming");
+    setDescription("4 x 4s-7s-8s - based on yoga’s pranayama - Deep Calming");
   };
   const handleApple = () => {
     setCircle("d");
@@ -71,8 +62,14 @@ const Breathe = () => {
       >
         breathe
       </Title>
-      <Div>{counter}</Div>
+      {/* <Div>{counter}</Div> */}
       <Div>
+        <Meditation />
+        <Sleep />
+        <BreathingTechniquesModal />
+        <br />
+        <Headspace />
+        <br />
         <Button type="dashed" onClick={handleEqualBreathing}>
           Equal breathing
         </Button>
@@ -85,25 +82,7 @@ const Breathe = () => {
         <Button type="dashed" onClick={handleApple}>
           Apple Watch Style
         </Button>
-        <Button type="dashed" onClick={showModal}>
-          Guided from Headspace
-        </Button>
-        <Modal
-          title="Headspace | Mini meditation | Breathe"
-          visible={isModalVisible}
-          onOk={handleOk}
-          onCancel={handleCancel}
-        >
-          <iframe
-            width="470"
-            height="280"
-            src="https://www.youtube.com/embed/cEqZthCaMpo"
-            title="Headspace | Mini meditation | Breathe"
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen
-          ></iframe>
-        </Modal>
+        <br />
         <br />​{description}
       </Div>
       {circle === "d" ? (
@@ -135,15 +114,6 @@ const Div = styled.div`
   text-align: center;
 `;
 
-const button = styled.button`
-  display: inline-block;
-  font-size: 1em;
-  margin: 1em;
-  padding: 0.25em 1em;
-  border: 2px solid palevioletred;
-  border-radius: 3px;
-`;
-
 const breatheAnimation = keyframes`
  0% {box-shadow: 0 0 0 10px rgba(164, 148, 255, 0.3), 
     0 0 0 20px rgba(164, 148, 255, 0.3), 
@@ -168,33 +138,33 @@ const breatheAnimation = keyframes`
  }`;
 
 const breatheAnimation2 = keyframes`
- 0% {box-shadow: 0 0 0 10px rgba(255, 99, 71, 1), 
-    0 0 0 20px rgba(255, 99, 71, 0.8), 
-    0 0 0 20px rgba(255, 99, 71, 0.6), 
-    0 0 0 20px rgba(255, 99, 71, 0.4), 
-    0 0 0 20px rgba(255, 99, 71, 0.2);
+ 0% {box-shadow: 0 0 0 10px rgba(252, 209, 209, 1), 
+    0 0 0 20px rgba(252, 209, 209, 0.8), 
+    0 0 0 20px rgba(252, 209, 209, 0.6), 
+    0 0 0 20px rgba(252, 209, 209, 0.4), 
+    0 0 0 20px rgba(252, 209, 209, 0.2);
  }
 
  30% {
-    box-shadow: 0 0 0 25px rgba(164, 148, 255, 0.3), 
-    0 0 0 50px rgba(164, 148, 255, 0.3), 
-    0 0 0 75px rgba(164, 148, 255, 0.3), 
-    0 0 0 100px rgba(164, 148, 255, 0.3), 
-    0 0 0 125px rgba(164, 148, 255, 0.3);
+    box-shadow: 0 0 0 25px rgba(174, 225, 225, 1), 
+    0 0 0 50px rgba(174, 225, 225, 0.8), 
+    0 0 0 75px rgba(174, 225, 225, 0.6), 
+    0 0 0 100px rgba(174, 225, 225, 0.4), 
+    0 0 0 125px rgba(174, 225, 225, 0.2);
      }
 60% {
-      box-shadow: 0 0 0 25px rgba(255, 99, 71, 1), 
-      0 0 0 50px rgba(255, 99, 71, 0.8), 
-      0 0 0 75px rgba(255, 99, 71, 0.6), 
-      0 0 0 100px rgba(255, 99, 71, 0.4), 
-      0 0 0 125px rgba(255, 99, 71, 0.2);
+      box-shadow: 0 0 0 25px rgba(211, 224, 220, 1), 
+      0 0 0 50px rgba(211, 224, 220, 0.8), 
+      0 0 0 75px rgba(211, 224, 220, 0.6), 
+      0 0 0 100px rgba(211, 224, 220, 0.4), 
+      0 0 0 125px rgba(211, 224, 220, 0.2);
        }
      
- 100% {box-shadow: 0 0 0 10px rgba(255, 99, 71, 1), 
-    0 0 0 20px rgba(255, 99, 71, 0.8), 
-    0 0 0 20px rgba(255, 99, 71, 0.6), 
-    0 0 0 20px rgba(255, 99, 71, 0.4), 
-    0 0 0 20px rgba(255, 99, 71, 0.2);
+ 100% {box-shadow: 0 0 0 10px rgba(252, 209, 209, 1), 
+    0 0 0 20px rgba(252, 209, 209, 0.8), 
+    0 0 0 20px rgba(252, 209, 209, 0.6), 
+    0 0 0 20px rgba(252, 209, 209, 0.4), 
+    0 0 0 20px rgba(252, 209, 209, 0.2);
  }`;
 
 const breatheAnimation3 = keyframes`
@@ -213,11 +183,11 @@ const breatheAnimation3 = keyframes`
     0 0 0 125px rgba(174, 225, 225, 0.3);
      }
 60% {
-      box-shadow: 0 0 0 25px rgba(164, 148, 255, 0.3), 
-      0 0 0 50px rgba(164, 148, 255, 0.3), 
-      0 0 0 75px rgba(164, 148, 255, 0.3), 
-      0 0 0 100px rgba(164, 148, 255, 0.3), 
-      0 0 0 125px rgba(164, 148, 255, 0.3);
+      box-shadow: 0 0 0 25px rgba(252, 209, 209, 0.6), 
+      0 0 0 50px rgba(252, 209, 209, 0.6), 
+      0 0 0 75px rgba(236, 226, 225, 0.6), 
+      0 0 0 100px rgba(211, 224, 220, 0.6), 
+      0 0 0 125px rgba(174, 225, 225, 0.6);
        }
      
  100% {  box-shadow: 0 0 0 10px rgba(174, 225, 225, 0.3), 

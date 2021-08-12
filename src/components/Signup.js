@@ -3,7 +3,7 @@ import { Form, Input, Button, Checkbox } from "antd";
 import { Typography } from "antd";
 import { useHistory } from "react-router-dom";
 
-const { Title, Text } = Typography;
+const { Title } = Typography;
 const Signup = () => {
   let history = useHistory();
   const url = "http://localhost:8000/user/signup/";

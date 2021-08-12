@@ -1,6 +1,6 @@
 import Title from "antd/lib/typography/Title";
 import React from "react";
-import { List, Card, Col, Row } from "antd";
+import { List, Card } from "antd";
 
 const Gethelp = () => {
   const data = [
@@ -27,7 +27,7 @@ const Gethelp = () => {
     },
     {
       title: "Be Better",
-      content: `self improvement tips`,
+      content: `It's not good to keep your feelings bottled up`,
       link: "https://www.healthhub.sg/a-z/support-groups-and-others/20/call-on-these-when-you-need-help",
       linkName: "healthhub",
     },

@@ -3,7 +3,7 @@ import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { logInAction } from "../redux/ducks/accountAuth";
 import { useHistory } from "react-router-dom";
-const { Title, Text } = Typography;
+const { Title } = Typography;
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -46,67 +46,73 @@ const Login = () => {
 
   return (
     <>
-      <Title
+      <div
         style={{
           textAlign: "center",
         }}
       >
-        login.
-      </Title>
-      <Title
-        level={4}
-        style={{
-          textAlign: "center",
-        }}
-      >
-        welcome back.
-      </Title>
-      <Form
-        name="basic"
-        labelCol={{ span: 8 }}
-        wrapperCol={{ span: 10 }}
-        initialValues={{ remember: true }}
-        onFinish={onFinish}
-      >
-        <Form.Item
-          label="Username"
-          name="username"
-          rules={[{ required: true, message: "Please input your username!" }]}
+        <Title
+          style={{
+            textAlign: "center",
+          }}
         >
-          <Input />
-        </Form.Item>
-
-        <Form.Item
-          label="Password"
-          name="password"
-          rules={[{ required: true, message: "Please input your password!" }]}
+          login.
+        </Title>
+        <Title
+          level={4}
+          style={{
+            textAlign: "center",
+          }}
         >
-          <Input.Password />
-        </Form.Item>
-
-        <Form.Item
-          name="remember"
-          valuePropName="checked"
-          wrapperCol={{ offset: 8, span: 16 }}
+          welcome back.
+        </Title>
+        <Form
+          name="basic"
+          labelCol={{ span: 8 }}
+          wrapperCol={{ span: 10 }}
+          initialValues={{ remember: true }}
+          onFinish={onFinish}
         >
-          <Checkbox>Remember me</Checkbox>
-        </Form.Item>
+          <Form.Item
+            label="Username"
+            name="username"
+            rules={[{ required: true, message: "Please input your username!" }]}
+          >
+            <Input />
+          </Form.Item>
 
-        <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
-          <Button type="primary" htmlType="submit">
-            Submit
-          </Button>
-        </Form.Item>
-      </Form>
-      <Title
-        level={5}
-        style={{
-          textAlign: "center",
-        }}
-      >
-        New here?
-        <a href="/signup"> Register with us!</a>
-      </Title>
+          <Form.Item
+            label="Password"
+            name="password"
+            rules={[{ required: true, message: "Please input your password!" }]}
+          >
+            <Input.Password />
+          </Form.Item>
+
+          <Form.Item
+            name="remember"
+            valuePropName="checked"
+            wrapperCol={{ offset: 4, span: 10 }}
+          >
+            <Checkbox>Remember me</Checkbox>
+          </Form.Item>
+
+          <Form.Item wrapperCol={{ offset: 4, span: 10 }}>
+            <Button type="primary" htmlType="submit">
+              Submit
+            </Button>
+          </Form.Item>
+        </Form>
+        <Title
+          level={5}
+          style={{
+            textAlign: "center",
+          }}
+        >
+          New here?
+          <a href="/signup"> Register with us!</a>
+        </Title>
+      </div>
     </>
   );
 };
