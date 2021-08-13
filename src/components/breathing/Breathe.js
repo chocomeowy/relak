@@ -64,12 +64,6 @@ const Breathe = () => {
       </Title>
       {/* <Div>{counter}</Div> */}
       <Div>
-        <Meditation />
-        <Sleep />
-        <BreathingTechniquesModal />
-        <br />
-        <Headspace />
-        <br />
         <Button type="dashed" onClick={handleEqualBreathing}>
           Equal breathing
         </Button>
@@ -89,8 +83,7 @@ const Breathe = () => {
         <>
           <Container style={{ background: "black" }}>
             <br />
-            <br />
-            <br />
+
             {displayCircle()}
           </Container>
         </>
@@ -98,12 +91,23 @@ const Breathe = () => {
         <>
           <Container>
             <br />
-            <br />
-            <br />
+
             {displayCircle()}
           </Container>
         </>
       )}
+      <div
+        style={{
+          textAlign: "center",
+        }}
+      >
+        <br />
+        <Meditation />
+        <Sleep />
+        <BreathingTechniquesModal />
+        <br />
+        <Headspace />
+      </div>
     </>
   );
 };
