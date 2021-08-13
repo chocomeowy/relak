@@ -45,11 +45,10 @@ const Gethelp = () => {
     },
   ];
 
-  //"Your savior is here" as said by Loki.
   return (
     <div>
       <Title style={{ padding: "30px", textAlign: "center" }}>
-        You are not alone
+        your savior is here. - loki
       </Title>
 
       <List
