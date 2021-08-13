@@ -1,8 +1,8 @@
-import { Button, Checkbox, Form, Input, Typography } from "antd";
+import { Button, Checkbox, Form, Input, Row, Typography } from "antd";
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { logInAction } from "../redux/ducks/accountAuth";
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 const { Title } = Typography;
 
 const Login = () => {
@@ -51,67 +51,51 @@ const Login = () => {
           textAlign: "center",
         }}
       >
-        <Title
-          style={{
-            textAlign: "center",
-          }}
-        >
-          login.
-        </Title>
-        <Title
-          level={4}
-          style={{
-            textAlign: "center",
-          }}
-        >
-          welcome back.
-        </Title>
-        <Form
-          name="basic"
-          labelCol={{ span: 8 }}
-          wrapperCol={{ span: 10 }}
-          initialValues={{ remember: true }}
-          onFinish={onFinish}
-        >
-          <Form.Item
-            label="Username"
-            name="username"
-            rules={[{ required: true, message: "Please input your username!" }]}
+        <Title>login.</Title>
+        <Title level={4}>welcome back.</Title>
+        <br />
+        <Row type="flex" justify="center" style={{ minHeight: "100vh" }}>
+          <Form
+            name="basic"
+            initialValues={{ remember: true }}
+            onFinish={onFinish}
           >
-            <Input />
-          </Form.Item>
+            <Form.Item
+              label="Username"
+              name="username"
+              rules={[
+                { required: true, message: "Please input your username!" },
+              ]}
+            >
+              <Input />
+            </Form.Item>
 
-          <Form.Item
-            label="Password"
-            name="password"
-            rules={[{ required: true, message: "Please input your password!" }]}
-          >
-            <Input.Password />
-          </Form.Item>
+            <Form.Item
+              label="Password"
+              name="password"
+              rules={[
+                { required: true, message: "Please input your password!" },
+              ]}
+            >
+              <Input.Password />
+            </Form.Item>
 
-          <Form.Item
-            name="remember"
-            valuePropName="checked"
-            wrapperCol={{ offset: 4, span: 10 }}
-          >
-            <Checkbox>Remember me</Checkbox>
-          </Form.Item>
+            <Form.Item name="remember" valuePropName="checked">
+              <Checkbox>Remember me</Checkbox>
+            </Form.Item>
 
-          <Form.Item wrapperCol={{ offset: 4, span: 10 }}>
-            <Button type="primary" htmlType="submit">
-              Submit
-            </Button>
-          </Form.Item>
-        </Form>
-        <Title
-          level={5}
-          style={{
-            textAlign: "center",
-          }}
-        >
-          New here?
-          <a href="/signup"> Register with us!</a>
-        </Title>
+            <Form.Item>
+              <Button type="primary" htmlType="submit">
+                Submit
+              </Button>
+            </Form.Item>
+
+            <Title level={5}>
+              New here?
+              <Link to="/signup"> Register with us!</Link>
+            </Title>
+          </Form>
+        </Row>
       </div>
     </>
   );
