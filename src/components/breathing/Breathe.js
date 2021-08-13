@@ -55,14 +55,7 @@ const Breathe = () => {
   };
   return (
     <>
-      <Title
-        className="site-layout-content"
-        style={{
-          textAlign: "center",
-        }}
-      >
-        breathe.
-      </Title>
+      <Title style={{ padding: "30px", textAlign: "center" }}>breathe.</Title>
       {/* <Div>{counter}</Div> */}
       <Div>
         <Button type="dashed" onClick={handleEqualBreathing}>
