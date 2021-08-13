@@ -20,7 +20,9 @@ const Home = () => {
         textAlign: "center",
       }}
     >
-      <Title>time to relak</Title>
+      <Title italic style={{ padding: "30px" }}>
+        time to relak
+      </Title>
       <Carousel autoplay>
         <div>
           <h3 style={contentStyle}>
