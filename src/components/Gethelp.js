@@ -44,13 +44,11 @@ const Gethelp = () => {
       linkName: "stayprepared.sg",
     },
   ];
+
+  //"Your savior is here" as said by Loki.
   return (
     <div>
-      <Title
-        style={{
-          textAlign: "center",
-        }}
-      >
+      <Title style={{ padding: "30px", textAlign: "center" }}>
         You are not alone
       </Title>
 

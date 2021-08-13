@@ -4,6 +4,7 @@ import Breathe from "./components/breathing/Breathe";
 import Gethelp from "./components/Gethelp";
 import Home from "./components/Home";
 import Journal from "./components/Journal";
+import Listen from "./components/Listen";
 import Login from "./components/Login";
 import Profile from "./components/Profile";
 import Signup from "./components/Signup";
@@ -35,6 +36,9 @@ function App() {
       </Route>
       <Route path="/gethelp">
         <Gethelp />
+      </Route>
+      <Route path="/listen">
+        <Listen />
       </Route>
     </div>
   );

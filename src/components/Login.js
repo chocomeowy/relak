@@ -47,6 +47,7 @@ const Login = () => {
   return (
     <>
       <div
+        className="site-layout-content"
         style={{
           textAlign: "center",
         }}

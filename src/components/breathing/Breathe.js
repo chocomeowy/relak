@@ -56,11 +56,12 @@ const Breathe = () => {
   return (
     <>
       <Title
+        className="site-layout-content"
         style={{
           textAlign: "center",
         }}
       >
-        breathe
+        breathe.
       </Title>
       {/* <Div>{counter}</Div> */}
       <Div>

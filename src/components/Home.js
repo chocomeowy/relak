@@ -7,6 +7,7 @@ import { Carousel } from "antd";
 const { Title, Text } = Typography;
 const contentStyle = {
   height: "350px",
+  width: "50vw",
   color: "#fff",
   lineHeight: "160px",
   textAlign: "center",
@@ -26,17 +27,26 @@ const Home = () => {
       <Carousel autoplay>
         <div>
           <h3 style={contentStyle}>
-            <img src="https://i.imgur.com/hJKUf3h.png"></img>
+            <img src="https://i.imgur.com/hJKUf3h.png" alt="first"></img>
           </h3>
         </div>
         <div>
           <h3 style={contentStyle}>
-            <img src="https://i.imgur.com/gFFbMBH.png"></img>
+            <img src="https://i.imgur.com/gFFbMBH.png" alt="second"></img>
           </h3>
         </div>
         <div>
           <h3 style={contentStyle}>
-            <img src="https://media-exp1.licdn.com/dms/image/C5616AQF5xQhocuNdTg/profile-displaybackgroundimage-shrink_350_1400/0/1628592176980?e=1634169600&v=beta&t=u9_OYePWYxM07ZZmPUPr2KbHC_gjCszasIQJ46B8P90"></img>
+            <img
+              src="https://media-exp1.licdn.com/dms/image/C5616AQF5xQhocuNdTg/profile-displaybackgroundimage-shrink_350_1400/0/1628592176980?e=1634169600&v=beta&t=u9_OYePWYxM07ZZmPUPr2KbHC_gjCszasIQJ46B8P90"
+              alt="third"
+            ></img>
+          </h3>
+        </div>
+        <div>
+          <h3 style={contentStyle}>
+            {" "}
+            <img src="https://source.unsplash.com/random" alt="fourth"></img>
           </h3>
         </div>
         <div>
