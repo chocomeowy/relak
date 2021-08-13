@@ -8,6 +8,7 @@ import Login from "./components/Login";
 import Profile from "./components/Profile";
 import Signup from "./components/Signup";
 import Topbar from "./components/Topbar";
+import Listen from "./components/Listen";
 
 function App() {
   return (
@@ -35,6 +36,9 @@ function App() {
       </Route>
       <Route path="/gethelp">
         <Gethelp />
+      </Route>
+      <Route path="/listen">
+        <Listen />
       </Route>
     </div>
   );
