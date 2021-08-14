@@ -54,7 +54,6 @@ const Topbar = () => {
           <Menu.Item key="7" icon={<FormOutlined />}>
             <Link to="/journal">Journal</Link>
           </Menu.Item>
-
           <Menu.Item key="8" icon={<LineChartOutlined />}>
             <Link to="/profile">Profile</Link>
           </Menu.Item>
