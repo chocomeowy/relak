@@ -5,8 +5,9 @@
 ### Technologies
 
 React
-Foundation CSS (foundation-sites, react-foundation)
+AntDesign CSS
 Redux (redux, react-redux)
 React Router
 Recharts
 Styled components
+react-responsive-carousel
