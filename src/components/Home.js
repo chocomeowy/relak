@@ -4,6 +4,8 @@ import { Typography } from "antd";
 import { Link } from "react-router-dom";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from "react-responsive-carousel";
+import { AwesomeButton } from "react-awesome-button";
+import "react-awesome-button/dist/themes/theme-rickiest.css";
 
 const { Title, Text } = Typography;
 
@@ -14,7 +16,7 @@ const Home = () => {
         textAlign: "center",
       }}
     >
-      <Title italic style={{ padding: "30px" }}>
+      <Title italic strong style={{ padding: "30px" }}>
         time to relak
       </Title>
       <Carousel
@@ -47,16 +49,16 @@ const Home = () => {
         thoughts? we’ll gladly lend you a listening ear.
       </Text>
       <br />
-      <Button>
+      <AwesomeButton type="secondary" size="medium">
         <Link to="/breathe">breathe</Link>
-      </Button>
-      <Button>
+      </AwesomeButton>
+      <AwesomeButton type="secondary" size="medium">
         <Link to="/listen">listen</Link>
-      </Button>
+      </AwesomeButton>
       <br />
-      <Button type="primary">
+      <AwesomeButton type="primary">
         <Link to="/login">login</Link>
-      </Button>
+      </AwesomeButton>
     </div>
   );
 };

@@ -11,3 +11,4 @@ React Router
 Recharts
 Styled components
 react-responsive-carousel
+react-awesome-button

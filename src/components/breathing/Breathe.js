@@ -55,7 +55,7 @@ const Breathe = () => {
   };
   return (
     <>
-      <Title style={{ padding: "30px", textAlign: "center" }}>breathe.</Title>
+      <Title style={{ padding: "10px", textAlign: "center" }}>breathe.</Title>
       {/* <Div>{counter}</Div> */}
       <Div>
         <Button type="dashed" onClick={handleEqualBreathing}>
@@ -70,7 +70,6 @@ const Breathe = () => {
         <Button type="dashed" onClick={handleApple}>
           Apple Watch Style
         </Button>
-        <br />
         <br />​{description}
       </Div>
       {circle === "d" ? (

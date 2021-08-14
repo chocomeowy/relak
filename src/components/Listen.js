@@ -6,7 +6,7 @@ const Listen = () => {
     <div
       style={{
         textAlign: "center",
-        padding: "30px",
+        padding: "10px",
       }}
     >
       <Title>listen.</Title>

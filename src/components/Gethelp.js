@@ -47,7 +47,7 @@ const Gethelp = () => {
 
   return (
     <div>
-      <Title style={{ padding: "30px", textAlign: "center" }}>
+      <Title style={{ padding: "10px", textAlign: "center" }}>
         your savior is here. - loki
       </Title>
 
