@@ -2,10 +2,12 @@ import React from "react";
 import { Form, Input, Button, Checkbox, Row } from "antd";
 import { Typography } from "antd";
 import { Link, useHistory } from "react-router-dom";
-
+import { useDispatch } from "react-redux";
+import { logInAction } from "../redux/ducks/accountAuth";
 const { Title } = Typography;
 const Signup = () => {
   let history = useHistory();
+  const dispatch = useDispatch();
   const url = "http://localhost:8000/user/signup/";
 
   const onFinish = (event) => {
@@ -20,13 +22,25 @@ const Signup = () => {
       headers: {
         "Content-Type": "application/json",
       },
-    }).then((res) => {
-      if (res.ok) {
-        console.log(res, "res");
-        return history.push("/login/");
-      }
-      throw new Error("Error in network");
-    });
+    })
+      .then((res) => {
+        if (res.ok) {
+          console.log(res, "res");
+          return history.push("/login/");
+        }
+        throw new Error("Error in network");
+      })
+      .then((resJson) => {
+        console.log(resJson);
+        if (resJson.error) {
+          return;
+        } else {
+          //console.log(resJson);
+          dispatch({ ...logInAction(), payload: resJson.token });
+          localStorage.setItem("token", resJson.token);
+          return history.push("/");
+        }
+      });
   };
   const onFinishFailed = (errorInfo) => {
     console.log("Failed:", errorInfo);

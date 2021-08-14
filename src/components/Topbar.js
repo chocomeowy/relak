@@ -22,6 +22,7 @@ const Topbar = () => {
   const dispatch = useDispatch();
   const signOut = () => {
     dispatch(logOutAction());
+    localStorage.removeItem("token");
   };
   return (
     <>

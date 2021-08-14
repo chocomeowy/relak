@@ -38,7 +38,7 @@ const Login = () => {
         } else {
           //console.log(resJson);
           dispatch({ ...logInAction(), payload: resJson.token });
-
+          localStorage.setItem("token", resJson.token);
           return history.push("/");
         }
       });

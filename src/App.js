@@ -1,5 +1,6 @@
 import { Route, Switch } from "react-router-dom";
 import "./App.css";
+import About from "./components/About";
 import Breathe from "./components/breathing/Breathe";
 import Gethelp from "./components/Gethelp";
 import Home from "./components/Home";
@@ -39,6 +40,9 @@ function App() {
       </Route>
       <Route path="/listen">
         <Listen />
+      </Route>
+      <Route path="/about">
+        <About />
       </Route>
     </div>
   );
