@@ -1,4 +1,4 @@
-import { Form, Input, InputNumber, Button, Row, Typography } from "antd";
+import { Form, Input, Button, Row, Typography } from "antd";
 import { Rate } from "antd";
 import { FrownOutlined, MehOutlined, SmileOutlined } from "@ant-design/icons";
 const { Title } = Typography;

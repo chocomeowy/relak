@@ -1,11 +1,10 @@
-import React from "react";
-import { Button } from "antd";
 import { Typography } from "antd";
-import { Link } from "react-router-dom";
-import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
-import { Carousel } from "react-responsive-carousel";
+import React from "react";
 import { AwesomeButton } from "react-awesome-button";
 import "react-awesome-button/dist/themes/theme-rickiest.css";
+import { Carousel } from "react-responsive-carousel";
+import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
+import { Link } from "react-router-dom";
 
 const { Title, Text } = Typography;
 
@@ -29,17 +28,20 @@ const Home = () => {
         showStatus={false}
       >
         <div>
-          <img src="https://i.imgur.com/hJKUf3h.png" />
+          <img src="https://i.imgur.com/hJKUf3h.png" alt="1" />
         </div>
         <div>
-          <img src="https://i.imgur.com/gFFbMBH.png" />
+          <img src="https://i.imgur.com/gFFbMBH.png" alt="2" />
         </div>
         <div>
-          <img src="https://source.unsplash.com/random/800x200" />
+          <img src="https://source.unsplash.com/random/800x200" alt="3" />
           <p className="legend">Legend 3</p>
         </div>
         <div>
-          <img src="https://media-exp1.licdn.com/dms/image/C5616AQF5xQhocuNdTg/profile-displaybackgroundimage-shrink_350_1400/0/1628592176980?e=1634169600&v=beta&t=u9_OYePWYxM07ZZmPUPr2KbHC_gjCszasIQJ46B8P90" />
+          <img
+            src="https://media-exp1.licdn.com/dms/image/C5616AQF5xQhocuNdTg/profile-displaybackgroundimage-shrink_350_1400/0/1628592176980?e=1634169600&v=beta&t=u9_OYePWYxM07ZZmPUPr2KbHC_gjCszasIQJ46B8P90"
+            alt="4"
+          />
         </div>
       </Carousel>
 
