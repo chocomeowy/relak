@@ -2,9 +2,9 @@ import React from 'react'
 import {useState} from 'react'
 import ReactHowler from 'react-howler'
 
-const ForestRain = () => {
+const HeavyRain = () => {
   const [play, setPlay] = useState(false)
-  const url = "./sounds/forestRain.ogg"
+  const url = "./sounds/heavyRain.ogg"
 
   const handlePlay = () => {
     setPlay(!play)
@@ -12,8 +12,8 @@ const ForestRain = () => {
 
   return (
 <div>
-<h2>Forest Rain</h2><br/>
-    <h4>Sometimes, the forest may be the best place to go.</h4>
+<h2>Heavy Rain</h2><br/>
+    <h4>Torrential downpours may be your thing?</h4>
         <ReactHowler
           src={url}
           playing={play}
@@ -24,4 +24,4 @@ const ForestRain = () => {
   )
 }
 
-export default ForestRain;
+export default HeavyRain;

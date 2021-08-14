@@ -1,5 +1,7 @@
 import React from "react";
 import ForestRain from "./ForestRain";
+import HeavyRain from "./HeavyRain";
+import WindChime from "./WindChime";
 import Title from "antd/lib/typography/Title";
 const Listen = () => {
   return (
@@ -11,6 +13,8 @@ const Listen = () => {
     >
       <Title>listen.</Title>
       <ForestRain />
+      <HeavyRain />
+      <WindChime />
     </div>
   );
 };
