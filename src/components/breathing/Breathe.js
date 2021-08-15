@@ -56,6 +56,7 @@ const Breathe = () => {
   return (
     <>
       <Title style={{ padding: "10px", textAlign: "center" }}>breathe.</Title>
+      <b>TODO: Add description of why breathing is necessary for calming stress</b>
       {/* <Div>{counter}</Div> */}
       <Div>
         <Button type="dashed" onClick={handleEqualBreathing}>

@@ -15,7 +15,7 @@ const ForestRain = () => {
   return (
     <div>
       <h2>Forest Rain</h2>
-
+      <h4>Add image here</h4>
       <h4>Sometimes, the forest may be the best place to go.</h4>
       {play ? (
         <>

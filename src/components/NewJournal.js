@@ -51,7 +51,7 @@ const NewJournal = () => {
             rules={[{ required: true }]}
           >
             <Input.TextArea />
-          </Form.Item>
+          </Form.Item >
           <Rate
             defaultValue={5}
             character={({ index }) => customIcons[index + 1]}
