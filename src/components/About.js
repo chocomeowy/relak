@@ -8,7 +8,7 @@ const About = () => {
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
-        Authorization: `JWT ${token}`,
+        Authorization: `Bearer ${token}`,
       },
     })
       .then((res) => res.json())

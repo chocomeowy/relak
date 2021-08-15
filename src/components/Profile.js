@@ -12,24 +12,25 @@ const Profile = () => {
     loading: false,
     posts: null,
   });
+  const [post, setPost] = useState();
 
   const dispatch = useDispatch();
   const token = localStorage.token;
   useEffect(() => {
     setWaiting({ loading: true });
-    fetch("http://localhost:8000/api/")
-      // {
-      //   method: "GET",
-      //   headers: {
-      //     "Content-Type": "application/json",
-      //     Accept: "application/json",
-      //     Authorization: `JWT ${token}`,
-      //   },
-      // }
+    fetch("http://localhost:8000/journals/", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    })
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
-        setWaiting({ loading: false, posts: data });
+        //setWaiting(data);
+        setPost(data);
         if (data.message) {
           // An error will occur if the token is invalid.
           // If this happens, you may want to remove the invalid token.
@@ -50,6 +51,12 @@ const Profile = () => {
       <Title>profile.</Title>
       <div>profile</div>
       <Loading isLoading={waiting.loading} post={waiting.posts} />
+      <ul>
+        {token ? post?.map((wait) => <li>{wait?.title}</li>) : <>hi</>}
+        {/* {post.map((posts) => (
+          <li>{posts?.title}</li>
+        ))} */}
+      </ul>
     </div>
   );
 };

@@ -7,7 +7,7 @@ const { Title } = Typography;
 
 const Login = () => {
   const dispatch = useDispatch();
-  const url = "http://localhost:8000/user/login/";
+  const url = "http://localhost:8000/api/token/";
   const token = useSelector((state) => state.auth.token);
   console.log(token);
   let history = useHistory();
@@ -38,8 +38,8 @@ const Login = () => {
         } else {
           //console.log(resJson);
           dispatch({ ...logInAction(), payload: resJson.token });
-          localStorage.setItem("token", resJson.token);
-          return history.push("/");
+          localStorage.setItem("token", resJson.access);
+          return history.push("/profile");
         }
       });
   };
