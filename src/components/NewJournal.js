@@ -1,6 +1,7 @@
 import { Form, Input, Button, Row, Typography } from "antd";
 import { Rate } from "antd";
 import { FrownOutlined, MehOutlined, SmileOutlined } from "@ant-design/icons";
+import jwt_decode from "jwt-decode";
 const { Title } = Typography;
 
 const customIcons = {
@@ -24,7 +25,44 @@ const validateMessages = {
 /* eslint-enable no-template-curly-in-string */
 
 const NewJournal = () => {
-  const onFinish = () => {
+  const url = "http://localhost:8000/journals/";
+  const token = localStorage.token;
+  const decoded = jwt_decode(token);
+  console.log(decoded);
+  const onFinish = (event) => {
+    fetch(url, {
+      method: "POST",
+      body: JSON.stringify({
+        title: event.title,
+        entry: event.entry,
+        mood: event.rate,
+        profile: decoded.user_id,
+      }),
+
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    })
+      .then((res) => {
+        if (res.ok) {
+          console.log(res);
+          return res.json();
+        }
+        throw new Error("Error in network");
+      })
+      .then((resJson) => {
+        console.log(resJson);
+        if (resJson.error) {
+          return;
+        } else {
+          //console.log(resJson);
+
+          return;
+        }
+      });
+
     console.log("Wheeeee you got a new journal entry fam");
   };
 
@@ -45,17 +83,16 @@ const NewJournal = () => {
           <Form.Item name="title" label="Title" rules={[{ required: true }]}>
             <Input />
           </Form.Item>
-          <Form.Item
-            name="journalEntry"
-            label="Entry"
-            rules={[{ required: true }]}
-          >
+          <Form.Item name="entry" label="Entry" rules={[{ required: true }]}>
             <Input.TextArea />
           </Form.Item>
-          <Rate
-            defaultValue={5}
-            character={({ index }) => customIcons[index + 1]}
-          />
+          <Form.Item name="rate" label="Rate" rules={[{ required: true }]}>
+            <Rate
+              defaultValue={5}
+              initialValues={5}
+              character={({ index }) => customIcons[index + 1]}
+            />
+          </Form.Item>
 
           <Form.Item>
             <br />
