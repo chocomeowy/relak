@@ -3,6 +3,7 @@ import ForestRain from "./sounds/ForestRain";
 import HeavyRain from "./sounds/HeavyRain";
 import WindChime from "./sounds/WindChime";
 import Title from "antd/lib/typography/Title";
+import WhiteNoise from "./sounds/WhiteNoise";
 const Listen = () => {
   return (
     <div
@@ -15,6 +16,7 @@ const Listen = () => {
       <ForestRain />
       <HeavyRain />
       <WindChime />
+      <WhiteNoise />
     </div>
   );
 };
