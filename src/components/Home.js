@@ -51,16 +51,20 @@ const Home = () => {
         thoughts? we’ll gladly lend you a listening ear.
       </Text>
       <br />
-      <AwesomeButton type="secondary" size="medium">
-        <Link to="/breathe">breathe</Link>
-      </AwesomeButton>
-      <AwesomeButton type="secondary" size="medium">
-        <Link to="/listen">listen</Link>
-      </AwesomeButton>
+      <Link to="/breathe">
+        <AwesomeButton type="secondary" size="medium">
+          breathe
+        </AwesomeButton>
+      </Link>
+      <Link to="/listen">
+        <AwesomeButton type="secondary" size="medium">
+          listen
+        </AwesomeButton>
+      </Link>
       <br />
-      <AwesomeButton type="primary">
-        <Link to="/login">login</Link>
-      </AwesomeButton>
+      <Link to="/login">
+        <AwesomeButton type="primary">login</AwesomeButton>
+      </Link>
     </div>
   );
 };

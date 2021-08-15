@@ -24,11 +24,11 @@ const ForestRain = () => {
       ) : (
         <></>
       )}
-      <AwesomeButton size="icon">
+      <AwesomeButton size="icon" onPress={handlePlay}>
         {play ? (
-          <>{<PauseCircleOutlined onClick={handlePlay} />} </>
+          <>{<PauseCircleOutlined />} </>
         ) : (
-          <>{<PlayCircleOutlined onClick={handlePlay} />} </>
+          <>{<PlayCircleOutlined />} </>
         )}
       </AwesomeButton>
     </div>

@@ -20,16 +20,16 @@ const WindChime = () => {
       <h4>Feel the breeze with specially selected Wind Chimes.</h4>
       {play ? (
         <>
-          <ReactHowler src={url} playing={true} loop={true} />
+          <ReactHowler src={url} playing={true} loop={true} volume={0.0} />
         </>
       ) : (
         <></>
       )}
-      <AwesomeButton size="icon">
+      <AwesomeButton size="icon" onPress={handlePlay}>
         {play ? (
-          <>{<PauseCircleOutlined onClick={handlePlay} />} </>
+          <>{<PauseCircleOutlined />} </>
         ) : (
-          <>{<PlayCircleOutlined onClick={handlePlay} />} </>
+          <>{<PlayCircleOutlined />} </>
         )}
       </AwesomeButton>
     </div>
