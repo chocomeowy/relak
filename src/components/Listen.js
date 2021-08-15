@@ -1,7 +1,7 @@
 import React from "react";
-import ForestRain from "./ForestRain";
-import HeavyRain from "./HeavyRain";
-import WindChime from "./WindChime";
+import ForestRain from "./sounds/ForestRain";
+import HeavyRain from "./sounds/HeavyRain";
+import WindChime from "./sounds/WindChime";
 import Title from "antd/lib/typography/Title";
 const Listen = () => {
   return (
