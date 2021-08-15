@@ -4,7 +4,7 @@ import ReactHowler from "react-howler";
 
 const HeavyRain = () => {
   const [play, setPlay] = useState(false);
-  const url = "./heavyRain.ogg";
+  const url = "https://getmega.net/download/file_4d01af19a9/heavyRain.ogg";
 
   const handlePlay = () => {
     setPlay(!play);

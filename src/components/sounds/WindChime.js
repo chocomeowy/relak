@@ -4,7 +4,7 @@ import ReactHowler from "react-howler";
 
 const WindChime = () => {
   const [play, setPlay] = useState(false);
-  const url = "./windChime.ogg";
+  const url = "https://getmega.net/download/file_eac3862ee0/windChime.ogg";
 
   const handlePlay = () => {
     setPlay(!play);

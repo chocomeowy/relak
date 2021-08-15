@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 import ReactHowler from "react-howler";
 import { AwesomeButton } from "react-awesome-button";
-import "react-awesome-button/dist/themes/theme-blue.css";
+import "react-awesome-button/dist/themes/theme-rickiest.css";
 import { PlayCircleOutlined } from "@ant-design/icons";
 const ForestRain = () => {
   const [play, setPlay] = useState(false);
