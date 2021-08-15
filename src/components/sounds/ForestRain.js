@@ -2,12 +2,11 @@ import React from "react";
 import { useState } from "react";
 import ReactHowler from "react-howler";
 import { AwesomeButton } from "react-awesome-button";
-import "react-awesome-button/dist/themes/theme-rickiest.css";
-import { PlayCircleOutlined } from "@ant-design/icons";
+import { PlayCircleOutlined, PauseCircleOutlined } from "@ant-design/icons";
 const ForestRain = () => {
   const [play, setPlay] = useState(false);
   const url =
-    "https://cors-anywhere.herokuapp.com/https://whitestone.com.sg/pr0j4/forestRain.ogg";
+    "https://dl.dropboxusercontent.com/s/dhz6t7bfezcfwhw/forestRain.ogg?dl=0";
 
   const handlePlay = () => {
     setPlay(!play);
@@ -20,16 +19,17 @@ const ForestRain = () => {
       <h4>Sometimes, the forest may be the best place to go.</h4>
       {play ? (
         <>
-          <ReactHowler src={url} playing={true} /> <div>player</div>
+          <ReactHowler src={url} playing={true} loop={true} />
         </>
       ) : (
-        <>
-          click to play
-          <br />
-        </>
+        <></>
       )}
       <AwesomeButton size="icon">
-        {<PlayCircleOutlined onClick={handlePlay} />}
+        {play ? (
+          <>{<PauseCircleOutlined onClick={handlePlay} />} </>
+        ) : (
+          <>{<PlayCircleOutlined onClick={handlePlay} />} </>
+        )}
       </AwesomeButton>
     </div>
   );
