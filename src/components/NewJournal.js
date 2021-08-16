@@ -25,7 +25,7 @@ const validateMessages = {
 /* eslint-enable no-template-curly-in-string */
 
 const NewJournal = () => {
-  const url = "http://localhost:8000/journals/";
+  const url = "https://lepak.herokuapp.com/journals/";
   const token = localStorage.token;
   const decoded = jwt_decode(token);
   console.log(decoded);

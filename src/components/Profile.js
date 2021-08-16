@@ -12,7 +12,6 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { logInAction } from "../redux/ducks/accountAuth";
-import Loading from "./profile/Loading";
 import moment from "moment";
 
 const { Title } = Typography;
@@ -25,7 +24,7 @@ const Profile = () => {
   const token = localStorage.token;
   useEffect(() => {
     setWaiting(true);
-    fetch("http://localhost:8000/journals/", {
+    fetch("https://lepak.herokuapp.com/journals/", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",

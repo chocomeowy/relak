@@ -7,7 +7,7 @@ const { Title } = Typography;
 
 const Login = () => {
   const dispatch = useDispatch();
-  const url = "http://localhost:8000/api/token/";
+  const url = "https://lepak.herokuapp.com/api/token/";
   const token = useSelector((state) => state.auth.token);
   console.log(token);
   let history = useHistory();

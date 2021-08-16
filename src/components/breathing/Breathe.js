@@ -196,39 +196,39 @@ const breatheAnimation3 = keyframes`
  }`;
 
 const Circle = styled.div`
-  height: 100px;
-  width: 100px;
+  height: 50px;
+  width: 50px;
 
   border-width: 5px;
   border-radius: 50%;
   border-color: blue;
   animation-name: ${breatheAnimation};
   animation-duration: 12s;
-  animation-iteration-count: 4;
+  animation-iteration-count: infinite;
 `;
 
 const Circle2 = styled.div`
-  height: 100px;
-  width: 100px;
+  height: 50px;
+  width: 50px;
 
   border-width: 5px;
   border-radius: 0%;
   border-color: blue;
   animation-name: ${breatheAnimation2};
   animation-duration: 12s;
-  animation-iteration-count: 4;
+  animation-iteration-count: infinite;
 `;
 
 const Circle3 = styled.div`
-  height: 100px;
-  width: 100px;
+  height: 50px;
+  width: 50px;
 
   border-width: 5px;
   border-radius: 50%;
   border-color: blue;
   animation-name: ${breatheAnimation3};
   animation-duration: 19s;
-  animation-iteration-count: 4;
+  animation-iteration-count: infinite;
 `;
 const Container = styled.div`
   display: flex;

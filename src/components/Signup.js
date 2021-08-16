@@ -8,7 +8,7 @@ const { Title } = Typography;
 const Signup = () => {
   let history = useHistory();
   const dispatch = useDispatch();
-  const url = "http://localhost:8000/user/signup/";
+  const url = "https://lepak.herokuapp.com/user/signup/";
 
   const onFinish = (event) => {
     console.log(event);
@@ -24,7 +24,10 @@ const Signup = () => {
       },
     })
       .then((res) => {
-        if (res.ok) {
+        if (!res.ok) {
+          console.log("res not okay", res);
+          console.log("duplicated sign up username");
+        } else if (res.ok) {
           console.log(res, "res");
           return history.push("/login/");
         }

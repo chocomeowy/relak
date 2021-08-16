@@ -1,7 +1,7 @@
 import { Typography } from "antd";
 import React from "react";
 import { AwesomeButton } from "react-awesome-button";
-import "react-awesome-button/dist/themes/theme-rickiest.css";
+import "react-awesome-button/dist/themes/theme-bojack.css";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Link } from "react-router-dom";
@@ -16,7 +16,7 @@ const Home = () => {
         textAlign: "center",
       }}
     >
-      <Title italic strong style={{ padding: "30px" }}>
+      <Title italic strong style={{ padding: "10px" }}>
         time to relak
       </Title>
       <Carousel
@@ -29,20 +29,19 @@ const Home = () => {
         showStatus={false}
       >
         <div>
-          <img src="https://i.imgur.com/hJKUf3h.png" alt="1" />
+          <img src="https://i.imgur.com/awMl5my.jpg?2" alt="1" />
         </div>
         <div>
-          <img src="https://i.imgur.com/gFFbMBH.png" alt="2" />
+          <img src="https://i.imgur.com/1Wguprp.jpg?1" alt="2" />
         </div>
         <div>
-          <img src="https://source.unsplash.com/random/800x200" alt="3" />
-          <p className="legend">Legend 3</p>
+          <img src="https://i.imgur.com/7TVncOv.jpg?3" alt="3" />
         </div>
         <div>
-          <img
-            src="https://media-exp1.licdn.com/dms/image/C5616AQF5xQhocuNdTg/profile-displaybackgroundimage-shrink_350_1400/0/1628592176980?e=1634169600&v=beta&t=u9_OYePWYxM07ZZmPUPr2KbHC_gjCszasIQJ46B8P90"
-            alt="4"
-          />
+          <img src="https://i.imgur.com/1D3iD7I.jpg?1" alt="3" />
+        </div>
+        <div>
+          <img src="https://i.imgur.com/7UMyV8I.jpg?2" alt="5" />
         </div>
       </Carousel>
 
@@ -66,7 +65,7 @@ const Home = () => {
         <>
           <br />
           <Link to="/login">
-            <AwesomeButton type="primary">login</AwesomeButton>
+            <AwesomeButton>login</AwesomeButton>
           </Link>
         </>
       ) : (

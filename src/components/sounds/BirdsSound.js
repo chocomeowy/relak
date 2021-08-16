@@ -4,26 +4,22 @@ import ReactHowler from "react-howler";
 import { AwesomeButton } from "react-awesome-button";
 import { PlayCircleOutlined, PauseCircleOutlined } from "@ant-design/icons";
 
-const WhiteNoise = () => {
+const BirdsSound = () => {
   const [play, setPlay] = useState(false);
   const url =
-    "https://upload.wikimedia.org/wikipedia/commons/9/98/White-noise-sound-20sec-mono-44100Hz.ogg";
-  const url2 =
-    "https://upload.wikimedia.org/wikipedia/commons/c/c9/Brownnoise.ogg";
-  const url3 =
-    "https://upload.wikimedia.org/wikipedia/commons/6/6c/Pink_noise.ogg";
+    "https://dl.dropboxusercontent.com/s/79ubj084pdvculm/birds_i_guess.m4a?dl=0";
+
   const handlePlay = () => {
     setPlay(!play);
   };
 
   return (
     <div>
-      <h2>White Noise</h2>
+      <h2>Birds</h2>
 
-      <h4>White.</h4>
       {play ? (
         <>
-          <ReactHowler src={url2} playing={true} loop={true} volume={0.2} />
+          <ReactHowler src={url} playing={true} loop={true} />
         </>
       ) : (
         <></>
@@ -39,4 +35,4 @@ const WhiteNoise = () => {
   );
 };
 
-export default WhiteNoise;
+export default BirdsSound;

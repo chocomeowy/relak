@@ -23,7 +23,7 @@ const Gethelp = () => {
       content: `Find a range of free and/or low cost counselling services here. It's better to seek help than to keep it all in.`,
       link: "https://www.healthhub.sg/a-z/support-groups-and-others/20/call-on-these-when-you-need-help",
       linkName: "HealthHub",
-    }
+    },
   ];
 
   return (
@@ -37,15 +37,19 @@ const Gethelp = () => {
           gutter: 16,
           xs: 1,
           sm: 2,
-          md: 4,
-          lg: 4,
-          xl: 6,
+          md: 2,
+          lg: 3,
+          xl: 3,
           xxl: 3,
         }}
         dataSource={data}
         renderItem={(item) => (
           <List.Item>
-            <Card hoverable title={<span style={{fontSize: "2em"}}>{item.title}</span>} style={{ fontSize: "1.5em" }}>
+            <Card
+              hoverable
+              title={<span style={{ fontSize: "2em" }}>{item.title}</span>}
+              style={{ fontSize: "1.5em" }}
+            >
               {item.content}
               <br />
               <a href={item.link}>{item.linkName}</a>
