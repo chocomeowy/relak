@@ -12,3 +12,4 @@ Recharts
 Styled components
 react-responsive-carousel
 react-awesome-button
+moment.js

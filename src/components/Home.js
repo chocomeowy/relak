@@ -9,6 +9,7 @@ import { Link } from "react-router-dom";
 const { Title, Text } = Typography;
 
 const Home = () => {
+  const token = localStorage.token;
   return (
     <div
       style={{
@@ -61,10 +62,16 @@ const Home = () => {
           listen
         </AwesomeButton>
       </Link>
-      <br />
-      <Link to="/login">
-        <AwesomeButton type="primary">login</AwesomeButton>
-      </Link>
+      {token === undefined ? (
+        <>
+          <br />
+          <Link to="/login">
+            <AwesomeButton type="primary">login</AwesomeButton>
+          </Link>
+        </>
+      ) : (
+        <></>
+      )}
     </div>
   );
 };

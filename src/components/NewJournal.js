@@ -80,10 +80,10 @@ const NewJournal = () => {
           onFinish={onFinish}
           validateMessages={validateMessages}
         >
-          <Form.Item name="title" label="Title" rules={[{ required: true }]}>
+          <Form.Item name="title" label="Title">
             <Input />
           </Form.Item>
-          <Form.Item name="entry" label="Entry" rules={[{ required: true }]}>
+          <Form.Item name="entry" label="Entry">
             <Input.TextArea />
           </Form.Item>
           <Form.Item name="rate" label="Rate" rules={[{ required: true }]}>

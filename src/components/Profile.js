@@ -5,6 +5,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { logInAction } from "../redux/ducks/accountAuth";
 import Loading from "./profile/Loading";
+import moment from "moment";
 
 const { Title } = Typography;
 const Profile = () => {
@@ -52,7 +53,20 @@ const Profile = () => {
       <div>profile</div>
       <Loading isLoading={waiting.loading} post={waiting.posts} />
       <ul>
-        {token ? post?.map((wait) => <li>{wait?.title}</li>) : <>hi</>}
+        {token ? (
+          post?.map((wait) => (
+            <>
+              <li>Date: {moment(wait?.date).format("Do MMMM YYYY, h:mm a")}</li>
+              <li>Title: {wait?.title}</li>
+
+              <li>Entry: {wait?.entry}</li>
+              <li>Mood: {wait?.mood}</li>
+              <br />
+            </>
+          ))
+        ) : (
+          <>hi</>
+        )}
         {/* {post.map((posts) => (
           <li>{posts?.title}</li>
         ))} */}

@@ -56,7 +56,7 @@ const Breathe = () => {
   return (
     <>
       <Title style={{ padding: "10px", textAlign: "center" }}>breathe.</Title>
-      <b>TODO: Add description of why breathing is necessary for calming stress</b>
+
       {/* <Div>{counter}</Div> */}
       <Div>
         <Button type="dashed" onClick={handleEqualBreathing}>
@@ -212,7 +212,7 @@ const Circle2 = styled.div`
   width: 100px;
 
   border-width: 5px;
-  border-radius: 50%;
+  border-radius: 0%;
   border-color: blue;
   animation-name: ${breatheAnimation2};
   animation-duration: 12s;
