@@ -16,7 +16,7 @@ const Home = () => {
         textAlign: "center",
       }}
     >
-      <Title italic strong style={{ padding: "30px" }}>
+      <Title italic strong style={{ padding: "10px" }}>
         time to relak
       </Title>
       <Carousel
@@ -29,20 +29,17 @@ const Home = () => {
         showStatus={false}
       >
         <div>
-          <img src="https://i.imgur.com/hJKUf3h.png" alt="1" />
+          <img src="https://i.imgur.com/awMl5my.jpg?1" alt="1" />
         </div>
         <div>
-          <img src="https://i.imgur.com/gFFbMBH.png" alt="2" />
+          <img src="https://i.imgur.com/lyzblJt.jpg?2" alt="2" />
         </div>
         <div>
-          <img src="https://source.unsplash.com/random/800x200" alt="3" />
-          <p className="legend">Legend 3</p>
+          <img src="https://i.imgur.com/7TVncOv.jpg?2" alt="3" />
         </div>
+
         <div>
-          <img
-            src="https://media-exp1.licdn.com/dms/image/C5616AQF5xQhocuNdTg/profile-displaybackgroundimage-shrink_350_1400/0/1628592176980?e=1634169600&v=beta&t=u9_OYePWYxM07ZZmPUPr2KbHC_gjCszasIQJ46B8P90"
-            alt="4"
-          />
+          <img src="https://i.imgur.com/B8UmfX0.jpg" alt="5" />
         </div>
       </Carousel>
 
