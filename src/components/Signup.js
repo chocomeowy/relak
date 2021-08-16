@@ -8,7 +8,7 @@ const { Title } = Typography;
 const Signup = () => {
   let history = useHistory();
   const dispatch = useDispatch();
-  const url = "http://localhost:8000/user/signup/";
+  const url = "https://lepak.herokuapp.com/user/signup/";
 
   const onFinish = (event) => {
     console.log(event);

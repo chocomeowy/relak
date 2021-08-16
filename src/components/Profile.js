@@ -19,7 +19,7 @@ const Profile = () => {
   const token = localStorage.token;
   useEffect(() => {
     setWaiting({ loading: true });
-    fetch("http://localhost:8000/journals/", {
+    fetch("https://lepak.herokuapp.com/journals/", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",

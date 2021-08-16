@@ -29,17 +29,17 @@ const Home = () => {
         showStatus={false}
       >
         <div>
-          <img src="https://i.imgur.com/awMl5my.jpg?1" alt="1" />
+          <img src="https://i.imgur.com/awMl5my.jpg?2" alt="1" />
         </div>
         <div>
-          <img src="https://i.imgur.com/lyzblJt.jpg?2" alt="2" />
+          <img src="https://i.imgur.com/1Wguprp.jpg?1" alt="2" />
         </div>
         <div>
-          <img src="https://i.imgur.com/7TVncOv.jpg?2" alt="3" />
+          <img src="https://i.imgur.com/7TVncOv.jpg?3" alt="3" />
         </div>
 
         <div>
-          <img src="https://i.imgur.com/B8UmfX0.jpg" alt="5" />
+          <img src="https://i.imgur.com/7UMyV8I.jpg?2" alt="5" />
         </div>
       </Carousel>
 

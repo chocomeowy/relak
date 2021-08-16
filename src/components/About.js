@@ -3,7 +3,7 @@ import { useEffect } from "react";
 const About = () => {
   const token = localStorage.token;
   useEffect(() => {
-    fetch("http://localhost:8000/journals/", {
+    fetch("https://lepak.herokuapp.com/journals/", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
