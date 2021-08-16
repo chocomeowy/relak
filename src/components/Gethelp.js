@@ -28,7 +28,7 @@ const Gethelp = () => {
 
   return (
     <div>
-      <Title style={{ padding: "10px", textAlign: "center", fontSize: "4em" }}>
+      <Title style={{ padding: "10px", textAlign: "center" }}>
         Need help? You've come to the right place.
       </Title>
 
