@@ -4,6 +4,7 @@ import HeavyRain from "./sounds/HeavyRain";
 import WindChime from "./sounds/WindChime";
 import Title from "antd/lib/typography/Title";
 import WhiteNoise from "./sounds/WhiteNoise";
+import FrogSound from "./sounds/FrogSound";
 const Listen = () => {
   return (
     <div
@@ -17,6 +18,7 @@ const Listen = () => {
       <HeavyRain />
       <WindChime />
       <WhiteNoise />
+      <FrogSound />
     </div>
   );
 };
