@@ -1,9 +1,11 @@
 import { Typography } from "antd";
-import { List, Space, Card, Spin} from "antd";
+import { List, Space, Card, Spin } from "antd";
 import {
   SmileOutlined,
+  SmileTwoTone,
   MehOutlined,
   FrownOutlined,
+  FrownTwoTone,
   EditOutlined,
   DeleteOutlined,
 } from "@ant-design/icons";
@@ -14,7 +16,7 @@ import { useDispatch } from "react-redux";
 import { logInAction } from "../redux/ducks/accountAuth";
 import moment from "moment";
 
-const { Title } = Typography;
+const { Title, Text } = Typography;
 
 const Profile = () => {
   const [waiting, setWaiting] = useState(false);
@@ -62,30 +64,50 @@ const Profile = () => {
         <List
           grid={{
             gutter: 16,
-            column: 4,
+            column: 3,
             xs: 1,
             sm: 2,
             md: 3,
           }}
           dataSource={post}
           renderItem={(item) => (
-            <List.Item key={item.title}>
-              <Card title={item.title}>
+            <List.Item key={item.id}>
+              <Card
+                actions={[
+                  <EditOutlined key="edit" />,
+                  <DeleteOutlined key="delete" />,
+                ]}
+              >
                 <List.Item.Meta
                   description={moment(item?.date).format(
                     "Do MMMM YYYY, h:mm a"
                   )}
                 />
+                <Title level={5}>{item.title}</Title>
+                <Text>{item.entry}</Text>
+                <br />
                 <Space size="middle">
-                  {item.mood < 3 ? (
-                    <FrownOutlined />
-                  ) : item.mood > 3 ? (
-                    <SmileOutlined />
+                  {item.mood === 1 ? (
+                    <FrownTwoTone
+                      style={{ fontSize: "36px" }}
+                      twoToneColor="#5f40db"
+                    />
+                  ) : item.mood === 2 ? (
+                    <FrownOutlined
+                      style={{ fontSize: "36px", color: "#7ac2f5" }}
+                    />
+                  ) : item.mood === 4 ? (
+                    <SmileOutlined
+                      style={{ fontSize: "36px", color: "#ffc124" }}
+                    />
+                  ) : item.mood === 5 ? (
+                    <SmileTwoTone
+                      style={{ fontSize: "36px" }}
+                      twoToneColor="#fade2a"
+                    />
                   ) : (
-                    <MehOutlined />
+                    <MehOutlined style={{ fontSize: "36px", color:"#cfbece" }} />
                   )}
-                  <EditOutlined />
-                  <DeleteOutlined />
                 </Space>
               </Card>
             </List.Item>
