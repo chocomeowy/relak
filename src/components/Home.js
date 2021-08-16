@@ -1,7 +1,7 @@
 import { Typography } from "antd";
 import React from "react";
 import { AwesomeButton } from "react-awesome-button";
-import "react-awesome-button/dist/themes/theme-rickiest.css";
+import "react-awesome-button/dist/themes/theme-bojack.css";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Link } from "react-router-dom";
@@ -37,7 +37,9 @@ const Home = () => {
         <div>
           <img src="https://i.imgur.com/7TVncOv.jpg?3" alt="3" />
         </div>
-
+        <div>
+          <img src="https://i.imgur.com/1D3iD7I.jpg?1" alt="3" />
+        </div>
         <div>
           <img src="https://i.imgur.com/7UMyV8I.jpg?2" alt="5" />
         </div>
@@ -63,7 +65,7 @@ const Home = () => {
         <>
           <br />
           <Link to="/login">
-            <AwesomeButton type="primary">login</AwesomeButton>
+            <AwesomeButton>login</AwesomeButton>
           </Link>
         </>
       ) : (
