@@ -11,7 +11,7 @@ const Signup = () => {
   const url = "https://lepak.herokuapp.com/user/signup/";
 
   const onFinish = (event) => {
-    console.log(event);
+    //console.log(event);
 
     fetch(url, {
       method: "POST",

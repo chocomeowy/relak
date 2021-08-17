@@ -1,5 +1,4 @@
 import React from "react";
-import BoxBreathe from "./breathing/BoxBreathe";
 import Breathe from "./breathing/Breathe";
 
 const breathepage = () => {

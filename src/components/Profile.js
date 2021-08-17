@@ -44,7 +44,7 @@ const Profile = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        //console.log(data);
         setPost(data);
         setWaiting(false);
         if (data.message) {

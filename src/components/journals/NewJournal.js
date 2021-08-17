@@ -30,7 +30,7 @@ const NewJournal = () => {
   const url = "https://lepak.herokuapp.com/journals/";
   const token = localStorage.token;
   const decoded = jwt_decode(token);
-  console.log(decoded);
+  //console.log(decoded);
   const onFinish = (event) => {
     fetch(url, {
       method: "POST",
@@ -82,6 +82,9 @@ const NewJournal = () => {
           name="nest-messages"
           onFinish={onFinish}
           validateMessages={validateMessages}
+          initialValues={{
+            rate: 5,
+          }}
         >
           <Form.Item name="title" label="Title">
             <Input />
@@ -90,11 +93,7 @@ const NewJournal = () => {
             <Input.TextArea />
           </Form.Item>
           <Form.Item name="rate" label="Rate" rules={[{ required: true }]}>
-            <Rate
-              defaultValue={5}
-              initialValues={5}
-              character={({ index }) => customIcons[index + 1]}
-            />
+            <Rate character={({ index }) => customIcons[index + 1]} />
           </Form.Item>
 
           <Form.Item>

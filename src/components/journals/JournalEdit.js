@@ -38,11 +38,11 @@ const JournalEdit = () => {
       },
     })
       .then((res) => {
-        console.log(res);
+        //console.log(res);
         return res.json();
       })
       .then((data) => {
-        console.log(data);
+        //console.log(data);
         setObj(data);
       })
       .catch((err) => console.error({ Error: err }));
@@ -66,7 +66,7 @@ const JournalEdit = () => {
       },
     }).then((res) => {
       if (res.ok) {
-        console.log(res);
+        //console.log(res);
         return res.json();
       }
       throw new Error("Error in network");
@@ -102,11 +102,7 @@ const JournalEdit = () => {
               <Input.TextArea />
             </Form.Item>
             <Form.Item name="mood" label="Mood" rules={[{ required: true }]}>
-              <Rate
-                defaultValue={5}
-                initialValues={5}
-                character={({ index }) => customIcons[index + 1]}
-              />
+              <Rate character={({ index }) => customIcons[index + 1]} />
             </Form.Item>
 
             <Form.Item>

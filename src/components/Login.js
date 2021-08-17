@@ -1,6 +1,6 @@
 import { Button, Checkbox, Form, Input, Row, Typography } from "antd";
 import React from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { logInAction } from "../redux/ducks/accountAuth";
 import { Link, useHistory } from "react-router-dom";
 const { Title } = Typography;
@@ -8,11 +8,10 @@ const { Title } = Typography;
 const Login = () => {
   const dispatch = useDispatch();
   const url = "https://lepak.herokuapp.com/api/token/";
-  const token = useSelector((state) => state.auth.token);
-  console.log(token);
+
   let history = useHistory();
   const onFinish = (event) => {
-    console.log(event);
+    //console.log(event);
 
     fetch(url, {
       method: "POST",
@@ -32,7 +31,7 @@ const Login = () => {
         throw new Error("Error in network");
       })
       .then((resJson) => {
-        console.log(resJson);
+        //console.log(resJson);
         if (resJson.error) {
           return;
         } else {
