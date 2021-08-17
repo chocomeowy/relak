@@ -15,6 +15,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { logInAction } from "../redux/ducks/accountAuth";
 import moment from "moment";
+import jwt_decode from "jwt-decode";
 
 const { Title, Text } = Typography;
 
@@ -24,6 +25,8 @@ const Profile = () => {
 
   const dispatch = useDispatch();
   const token = localStorage.token;
+  const decoded = jwt_decode(token);
+
   useEffect(() => {
     setWaiting(true);
     fetch("https://lepak.herokuapp.com/journals/", {
@@ -57,7 +60,7 @@ const Profile = () => {
       }}
     >
       <Title>profile.</Title>
-      <Title level={3}>welcome back.</Title>
+      <Title level={3}>good to have you here, {decoded?.username}.</Title>
       {waiting ? (
         <Spin size="large" />
       ) : (
