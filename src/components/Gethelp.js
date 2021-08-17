@@ -6,30 +6,28 @@ const Gethelp = () => {
   const data = [
     {
       title: "Talk to someone",
-      content: `Be with people, avoid drugs & alcohol and avoid harming yourself.
-    Everyone is fighting their own battles just as you are fight yours`,
-      link: `https://www.sos.org.sg/contact-us`,
-      linkName: "SOS SG",
+      content: ["Samaritans of Singapore(24H): 1767", "Singapore Police Force (24H): 999"],
+      link: `https://stayprepared.sg/mymentalhealth/i-need-support-now/`,
+      linkName: "More hotlines",
     },
     {
-      title: "[TBD 16/8]Anonymously chat with professionals",
-      content: `Let someone you can trust know. Take time to do what makes your
-      soul happy`,
+      title: "Chat with professionals",
+      content: [`Chat with a dedicated professional from CHAT`],
       link: `https://www.chat.mentalhealth.sg/`,
-      linkName: "CHAT SG",
+      linkName: "Chat here",
     },
     {
       title: "Seek Help",
-      content: `Find a range of free and/or low cost counselling services here. It's better to seek help than to keep it all in.`,
-      link: "https://www.healthhub.sg/a-z/support-groups-and-others/20/call-on-these-when-you-need-help",
-      linkName: "HealthHub",
+      content: [`Find a range of free and/or low cost counselling services here. It's better to seek help than to keep it all in.`],
+      link: "https://blog.moneysmart.sg/healthcare/counselling-singapore-free-affordable/",
+      linkName: "MoneySmart Article",
     },
   ];
 
   return (
     <div>
       <Title style={{ padding: "10px", textAlign: "center" }}>
-        Need help? You've come to the right place.
+        help.
       </Title>
 
       <List
@@ -50,7 +48,8 @@ const Gethelp = () => {
               title={<span style={{ fontSize: "2em" }}>{item.title}</span>}
               style={{ fontSize: "1.5em" }}
             >
-              {item.content}
+               <p>{item.content[0]}</p>
+               <p>{item.content[1]}</p>
               <br />
               <a href={item.link}>{item.linkName}</a>
             </Card>
