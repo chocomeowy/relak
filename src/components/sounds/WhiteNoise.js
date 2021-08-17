@@ -7,11 +7,8 @@ import { PlayCircleOutlined, PauseCircleOutlined } from "@ant-design/icons";
 const WhiteNoise = () => {
   const [play, setPlay] = useState(false);
   const url =
-    "https://upload.wikimedia.org/wikipedia/commons/9/98/White-noise-sound-20sec-mono-44100Hz.ogg";
-  const url2 =
     "https://upload.wikimedia.org/wikipedia/commons/c/c9/Brownnoise.ogg";
-  const url3 =
-    "https://upload.wikimedia.org/wikipedia/commons/6/6c/Pink_noise.ogg";
+
   const handlePlay = () => {
     setPlay(!play);
   };
@@ -23,7 +20,7 @@ const WhiteNoise = () => {
       <h4>White.</h4>
       {play ? (
         <>
-          <ReactHowler src={url2} playing={true} loop={true} volume={0.2} />
+          <ReactHowler src={url} playing={true} loop={true} volume={0.2} />
         </>
       ) : (
         <></>
