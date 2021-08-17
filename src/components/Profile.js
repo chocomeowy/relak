@@ -1,5 +1,5 @@
 import { Typography } from "antd";
-import { List, Space, Card, Spin } from "antd";
+import { List, Card, Spin } from "antd";
 import {
   SmileOutlined,
   SmileTwoTone,
@@ -21,8 +21,9 @@ const { Title, Text } = Typography;
 
 const Profile = () => {
   const [waiting, setWaiting] = useState(false);
+  const [refresh, setRefresh] = useState(false);
   const [post, setPost] = useState();
-  const urlJournals = "https://lepak.herokuapp.com/journals/"
+  const urlJournals = "https://lepak.herokuapp.com/journals/";
   let history = useHistory();
 
   const dispatch = useDispatch();
@@ -53,28 +54,11 @@ const Profile = () => {
           dispatch({ ...logInAction(), payload: data.user });
         }
       });
-  }, [setWaiting]);
+  }, [refresh]);
 
   // ========== UPDATE one journal ==========
-  const getOneJournal = (journal) => {
-    // setTargetTodo(journal);
-    // props.history.push("/edit");
-  };
-
   const updateJournal = (journalid) => {
     history.push(`/journal/${journalid}/edit`);
-
-    // const response = await fetch(urlJournals + journal.id + "/", {
-    //   method: "put",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //     Authorization: `Bearer ${token}`,
-    //   },
-    //   body: JSON.stringify(journal),
-    // });
-
-    // get updated list of todos
-    // getTodos();
   };
 
   // ========== DELETE one journal ==========
@@ -86,8 +70,7 @@ const Profile = () => {
         Authorization: `Bearer ${token}`,
       },
     });
-
-    history.push("/profile/");
+    setRefresh(!refresh);
   };
 
   return (
@@ -115,8 +98,14 @@ const Profile = () => {
             <List.Item key={item.id}>
               <Card
                 actions={[
-                  <EditOutlined key="edit" onClick={() => updateJournal(item.id)} />,
-                  <DeleteOutlined key="delete" onClick={() => deleteJournal(item)} />,
+                  <EditOutlined
+                    key="edit"
+                    onClick={() => updateJournal(item.id)}
+                  />,
+                  <DeleteOutlined
+                    key="delete"
+                    onClick={() => deleteJournal(item)}
+                  />,
                 ]}
               >
                 <List.Item.Meta
@@ -128,29 +117,27 @@ const Profile = () => {
                 <Text>{item.entry}</Text>
                 <br />
                 <br />
-                {/* <Space size="middle"> */}
-                  {item.mood === 1 ? (
-                    <FrownTwoTone
-                      style={{ fontSize: "36px" }}
-                      twoToneColor="#5f40db"
-                    />
-                  ) : item.mood === 2 ? (
-                    <FrownOutlined
-                      style={{ fontSize: "36px", color: "#7ac2f5" }}
-                    />
-                  ) : item.mood === 4 ? (
-                    <SmileOutlined
-                      style={{ fontSize: "36px", color: "#ffc124" }}
-                    />
-                  ) : item.mood === 5 ? (
-                    <SmileTwoTone
-                      style={{ fontSize: "36px" }}
-                      twoToneColor="#fade2a"
-                    />
-                  ) : (
-                    <MehOutlined style={{ fontSize: "36px", color:"#cfbece" }} />
-                  )}
-                {/* </Space> */}
+                {item.mood === 1 ? (
+                  <FrownTwoTone
+                    style={{ fontSize: "36px" }}
+                    twoToneColor="#5f40db"
+                  />
+                ) : item.mood === 2 ? (
+                  <FrownOutlined
+                    style={{ fontSize: "36px", color: "#7ac2f5" }}
+                  />
+                ) : item.mood === 4 ? (
+                  <SmileOutlined
+                    style={{ fontSize: "36px", color: "#ffc124" }}
+                  />
+                ) : item.mood === 5 ? (
+                  <SmileTwoTone
+                    style={{ fontSize: "36px" }}
+                    twoToneColor="#fade2a"
+                  />
+                ) : (
+                  <MehOutlined style={{ fontSize: "36px", color: "#cfbece" }} />
+                )}
               </Card>
             </List.Item>
           )}
