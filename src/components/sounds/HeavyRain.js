@@ -7,7 +7,7 @@ import { PlayCircleOutlined, PauseCircleOutlined } from "@ant-design/icons";
 const HeavyRain = () => {
   const [play, setPlay] = useState(false);
   const url =
-    "https://dl.dropboxusercontent.com/s/t7hdrq4p9gk77ep/heavyRain.ogg?dl=0";
+    "https://dl.dropboxusercontent.com/s/jvs82f7fu3h2jxw/HeavyRain.mp3?dl=0";
 
   const handlePlay = () => {
     setPlay(!play);

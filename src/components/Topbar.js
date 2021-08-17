@@ -20,7 +20,7 @@ const { Header } = Layout;
 const Topbar = () => {
   const token = localStorage.token;
   const history = useHistory();
-  console.log(token);
+  //console.log(token);
   const dispatch = useDispatch();
   const signOut = () => {
     dispatch(logOutAction());
@@ -64,7 +64,9 @@ const Topbar = () => {
                 <Link to="/profile">Profile</Link>
               </Menu.Item>
               <Menu.Item key="9" icon={<LogoutOutlined />}>
-                <a onClick={signOut}>Log Out</a>
+                <Link to="login" onClick={signOut}>
+                  Log Out
+                </Link>
               </Menu.Item>
             </>
           )}

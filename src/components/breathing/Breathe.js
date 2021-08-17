@@ -136,36 +136,6 @@ const breatheAnimation = keyframes`
     0 0 0 20px rgba(164, 148, 255, 0.3);
  }`;
 
-const breatheAnimation2 = keyframes`
- 0% {box-shadow: 0 0 0 10px rgba(252, 209, 209, 1), 
-    0 0 0 20px rgba(252, 209, 209, 0.8), 
-    0 0 0 20px rgba(252, 209, 209, 0.6), 
-    0 0 0 20px rgba(252, 209, 209, 0.4), 
-    0 0 0 20px rgba(252, 209, 209, 0.2);
- }
-
- 30% {
-    box-shadow: 0 0 0 25px rgba(174, 225, 225, 1), 
-    0 0 0 50px rgba(174, 225, 225, 0.8), 
-    0 0 0 75px rgba(174, 225, 225, 0.6), 
-    0 0 0 100px rgba(174, 225, 225, 0.4), 
-    0 0 0 125px rgba(174, 225, 225, 0.2);
-     }
-60% {
-      box-shadow: 0 0 0 25px rgba(211, 224, 220, 1), 
-      0 0 0 50px rgba(211, 224, 220, 0.8), 
-      0 0 0 75px rgba(211, 224, 220, 0.6), 
-      0 0 0 100px rgba(211, 224, 220, 0.4), 
-      0 0 0 125px rgba(211, 224, 220, 0.2);
-       }
-     
- 100% {box-shadow: 0 0 0 10px rgba(252, 209, 209, 1), 
-    0 0 0 20px rgba(252, 209, 209, 0.8), 
-    0 0 0 20px rgba(252, 209, 209, 0.6), 
-    0 0 0 20px rgba(252, 209, 209, 0.4), 
-    0 0 0 20px rgba(252, 209, 209, 0.2);
- }`;
-
 const breatheAnimation3 = keyframes`
  0% {box-shadow: 0 0 0 10px rgba(174, 225, 225, 0.3), 
     0 0 0 20px rgba(211, 224, 220, 0.3), 
@@ -204,18 +174,6 @@ const Circle = styled.div`
   border-radius: 50%;
   border-color: blue;
   animation-name: ${breatheAnimation};
-  animation-duration: 12s;
-  animation-iteration-count: infinite;
-`;
-
-const Circle2 = styled.div`
-  height: 50px;
-  width: 50px;
-
-  border-width: 5px;
-  border-radius: 0%;
-  border-color: blue;
-  animation-name: ${breatheAnimation2};
   animation-duration: 12s;
   animation-iteration-count: infinite;
 `;

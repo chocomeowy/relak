@@ -7,7 +7,7 @@ import { PlayCircleOutlined, PauseCircleOutlined } from "@ant-design/icons";
 const WindChime = () => {
   const [play, setPlay] = useState(false);
   const url =
-    "https://dl.dropboxusercontent.com/s/benwlhnewvfoxrr/windChime.ogg?dl=0";
+    "https://dl.dropboxusercontent.com/s/6tqlrdcvju5tb8h/WindChimes.mp3?dl=0";
 
   const handlePlay = () => {
     setPlay(!play);
