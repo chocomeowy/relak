@@ -2,6 +2,7 @@
   text-align: center;
 } */
 @import "~antd/dist/antd.css";
+@import url("https://fonts.googleapis.com/css2?family=Style+Script&display=swap");
 
 .App-logo {
   height: 40vmin;

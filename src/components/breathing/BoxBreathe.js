@@ -1,7 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import { motion } from "framer-motion";
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect } from "react";
+import Text from "antd/lib/typography/Text";
 
 const BoxBreathe = () => {
   const text = ["Breathe in", "Hold", "Breathe out", "Hold"];
@@ -21,12 +22,12 @@ const BoxBreathe = () => {
             duration: 16,
             ease: "linear",
             // repeatDelay: 4,
-            repeat: 10,
+            repeat: Infinity,
             repeatType: "reverse",
           }}
         />
       </Square>
-      <div>{text[index % text.length]}</div>
+      <Text type="success">{text[index % text.length]}</Text>
     </>
   );
 };
