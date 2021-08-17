@@ -46,7 +46,7 @@ const CustomizedForm = ({ onChange, fields }) => (
 );
 
 const JournalEdit = () => {
-  const [journal, setJournal] = useState([]);
+  const [obj, setObj] = useState();
 
   const params = useParams();
   console.log(params.id);
@@ -72,13 +72,7 @@ const JournalEdit = () => {
       })
       .then((data) => {
         console.log(data);
-        setJournal([
-          {
-            title: data.title,
-            entry: data.entry,
-            mood: data.mood,
-          },
-        ]);
+        setObj(data);
       })
       .catch((err) => console.error({ Error: err }));
   }, [params.id]);
@@ -87,46 +81,46 @@ const JournalEdit = () => {
   const handleChange = (allFields) => {
     //const origReview = e.target.value;
     //console.log(origReview);
-    setJournal(allFields);
+    //setJournal(allFields);
   };
 
   // ========== onSubmit ==========
-  //   const onFinish = (event) => {
-  //     fetch(url, {
-  //       method: "PUT",
-  //       body: JSON.stringify({
-  //         title: event.title,
-  //         entry: event.entry,
-  //         mood: event.rate,
-  //         profile: decoded.user_id,
-  //       }),
+  const onFinish = (event) => {
+    fetch(url, {
+      method: "PUT",
+      body: JSON.stringify({
+        title: event.title,
+        entry: event.entry,
+        mood: event.mood,
+        profile: decoded.user_id,
+      }),
 
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //         Accept: "application/json",
-  //         Authorization: `Bearer ${token}`,
-  //       },
-  //     })
-  //       .then((res) => {
-  //         if (res.ok) {
-  //           console.log(res);
-  //           return res.json();
-  //         }
-  //         throw new Error("Error in network");
-  //       })
-  //       .then((resJson) => {
-  //         console.log(resJson);
-  //         if (resJson.error) {
-  //           return;
-  //         } else {
-  //           //console.log(resJson);
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    })
+      .then((res) => {
+        if (res.ok) {
+          console.log(res);
+          return res.json();
+        }
+        throw new Error("Error in network");
+      })
+      .then((resJson) => {
+        console.log(resJson);
+        if (resJson.error) {
+          return;
+        } else {
+          //console.log(resJson);
 
-  //           return;
-  //         }
-  //       });
+          return;
+        }
+      });
 
-  //     console.log("Wheeeee you edited your journal entry fam");
-  //   };
+    console.log("Wheeeee you edited your journal entry fam");
+  };
 
   return (
     <div
@@ -135,44 +129,55 @@ const JournalEdit = () => {
         textAlign: "center",
       }}
     >
+      {obj?.title}
+      {obj?.entry}
       <Title>change the past.</Title>
       <Row type="flex" justify="center">
         <CustomizedForm
-          fields={journal}
+          // fields={journal}
           onChange={(newFields) => {
-            setJournal(newFields);
+            // setJournal(newFields);
           }}
         />
-        <Form
-          name="global-state"
-          //   onFinish={onFinish}
-          fields={journal}
-          onFieldsChange={(_, allFields) => {
-            handleChange(allFields);
-          }}
-          //   validateMessages={validateMessages}
-        >
-          <Form.Item name="title" label="Title">
-            <Input />
-          </Form.Item>
-          <Form.Item name="entry" label="Entry">
-            <Input.TextArea />
-          </Form.Item>
-          <Form.Item name="mood" label="Mood" rules={[{ required: true }]}>
-            <Rate
-              defaultValue={5}
-              initialValues={5}
-              character={({ index }) => customIcons[index + 1]}
-            />
-          </Form.Item>
+        {obj ? (
+          <Form
+            name="global-state"
+            onFinish={onFinish}
+            //fields={journal}
+            onFieldsChange={(_, allFields) => {
+              handleChange(allFields);
+            }}
+            //   validateMessages={validateMessages}
+            initialValues={{
+              title: obj?.title,
+              entry: obj?.entry,
+              mood: obj?.mood,
+            }}
+          >
+            <Form.Item name="title" label="Title">
+              <Input />
+            </Form.Item>
+            <Form.Item name="entry" label="Entry">
+              <Input.TextArea />
+            </Form.Item>
+            <Form.Item name="mood" label="Mood" rules={[{ required: true }]}>
+              <Rate
+                defaultValue={5}
+                initialValues={5}
+                character={({ index }) => customIcons[index + 1]}
+              />
+            </Form.Item>
 
-          <Form.Item>
-            <br />
-            <Button type="primary" htmlType="submit">
-              Submit
-            </Button>
-          </Form.Item>
-        </Form>
+            <Form.Item>
+              <br />
+              <Button type="primary" htmlType="submit">
+                Submit
+              </Button>
+            </Form.Item>
+          </Form>
+        ) : (
+          <div>false</div>
+        )}
       </Row>
     </div>
   );
