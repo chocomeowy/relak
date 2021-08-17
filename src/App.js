@@ -5,6 +5,7 @@ import Breathe from "./components/breathing/Breathe";
 import Gethelp from "./components/Gethelp";
 import Home from "./components/Home";
 import Journal from "./components/Journal";
+import JournalEdit from "./components/journals/JournalEdit";
 import Listen from "./components/Listen";
 import Login from "./components/Login";
 import Profile from "./components/Profile";
@@ -19,9 +20,12 @@ function App() {
           <Home />
         </Route>
         <Topbar />
-      </Switch>
+      </Switch> 
       <Route path="/breathe">
         <Breathe />
+      </Route>
+      <Route path="/journal/:id/edit">
+        <JournalEdit/>
       </Route>
       <Route path="/journal">
         <Journal />
