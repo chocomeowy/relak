@@ -1,7 +1,7 @@
 import { Route, Switch } from "react-router-dom";
 import "./App.css";
 import About from "./components/About";
-import Breathe from "./components/breathing/Breathe";
+import Breathepage from "./components/Breathepage";
 import Gethelp from "./components/Gethelp";
 import Home from "./components/Home";
 import Journal from "./components/Journal";
@@ -62,7 +62,7 @@ function App() {
         <Topbar />
       </AnimatedSwitch>
       <Route path="/breathe">
-        <Breathe />
+        <Breathepage />
       </Route>
       <Route path="/journal">
         <Journal />
