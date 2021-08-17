@@ -1,5 +1,5 @@
 import React from "react";
-import NewJournal from "./NewJournal"
+import NewJournal from "./journals/NewJournal"
 
 const Journal = () => {
   return (

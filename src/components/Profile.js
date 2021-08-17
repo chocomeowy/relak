@@ -54,7 +54,7 @@ const Profile = () => {
           dispatch({ ...logInAction(), payload: data.user });
         }
       });
-  }, [refresh]);
+  }, [refresh, dispatch, token]);
 
   // ========== UPDATE one journal ==========
   const updateJournal = (journalid) => {
@@ -70,6 +70,7 @@ const Profile = () => {
         Authorization: `Bearer ${token}`,
       },
     });
+    console.log(response);
     setRefresh(!refresh);
   };
 

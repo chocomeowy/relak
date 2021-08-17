@@ -1,6 +1,6 @@
 import { Layout, Menu } from "antd";
 import React from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
 import { logOutAction } from "../redux/ducks/accountAuth";
 import {

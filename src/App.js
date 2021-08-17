@@ -1,4 +1,4 @@
-import { Route, Switch } from "react-router-dom";
+import { Route } from "react-router-dom";
 import "./App.css";
 import About from "./components/About";
 import Breathepage from "./components/Breathepage";
@@ -68,7 +68,7 @@ function App() {
       <Route path="/journal/:id/edit">
         <JournalEdit/>
       </Route>
-      <Route path="/journal">
+      <Route exact path="/journal">
         <Journal />
       </Route>
       <Route path="/login">

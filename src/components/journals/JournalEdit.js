@@ -1,12 +1,10 @@
-import { Form, Input, Button, Row, Typography } from "antd";
-import { Rate } from "antd";
+import { Form, Input, Button, Row, Typography, Rate, Spin } from "antd";
 import { FrownOutlined, MehOutlined, SmileOutlined } from "@ant-design/icons";
 
 import * as React from "react";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import { useHistory } from "react-router-dom";
-import { useDispatch } from "react-redux";
 import jwt_decode from "jwt-decode";
 
 const { Title } = Typography;
@@ -18,39 +16,12 @@ const customIcons = {
   4: <SmileOutlined />,
   5: <SmileOutlined />,
 };
-/* eslint-disable no-template-curly-in-string */
-const validateMessages = {
-  required: "${label} is required!",
-  types: {
-    email: "${label} is not a valid email!",
-    number: "${label} is not a valid number!",
-  },
-  number: {
-    range: "${label} must be between ${min} and ${max}",
-  },
-};
-/* eslint-enable no-template-curly-in-string */
-
-const CustomizedForm = ({ onChange, fields }) => (
-  <Form
-    name="global_state"
-    fields={fields}
-    onFieldsChange={(_, allFields) => {
-      onChange(allFields);
-    }}
-  >
-    <Form.Item name="title" label="Title">
-      <Input />
-    </Form.Item>
-  </Form>
-);
 
 const JournalEdit = () => {
   const [obj, setObj] = useState();
+  const history = useHistory();
 
   const params = useParams();
-  console.log(params.id);
-  const history = useHistory();
   const url = `https://lepak.herokuapp.com/journals/${params.id}/`;
 
   const token = localStorage.token;
@@ -75,14 +46,7 @@ const JournalEdit = () => {
         setObj(data);
       })
       .catch((err) => console.error({ Error: err }));
-  }, [params.id]);
-
-  // ========== onChange ==========
-  const handleChange = (allFields) => {
-    //const origReview = e.target.value;
-    //console.log(origReview);
-    //setJournal(allFields);
-  };
+  }, [url, token]);
 
   // ========== onSubmit ==========
   const onFinish = (event) => {
@@ -100,26 +64,16 @@ const JournalEdit = () => {
         Accept: "application/json",
         Authorization: `Bearer ${token}`,
       },
-    })
-      .then((res) => {
-        if (res.ok) {
-          console.log(res);
-          return res.json();
-        }
-        throw new Error("Error in network");
-      })
-      .then((resJson) => {
-        console.log(resJson);
-        if (resJson.error) {
-          return;
-        } else {
-          //console.log(resJson);
-
-          return;
-        }
-      });
+    }).then((res) => {
+      if (res.ok) {
+        console.log(res);
+        return res.json();
+      }
+      throw new Error("Error in network");
+    });
 
     console.log("Wheeeee you edited your journal entry fam");
+    history.push("/profile/");
   };
 
   return (
@@ -129,25 +83,12 @@ const JournalEdit = () => {
         textAlign: "center",
       }}
     >
-      {obj?.title}
-      {obj?.entry}
       <Title>change the past.</Title>
       <Row type="flex" justify="center">
-        <CustomizedForm
-          // fields={journal}
-          onChange={(newFields) => {
-            // setJournal(newFields);
-          }}
-        />
         {obj ? (
           <Form
-            name="global-state"
+            name="nest-messages"
             onFinish={onFinish}
-            //fields={journal}
-            onFieldsChange={(_, allFields) => {
-              handleChange(allFields);
-            }}
-            //   validateMessages={validateMessages}
             initialValues={{
               title: obj?.title,
               entry: obj?.entry,
@@ -176,7 +117,7 @@ const JournalEdit = () => {
             </Form.Item>
           </Form>
         ) : (
-          <div>false</div>
+          <Spin size="large" />
         )}
       </Row>
     </div>
