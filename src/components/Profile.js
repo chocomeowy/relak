@@ -10,8 +10,8 @@ import {
   DeleteOutlined,
 } from "@ant-design/icons";
 import React from "react";
-import { useEffect } from "react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { logInAction } from "../redux/ducks/accountAuth";
 import moment from "moment";
@@ -22,14 +22,17 @@ const { Title, Text } = Typography;
 const Profile = () => {
   const [waiting, setWaiting] = useState(false);
   const [post, setPost] = useState();
+  const urlJournals = "https://lepak.herokuapp.com/journals/"
+  let history = useHistory();
 
   const dispatch = useDispatch();
   const token = localStorage.token;
   const decoded = jwt_decode(token);
 
+  // ========== GET all journals ==========
   useEffect(() => {
     setWaiting(true);
-    fetch("https://lepak.herokuapp.com/journals/", {
+    fetch(urlJournals, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -51,6 +54,41 @@ const Profile = () => {
         }
       });
   }, [setWaiting]);
+
+  // ========== UPDATE one journal ==========
+  const getOneJournal = (journal) => {
+    // setTargetTodo(journal);
+    // props.history.push("/edit");
+  };
+
+  const updateJournal = (journalid) => {
+    history.push(`/journal/${journalid}/edit`);
+
+    // const response = await fetch(urlJournals + journal.id + "/", {
+    //   method: "put",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //     Authorization: `Bearer ${token}`,
+    //   },
+    //   body: JSON.stringify(journal),
+    // });
+
+    // get updated list of todos
+    // getTodos();
+  };
+
+  // ========== DELETE one journal ==========
+  const deleteJournal = async (journal) => {
+    const response = await fetch(urlJournals + journal.id + "/", {
+      method: "delete",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    });
+
+    history.push("/profile/");
+  };
 
   return (
     <div
@@ -77,8 +115,8 @@ const Profile = () => {
             <List.Item key={item.id}>
               <Card
                 actions={[
-                  <EditOutlined key="edit" />,
-                  <DeleteOutlined key="delete" />,
+                  <EditOutlined key="edit" onClick={() => updateJournal(item.id)} />,
+                  <DeleteOutlined key="delete" onClick={() => deleteJournal(item)} />,
                 ]}
               >
                 <List.Item.Meta
@@ -89,7 +127,8 @@ const Profile = () => {
                 <Title level={5}>{item.title}</Title>
                 <Text>{item.entry}</Text>
                 <br />
-                <Space size="middle">
+                <br />
+                {/* <Space size="middle"> */}
                   {item.mood === 1 ? (
                     <FrownTwoTone
                       style={{ fontSize: "36px" }}
@@ -111,7 +150,7 @@ const Profile = () => {
                   ) : (
                     <MehOutlined style={{ fontSize: "36px", color:"#cfbece" }} />
                   )}
-                </Space>
+                {/* </Space> */}
               </Card>
             </List.Item>
           )}

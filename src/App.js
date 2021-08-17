@@ -5,6 +5,7 @@ import Breathepage from "./components/Breathepage";
 import Gethelp from "./components/Gethelp";
 import Home from "./components/Home";
 import Journal from "./components/Journal";
+import JournalEdit from "./components/journals/JournalEdit";
 import Listen from "./components/Listen";
 import Login from "./components/Login";
 import Profile from "./components/Profile";
@@ -63,6 +64,9 @@ function App() {
       </AnimatedSwitch>
       <Route path="/breathe">
         <Breathepage />
+      </Route>
+      <Route path="/journal/:id/edit">
+        <JournalEdit/>
       </Route>
       <Route path="/journal">
         <Journal />
