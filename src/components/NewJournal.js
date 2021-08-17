@@ -2,6 +2,7 @@ import { Form, Input, Button, Row, Typography } from "antd";
 import { Rate } from "antd";
 import { FrownOutlined, MehOutlined, SmileOutlined } from "@ant-design/icons";
 import jwt_decode from "jwt-decode";
+import { useHistory } from "react-router-dom";
 const { Title } = Typography;
 
 const customIcons = {
@@ -25,6 +26,7 @@ const validateMessages = {
 /* eslint-enable no-template-curly-in-string */
 
 const NewJournal = () => {
+  const history = useHistory();
   const url = "https://lepak.herokuapp.com/journals/";
   const token = localStorage.token;
   const decoded = jwt_decode(token);
@@ -64,6 +66,7 @@ const NewJournal = () => {
       });
 
     console.log("Wheeeee you got a new journal entry fam");
+    history.push("/profile");
   };
 
   return (
