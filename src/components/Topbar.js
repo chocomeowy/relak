@@ -9,24 +9,15 @@ import {
   SmileOutlined,
   SoundOutlined,
   UserOutlined,
-  HomeTwoTone,
   MenuFoldOutlined,
 } from "@ant-design/icons";
-import {
-  Layout,
-  Menu,
-  Drawer,
-  Button,
-  Typography,
-  List,
-  PageHeader,
-} from "antd";
+import { Layout, Menu, Drawer, Button, List, PageHeader } from "antd";
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
 import { logOutAction } from "../redux/ducks/accountAuth";
 import { useMediaPredicate } from "react-media-hook";
-const { Title } = Typography;
+
 const { Header } = Layout;
 
 const Topbar = () => {
@@ -116,16 +107,16 @@ const Topbar = () => {
           </Header> */}
 
           <PageHeader
-            ghost={false}
             className="site-page-header"
-            // onBack={() => window.history.back()}
+            backIcon={<HomeOutlined />}
+            onBack={() => history.push("/")}
+            extra={[]}
             title="Relak"
-            extra={[
-              <Button key="1" type="secondary" onClick={showDrawer}>
-                <MenuFoldOutlined />
-              </Button>,
-            ]}
-          />
+          >
+            <Button key="1" type="secondary" onClick={showDrawer} ghost>
+              <MenuFoldOutlined />
+            </Button>
+          </PageHeader>
 
           <Drawer
             title="Relak"
@@ -136,7 +127,7 @@ const Topbar = () => {
             key={"right"}
           >
             <List>
-              <List.Item key="2" icon={<HeartOutlined />}>
+              <List.Item key="2" avatar={<HeartOutlined />}>
                 <Link to="/breathe">Breathe</Link>
               </List.Item>
               <List.Item key="3" icon={<SoundOutlined />}>
