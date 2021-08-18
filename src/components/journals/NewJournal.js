@@ -17,11 +17,7 @@ const customIcons = {
 const validateMessages = {
   required: "${label} is required!",
   types: {
-    email: "${label} is not a valid email!",
-    number: "${label} is not a valid number!",
-  },
-  number: {
-    range: "${label} must be between ${min} and ${max}",
+    mood: "${label} is needed!",
   },
 };
 /* eslint-enable no-template-curly-in-string */
@@ -60,15 +56,14 @@ const NewJournal = () => {
         throw new Error("Error in network");
       })
       .then((resJson) => {
-        console.log(resJson);
+        //console.log(resJson);
         if (resJson.message) {
           setError(resJson.message);
           return;
         }
+        console.log("Wheeeee you got a new journal entry fam");
+        history.push("/profile");
       });
-
-    console.log("Wheeeee you got a new journal entry fam");
-    history.push("/profile");
   };
 
   return (

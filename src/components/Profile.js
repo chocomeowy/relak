@@ -17,19 +17,23 @@ import { logInAction } from "../redux/ducks/accountAuth";
 import moment from "moment";
 import jwt_decode from "jwt-decode";
 import MoodChart from "./charts/MoodChart";
+import ReactMarkdown from 'react-markdown';
+
 
 const { Title, Text } = Typography;
 
 const Profile = () => {
   const [waiting, setWaiting] = useState(false);
   const [refresh, setRefresh] = useState(false);
+  const [error, setError] = useState(null);
   const [post, setPost] = useState();
   const urlJournals = "https://lepak.herokuapp.com/journals/";
   let history = useHistory();
 
   const dispatch = useDispatch();
   const token = localStorage.token;
-  const decoded = jwt_decode(token);
+  //console.log(token);
+  const decoded = token ? jwt_decode(token) : history.push(`/login`);
 
   // ========== GET all journals ==========
   useEffect(() => {
@@ -42,7 +46,16 @@ const Profile = () => {
         Authorization: `Bearer ${token}`,
       },
     })
-      .then((res) => res.json())
+      .then((res) => {
+        if (res.ok) {
+          //console.log(res);
+          return res.json();
+        } else if (!res.ok) {
+          //console.log(res);
+          return res.json();
+        }
+        throw new Error("Error in network");
+      })
       .then((data) => {
         //console.log(data);
         setPost(data);
@@ -50,6 +63,7 @@ const Profile = () => {
         if (data.message) {
           // An error will occur if the token is invalid.
           // If this happens, you may want to remove the invalid token.
+          setError(data.message);
           localStorage.removeItem("token");
         } else {
           dispatch({ ...logInAction(), payload: data.user });
@@ -83,6 +97,7 @@ const Profile = () => {
       }}
     >
       <Title>profile.</Title>
+      {error ? error : <></>}
       <Title level={3}>good to have you here, {decoded?.username}.</Title>
       {waiting ? (
         <Spin size="large" />
@@ -119,7 +134,11 @@ const Profile = () => {
                     )}
                   />
                   <Title level={5}>{item.title}</Title>
-                  <Text>{item.entry}</Text>
+                  <Text>
+                    <ReactMarkdown>
+                    {item.entry}
+                    </ReactMarkdown>
+                    </Text>
                   <br />
                   <br />
                   {item.mood === 1 ? (

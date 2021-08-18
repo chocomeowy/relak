@@ -39,12 +39,11 @@ const Login = () => {
         if (resJson.detail) {
           setError(resJson.detail);
           return;
-        } else {
-          //console.log(resJson);
-          dispatch({ ...logInAction(), payload: resJson.token });
-          localStorage.setItem("token", resJson.access);
-          return history.push("/profile");
         }
+        console.log(resJson);
+        //dispatch({ ...logInAction(), payload: resJson.token });
+        localStorage.setItem("token", resJson.access);
+        return history.push("/profile");
       });
   };
 
