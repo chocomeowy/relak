@@ -6,7 +6,6 @@
 
 React
 AntDesign CSS
-antd-mobile
 Redux (redux, react-redux)
 React Router
 Recharts
@@ -19,3 +18,5 @@ react-router-transition
 react-howler
 react-awesome-button
 framer-motion
+react-query
+react-markdown

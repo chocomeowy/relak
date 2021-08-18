@@ -1,13 +1,12 @@
 import { Button, Checkbox, Form, Input, Row, Typography } from "antd";
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
-import { logInAction } from "../redux/ducks/accountAuth";
+
 import { Link, useHistory } from "react-router-dom";
 const { Title } = Typography;
 
 const Login = () => {
   const [error, setError] = useState(null);
-  const dispatch = useDispatch();
+
   const url = "https://lepak.herokuapp.com/api/token/";
 
   let history = useHistory();
@@ -41,7 +40,7 @@ const Login = () => {
           return;
         }
         console.log(resJson);
-        //dispatch({ ...logInAction(), payload: resJson.token });
+
         localStorage.setItem("token", resJson.access);
         return history.push("/profile");
       });

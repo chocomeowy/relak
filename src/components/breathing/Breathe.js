@@ -9,28 +9,27 @@ import BreathingTechniquesModal from "./BreathingTechniquesModal";
 import Headspace from "./Headspace";
 import BoxBreathe from "./BoxBreathe";
 const Breathe = () => {
-  const [counter, setCounter] = useState(0);
   const [circle, setCircle] = useState("");
   const [description, setDescription] = useState("Focus on the present moment");
 
   const handleEqualBreathing = () => {
     setCircle("a");
-    setCounter((prev) => prev + 1);
+
     setDescription("6s-6s Sama Vritti or “equal breathing”");
   };
   const handleBox = () => {
     setCircle("b");
-    setCounter((prev) => prev + 1);
+
     setDescription("4s-4s-4s-4s - box breathing");
   };
   const handleDeep = () => {
     setCircle("c");
-    setCounter((prev) => prev + 1);
+
     setDescription("4s-7s-8s - based on yoga’s pranayama - Deep Calming");
   };
   const handleApple = () => {
     setCircle("d");
-    setCounter((prev) => prev + 1);
+
     setDescription(
       <a href="https://css-tricks.com/recreating-apple-watch-breathe-app-animation/">
         Credits
@@ -58,7 +57,6 @@ const Breathe = () => {
     <>
       <Title style={{ padding: "10px", textAlign: "center" }}>breathe.</Title>
 
-      {/* <Div>{counter}</Div> */}
       <Div>
         <Button type="dashed" onClick={handleEqualBreathing}>
           Equal breathing
