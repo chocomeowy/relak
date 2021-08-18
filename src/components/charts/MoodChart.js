@@ -14,10 +14,10 @@ const MoodChart = ({ data }) => {
   //   console.log(data);
 
   return (
-    <>
-      {/* <ResponsiveContainer width="100%" height="100%"> */}
+    <div>
+      <ResponsiveContainer width="100%" height={500}>
       <AreaChart
-        width={500}
+        width={1000}
         height={400}
         data={data}
         margin={{
@@ -27,14 +27,14 @@ const MoodChart = ({ data }) => {
           bottom: 0,
         }}
       >
-        <CartesianGrid strokeDasharray="3 3" />
+        <CartesianGrid strokeDasharray="2 4" />
         <XAxis dataKey="date" name="mood" />
         <YAxis />
         <Tooltip />
         <Area type="monotone" dataKey="mood" stroke="#8884d8" fill="#8884d8" />
       </AreaChart>
-      {/* </ResponsiveContainer> */}
-    </>
+      </ResponsiveContainer>
+    </div>
   );
 };
 

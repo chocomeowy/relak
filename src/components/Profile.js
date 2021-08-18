@@ -89,6 +89,7 @@ const Profile = () => {
       ) : (
         <>
           <MoodChart data={post} />
+          <br />
           <List
             grid={{
               gutter: 16,
