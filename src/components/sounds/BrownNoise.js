@@ -4,7 +4,7 @@ import ReactHowler from "react-howler";
 import { AwesomeButton } from "react-awesome-button";
 import { PlayCircleOutlined, PauseCircleOutlined } from "@ant-design/icons";
 
-const WhiteNoise = () => {
+const BrownNoise = () => {
   const [play, setPlay] = useState(false);
   const url =
     "https://upload.wikimedia.org/wikipedia/commons/c/c9/Brownnoise.ogg";
@@ -36,4 +36,4 @@ const WhiteNoise = () => {
   );
 };
 
-export default WhiteNoise;
+export default BrownNoise;
