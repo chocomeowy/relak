@@ -11,11 +11,15 @@ import {
 import moment from "moment";
 
 const MoodChart = ({ data }) => {
-  //   console.log(data);
-  // const dataFormatDate = data?.map((d) => {
-  //   d.formatDate = moment(d.date).format("DD MMM");
-  // });
-  // console.log(dataFormatDate);
+  // console.log(data);
+  let dataFormatDate = [];
+  if (data) {
+    dataFormatDate = data?.map((d) => ({
+      ...d,
+      formatDate: moment(d.date).format("DD MMM"),
+    }));
+    console.log(dataFormatDate);
+  }
 
   return (
     <div>
@@ -23,16 +27,16 @@ const MoodChart = ({ data }) => {
         <AreaChart
           width={1000}
           height={400}
-          data={data}
+          data={dataFormatDate}
           margin={{
-            top: 10,
-            right: 30,
-            left: 0,
-            bottom: 0,
+            top: 20,
+            // right: "auto",
+            // left: "auto",
+            bottom: 20,
           }}
         >
-          <CartesianGrid strokeDasharray="2 4" />
-          <XAxis dataKey="date" name="mood" />
+          <CartesianGrid strokeDasharray="1 4" />
+          <XAxis dataKey="formatDate" />
           <YAxis />
           <Tooltip />
           <Area
