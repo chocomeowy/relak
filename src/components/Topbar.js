@@ -10,8 +10,9 @@ import {
   SoundOutlined,
   UserOutlined,
   HomeTwoTone,
+  MenuFoldOutlined,
 } from "@ant-design/icons";
-import { Layout, Menu, Drawer, Button, Typography, List } from "antd";
+import { Layout, Menu, Drawer, Button, Typography, List, PageHeader } from "antd";
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
@@ -84,9 +85,10 @@ const Topbar = () => {
         </Header>
       ) : (
         <>
-          <Header className="header">
+          {/* <Header className="header">
             <Menu theme="dark" mode="horizontal">
               <div style={{ display: "flex" }}>
+<<<<<<< HEAD
                 <div>
                   <Link to="/">{<HomeOutlined />}</Link>
                 </div>
@@ -99,9 +101,40 @@ const Topbar = () => {
                 >
                   Lepak
                 </Button>
+=======
+                <Space size={20} wrap>
+                  <Space size={30}>
+                    <div>
+                      <Link to="/">{<HomeOutlined />}</Link>
+                    </div>
+                    <div style={{ fontSize: "1.5em" }}>Relak</div>
+                  </Space>
+                  <Button
+                    type="primary"
+                    onClick={showDrawer}
+                    style={{ marginRight: "flex-end" }}
+                  >
+                    Lepak
+                  </Button>
+                </Space>
+>>>>>>> 8aa167523243e3ca23811b16c0b4561b0027793f
               </div>
             </Menu>
-          </Header>
+          </Header> */}
+
+          <PageHeader
+            ghost={false}
+            className="site-page-header"
+            // onBack={() => window.history.back()}
+            title="Title"
+            subTitle="This is a subtitle"
+            extra={[
+              <Button key="1" type="primary">
+                <MenuFoldOutlined />
+              </Button>,
+            ]}
+          />
+
           <Drawer
             title="Relak"
             placement={"right"}

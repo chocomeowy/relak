@@ -31,6 +31,7 @@ const Signup = () => {
           console.log(res, "res");
           return history.push("/login/");
         }
+        console.log(res.json());
         throw new Error("Error in network");
       })
       .then((resJson) => {
