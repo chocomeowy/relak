@@ -7,6 +7,7 @@ import {
   CartesianGrid,
   Tooltip,
   ResponsiveContainer,
+  Brush
 } from "recharts";
 import moment from "moment";
 
@@ -21,6 +22,27 @@ const MoodChart = ({ data }) => {
     }));
     console.log(dataFormatDate);
   }
+
+  // = Gordon's scuffed button logic =
+  // the default state is "month", buttons below will trigger either handleWeek or handleMonth to change the Y AXIS, which has a double Agnes operator.
+
+  // const [type, setType] = useState("month")
+
+  // const handleWeek = () => {
+  //   setType("week");
+  //   console.log("Set the chart to show week")
+  // };
+
+  // const handleMonth = () => {
+  //   setType("month");
+  //   console.log("Set the chart to show month")
+  // }
+
+  const xAxisTickFormatter = (dataFormatDate) => {
+    return moment(dataFormatDate)
+      .format("ll")
+      .slice(0, 6);
+     }
 
   // ========== filter sort ==========
 
@@ -49,6 +71,7 @@ const MoodChart = ({ data }) => {
             fill="#8884d8"
           />
         </AreaChart>
+        {/* <Brush tickFormatter={xAxisTickFormatter} dataKey="formatDate" /> */}
       </ResponsiveContainer>
     </div>
   );
