@@ -56,8 +56,8 @@ const NewJournal = () => {
         throw new Error("Error in network");
       })
       .then((resJson) => {
-        console.log(resJson);
-        if (resJson) {
+        //console.log(resJson);
+        if (resJson.message) {
           setError(resJson.message);
           return;
         }
