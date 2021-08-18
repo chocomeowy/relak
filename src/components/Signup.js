@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Form, Input, Button, Checkbox, Row } from "antd";
 import { Typography } from "antd";
 import { Link, useHistory } from "react-router-dom";
@@ -9,7 +9,7 @@ const Signup = () => {
   let history = useHistory();
   const dispatch = useDispatch();
   const url = "https://lepak.herokuapp.com/user/signup/";
-
+  const [error, setError] = useState(null);
   const onFinish = (event) => {
     //console.log(event);
 
@@ -27,17 +27,18 @@ const Signup = () => {
         if (!res.ok) {
           console.log("res not okay", res);
           console.log("duplicated sign up username");
+          return res.json();
         } else if (res.ok) {
           console.log(res, "res");
           return history.push("/login/");
         }
-        console.log(res.json());
+
         throw new Error("Error in network");
       })
       .then((resJson) => {
         console.log(resJson);
-        if (resJson.error) {
-          return;
+        if (resJson.message) {
+          return setError(resJson.message);
         } else {
           //console.log(resJson);
           dispatch({ ...logInAction(), payload: resJson.token });
@@ -102,6 +103,7 @@ const Signup = () => {
             </Title>
           </Form>
         </Row>
+        {error ? error : <></>}
       </div>
     </>
   );
