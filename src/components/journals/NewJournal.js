@@ -37,7 +37,7 @@ const NewJournal = () => {
       body: JSON.stringify({
         title: event.title,
         entry: event.entry,
-        mood: event.rate,
+        mood: event.mood,
         profile: decoded.user_id,
       }),
 
