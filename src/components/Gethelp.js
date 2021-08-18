@@ -6,9 +6,13 @@ const Gethelp = () => {
   const data = [
     {
       title: "Talk to someone",
-      content: ["Samaritans of Singapore(24H): 1767", "Singapore Police Force (24H): 999"],
+      content: ["Samaritans of Singapore(24H): ", "Singapore Police Force (24H): "],
       link: `https://stayprepared.sg/mymentalhealth/i-need-support-now/`,
       linkName: "More hotlines",
+      link2: `tel:1767`,
+      link2Name: "1767",
+      link3: `tel:999`,
+      link3Name: "999"
     },
     {
       title: "Chat with professionals",
@@ -48,8 +52,15 @@ const Gethelp = () => {
               title={<span style={{ fontSize: "2em" }}>{item.title}</span>}
               style={{ fontSize: "1.5em" }}
             >
-               <p>{item.content[0]}</p>
-               <p>{item.content[1]}</p>
+               <p>
+                 {item.content[0]} 
+               <a href={item.link2}>{item.link2Name}</a>
+               </p>
+
+               <p>
+                 {item.content[1]}
+                 <a href={item.link3}>{item.link3Name}</a>
+                 </p>
               <br />
               <a href={item.link}>{item.linkName}</a>
             </Card>
