@@ -23,7 +23,9 @@ const About = () => {
       </Title>
       {error && <div>Failed to get inspirational quotes...</div>}
       {isLoading ? (
-        <Spin />
+        <div style={{ textAlign: "center" }}>
+          <Spin />
+        </div>
       ) : (
         <>
           <div style={{ textAlign: "center" }}>
