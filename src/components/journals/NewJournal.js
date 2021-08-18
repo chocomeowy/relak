@@ -83,7 +83,7 @@ const NewJournal = () => {
           onFinish={onFinish}
           validateMessages={validateMessages}
           initialValues={{
-            rate: 5,
+            mood: 0,
           }}
         >
           <Form.Item name="title" label="Title">
@@ -92,7 +92,7 @@ const NewJournal = () => {
           <Form.Item name="entry" label="Entry">
             <Input.TextArea />
           </Form.Item>
-          <Form.Item name="rate" label="Rate" rules={[{ required: true }]}>
+          <Form.Item name="mood" label="Mood" rules={[{ required: true }]}>
             <Rate character={({ index }) => customIcons[index + 1]} />
           </Form.Item>
 
