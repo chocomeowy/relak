@@ -162,7 +162,9 @@ const Profile = () => {
                   )}
                   <br />
                   <br />
-                  {item.last_updated != item.date ? (
+                  {moment(item.last_updated).format(
+                    "Do MMMM YYYY, hh:mm:ss a"
+                  ) !== moment(item.date).format("Do MMMM YYYY, hh:mm:ss a") ? (
                     <Text style={{ fontSize: "10px" }} type="secondary" italic>
                       Last Updated:{" "}
                       {moment(item.last_updated).format("Do MMMM YYYY, h:mm a")}
