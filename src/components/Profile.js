@@ -17,6 +17,8 @@ import { logInAction } from "../redux/ducks/accountAuth";
 import moment from "moment";
 import jwt_decode from "jwt-decode";
 import MoodChart from "./charts/MoodChart";
+import ReactMarkdown from 'react-markdown';
+
 
 const { Title, Text } = Typography;
 
@@ -132,7 +134,11 @@ const Profile = () => {
                     )}
                   />
                   <Title level={5}>{item.title}</Title>
-                  <Text>{item.entry}</Text>
+                  <Text>
+                    <ReactMarkdown>
+                    {item.entry}
+                    </ReactMarkdown>
+                    </Text>
                   <br />
                   <br />
                   {item.mood === 1 ? (
