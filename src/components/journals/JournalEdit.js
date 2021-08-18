@@ -26,7 +26,7 @@ const JournalEdit = () => {
 
   const token = localStorage.token;
   const decoded = jwt_decode(token);
-  console.log(decoded);
+  //console.log(decoded);
 
   // ========== GET one journal ==========
   useEffect(() => {
