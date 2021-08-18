@@ -15,9 +15,9 @@ const WhiteNoise = () => {
 
   return (
     <div>
-      <h2>White Noise</h2>
+      <h2>Brown Noise</h2>
 
-      <h4>White.</h4>
+      <h4>Brown noise blocks out most frequencies, allowing you to focus.</h4>
       {play ? (
         <>
           <ReactHowler src={url} playing={true} loop={true} volume={0.2} />

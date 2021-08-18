@@ -12,7 +12,15 @@ import {
   HomeTwoTone,
   MenuFoldOutlined,
 } from "@ant-design/icons";
-import { Layout, Menu, Drawer, Button, Typography, List, PageHeader } from "antd";
+import {
+  Layout,
+  Menu,
+  Drawer,
+  Button,
+  Typography,
+  List,
+  PageHeader,
+} from "antd";
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
@@ -111,10 +119,9 @@ const Topbar = () => {
             ghost={false}
             className="site-page-header"
             // onBack={() => window.history.back()}
-            title="Title"
-            subTitle="This is a subtitle"
+            title="Relak"
             extra={[
-              <Button key="1" type="primary">
+              <Button key="1" type="secondary" onClick={showDrawer}>
                 <MenuFoldOutlined />
               </Button>,
             ]}
