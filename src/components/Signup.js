@@ -27,11 +27,12 @@ const Signup = () => {
         if (!res.ok) {
           console.log("res not okay", res);
           console.log("duplicated sign up username");
+          return res.json();
         } else if (res.ok) {
           console.log(res, "res");
           return history.push("/login/");
         }
-        console.log(res.json());
+
         throw new Error("Error in network");
       })
       .then((resJson) => {
@@ -57,7 +58,6 @@ const Signup = () => {
           textAlign: "center",
         }}
       >
-        {error ? error : <></>}
         <Title>sign up.</Title>
         <Title level={4}>say hello. track your progress with us.</Title>
         <br />
@@ -103,6 +103,7 @@ const Signup = () => {
             </Title>
           </Form>
         </Row>
+        {error ? error : <></>}
       </div>
     </>
   );
