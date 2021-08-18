@@ -9,11 +9,6 @@ import FrogSound from "./sounds/FrogSound";
 import SingingBowl from "./sounds/SingingBowl";
 import BirdsSound from "./sounds/BirdsSound";
 const Listen = () => {
-  const gridStyle = {
-    width: "25%",
-    textAlign: "center",
-  };
-
   const data = [
     { sound: <HeavyRain />, color: "#ffb3ba" },
     { sound: <ForestRain />, color: "#ffdfba" },
