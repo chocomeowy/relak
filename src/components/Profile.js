@@ -30,7 +30,7 @@ const Profile = () => {
 
   const dispatch = useDispatch();
   const token = localStorage.token;
-  console.log(token);
+  //console.log(token);
   const decoded = token ? jwt_decode(token) : history.push(`/login`);
 
   // ========== GET all journals ==========

@@ -30,21 +30,20 @@ const Login = () => {
           return res.json();
         } else if (!res.ok) {
           console.log("res not okay", res);
-          return res.json();
+          setError("Incorrect username or password.");
+
+          return { wrong: "wrong" };
         }
         throw new Error("Error in network");
       })
       .then((resJson) => {
-        //console.log(resJson);
-        if (resJson.message) {
-          setError(resJson.message);
+        if (resJson.wrong) {
           return;
-        } else {
-          //console.log(resJson);
-          dispatch({ ...logInAction(), payload: resJson.token });
-          localStorage.setItem("token", resJson.access);
-          return history.push("/profile");
         }
+        console.log(resJson);
+        //dispatch({ ...logInAction(), payload: resJson.token });
+        localStorage.setItem("token", resJson.access);
+        return history.push("/profile");
       });
   };
 
