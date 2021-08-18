@@ -17,8 +17,7 @@ import { logInAction } from "../redux/ducks/accountAuth";
 import moment from "moment";
 import jwt_decode from "jwt-decode";
 import MoodChart from "./charts/MoodChart";
-import ReactMarkdown from 'react-markdown';
-
+import ReactMarkdown from "react-markdown";
 
 const { Title, Text } = Typography;
 
@@ -135,11 +134,8 @@ const Profile = () => {
                   />
                   <Title level={5}>{item.title}</Title>
                   <Text>
-                    <ReactMarkdown>
-                    {item.entry}
-                    </ReactMarkdown>
-                    </Text>
-                  <br />
+                    <ReactMarkdown>{item.entry}</ReactMarkdown>
+                  </Text>
                   <br />
                   {item.mood === 1 ? (
                     <FrownTwoTone
@@ -164,6 +160,14 @@ const Profile = () => {
                       style={{ fontSize: "36px", color: "#cfbece" }}
                     />
                   )}
+                  <br />
+                  <br />
+                  {item.last_updated != item.date ? (
+                    <Text style={{ fontSize: "10px" }} type="secondary" italic>
+                      Last Updated:{" "}
+                      {moment(item.last_updated).format("Do MMMM YYYY, h:mm a")}
+                    </Text>
+                  ) : null}
                 </Card>
               </List.Item>
             )}

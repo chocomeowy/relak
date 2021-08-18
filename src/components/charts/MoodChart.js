@@ -11,6 +11,7 @@ import {
 import moment from "moment";
 
 const MoodChart = ({ data }) => {
+  // ========== add formatted date ==========
   // console.log(data);
   let dataFormatDate = [];
   if (data) {
@@ -20,6 +21,8 @@ const MoodChart = ({ data }) => {
     }));
     console.log(dataFormatDate);
   }
+
+  // ========== filter sort ==========
 
   return (
     <div>
@@ -35,9 +38,9 @@ const MoodChart = ({ data }) => {
             bottom: 20,
           }}
         >
-          <CartesianGrid strokeDasharray="1 4" />
+          <CartesianGrid strokeDasharray="3 3" />
           <XAxis dataKey="formatDate" />
-          <YAxis />
+          <YAxis type="number" domain={['dataMin', 'dataMax']} />
           <Tooltip />
           <Area
             type="monotone"
