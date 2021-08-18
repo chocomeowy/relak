@@ -12,7 +12,15 @@ import {
   HomeTwoTone,
   MenuFoldOutlined,
 } from "@ant-design/icons";
-import { Layout, Menu, Drawer, Button, Typography, List, PageHeader } from "antd";
+import {
+  Layout,
+  Menu,
+  Drawer,
+  Button,
+  Typography,
+  List,
+  PageHeader,
+} from "antd";
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
@@ -88,20 +96,6 @@ const Topbar = () => {
           {/* <Header className="header">
             <Menu theme="dark" mode="horizontal">
               <div style={{ display: "flex" }}>
-<<<<<<< HEAD
-                <div>
-                  <Link to="/">{<HomeOutlined />}</Link>
-                </div>
-
-                <div style={{ fontSize: "1.5em" }}>Relak</div>
-                <Button
-                  type="primary"
-                  onClick={showDrawer}
-                  style={{ justifyContent: "flex-end" }}
-                >
-                  Lepak
-                </Button>
-=======
                 <Space size={20} wrap>
                   <Space size={30}>
                     <div>
@@ -117,7 +111,6 @@ const Topbar = () => {
                     Lepak
                   </Button>
                 </Space>
->>>>>>> 8aa167523243e3ca23811b16c0b4561b0027793f
               </div>
             </Menu>
           </Header> */}
@@ -126,10 +119,9 @@ const Topbar = () => {
             ghost={false}
             className="site-page-header"
             // onBack={() => window.history.back()}
-            title="Title"
-            subTitle="This is a subtitle"
+            title="Relak"
             extra={[
-              <Button key="1" type="primary">
+              <Button key="1" type="secondary" onClick={showDrawer}>
                 <MenuFoldOutlined />
               </Button>,
             ]}

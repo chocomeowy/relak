@@ -49,6 +49,9 @@ body {
 }
 
 .site-page-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background-color: #2a4269;
   color: #f5f5f5;
 }
