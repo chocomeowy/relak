@@ -95,7 +95,7 @@ const Topbar = () => {
                 <Button
                   type="primary"
                   onClick={showDrawer}
-                  style={{ marginRight: "flex-end" }}
+                  style={{ justifyContent: "flex-end" }}
                 >
                   Lepak
                 </Button>

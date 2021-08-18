@@ -44,6 +44,8 @@ body {
   align-items: center;
   height: 100vh;
   justify-content: center;
+
+  background-color: #f5f5f5;
 }
 
 .site-layout-content {
