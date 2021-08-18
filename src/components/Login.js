@@ -35,9 +35,9 @@ const Login = () => {
         throw new Error("Error in network");
       })
       .then((resJson) => {
-        //console.log(resJson);
-        if (resJson.message) {
-          setError(resJson.message);
+        console.log(resJson);
+        if (resJson.detail) {
+          setError(resJson.detail);
           return;
         } else {
           //console.log(resJson);
