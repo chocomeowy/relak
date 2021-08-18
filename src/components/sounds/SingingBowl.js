@@ -16,7 +16,7 @@ const SingingBowl = () => {
   return (
     <div>
       <h2>Singing Bowl</h2>
-
+      <h4>Sounds from a Tibetan Singing Bowl to focus your mind.</h4>
       {play ? (
         <>
           <ReactHowler src={url} playing={true} loop={true} />
