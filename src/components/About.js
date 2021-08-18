@@ -1,9 +1,15 @@
 import React from "react";
-import { Collapse } from "antd";
+import { Collapse, Spin } from "antd";
 import Title from "antd/lib/typography/Title";
+import { useQuery } from "react-query";
 
 const About = () => {
   const { Panel } = Collapse;
+  const { isLoading, error, data } = useQuery("fetchQuote", () =>
+    fetch(
+      "https://api.quotable.io/random?tags=inspirational|faith|life|future"
+    ).then((res) => res.json())
+  );
 
   return (
     <div
@@ -15,6 +21,16 @@ const About = () => {
       <Title level={3} style={{ textAlign: "center" }}>
         The wellness app for Singaporeans, by Singaporeans.
       </Title>
+      {error && <div>Failed to get inspirational quotes...</div>}
+      {isLoading ? (
+        <Spin />
+      ) : (
+        <>
+          <div style={{ textAlign: "center" }}>
+            {data.content} <br /> {data.author}
+          </div>
+        </>
+      )}
       <Collapse
         accordion
         align="center"
