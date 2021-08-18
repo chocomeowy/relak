@@ -1,11 +1,12 @@
 import { Button, Checkbox, Form, Input, Row, Typography } from "antd";
-import React from "react";
+import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { logInAction } from "../redux/ducks/accountAuth";
 import { Link, useHistory } from "react-router-dom";
 const { Title } = Typography;
 
 const Login = () => {
+  const [error, setError] = useState(null);
   const dispatch = useDispatch();
   const url = "https://lepak.herokuapp.com/api/token/";
 
@@ -27,12 +28,16 @@ const Login = () => {
         if (res.ok) {
           //console.log(res);
           return res.json();
+        } else if (!res.ok) {
+          console.log("res not okay", res);
+          return res.json();
         }
         throw new Error("Error in network");
       })
       .then((resJson) => {
         //console.log(resJson);
-        if (resJson.error) {
+        if (resJson.message) {
+          setError(resJson.message);
           return;
         } else {
           //console.log(resJson);
@@ -89,7 +94,7 @@ const Login = () => {
                 Submit
               </Button>
             </Form.Item>
-
+            {error ? error : <></>}
             <Title level={5}>
               New here?
               <Link to="/signup"> Register with us!</Link>

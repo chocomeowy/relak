@@ -3,6 +3,7 @@ import { Rate } from "antd";
 import { FrownOutlined, MehOutlined, SmileOutlined } from "@ant-design/icons";
 import jwt_decode from "jwt-decode";
 import { useHistory } from "react-router-dom";
+import { useState } from "react";
 const { Title } = Typography;
 
 const customIcons = {
@@ -26,6 +27,7 @@ const validateMessages = {
 /* eslint-enable no-template-curly-in-string */
 
 const NewJournal = () => {
+  const [error, setError] = useState(null);
   const history = useHistory();
   const url = "https://lepak.herokuapp.com/journals/";
   const token = localStorage.token;
@@ -49,18 +51,18 @@ const NewJournal = () => {
     })
       .then((res) => {
         if (res.ok) {
-          console.log(res);
+          //console.log(res);
+          return res.json();
+        } else if (!res.ok) {
+          //console.log(res);
           return res.json();
         }
         throw new Error("Error in network");
       })
       .then((resJson) => {
         console.log(resJson);
-        if (resJson.error) {
-          return;
-        } else {
-          //console.log(resJson);
-
+        if (resJson.message) {
+          setError(resJson.message);
           return;
         }
       });
@@ -95,7 +97,7 @@ const NewJournal = () => {
           <Form.Item name="mood" label="Mood" rules={[{ required: true }]}>
             <Rate character={({ index }) => customIcons[index + 1]} />
           </Form.Item>
-
+          {error ? error : <></>}
           <Form.Item>
             <br />
             <Button type="primary" htmlType="submit">

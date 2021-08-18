@@ -97,13 +97,13 @@ const Signup = () => {
                 Submit
               </Button>
             </Form.Item>
+            {error ? error : <></>}
             <Title level={5}>
               Already have an account?
               <Link to="/login"> Login!</Link>
             </Title>
           </Form>
         </Row>
-        {error ? error : <></>}
       </div>
     </>
   );
