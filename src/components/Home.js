@@ -6,7 +6,7 @@ import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Link } from "react-router-dom";
 import AnimatedIcon from "./AnimatedIcon";
-
+import Tilt from "react-parallax-tilt";
 const { Title, Text } = Typography;
 
 const Home = () => {
@@ -42,8 +42,11 @@ const Home = () => {
           <img src="https://i.imgur.com/7UMyV8I.jpg?2" alt="5" />
         </div>
       </Carousel>
-
-      <AnimatedIcon />
+      <Tilt gyroscope={true}>
+        <div style={{ height: "100px" }}>
+          <AnimatedIcon />
+        </div>
+      </Tilt>
       <Title italic strong style={{ padding: "10px" }}>
         time to relak
       </Title>

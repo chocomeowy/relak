@@ -16,6 +16,7 @@
     "react-howler": "^5.2.0",
     "react-markdown": "^7.0.0",
     "react-media-hook": "^0.4.9",
+    "react-parallax-tilt": "^1.5.54",
     "react-query": "^3.19.6",
     "react-redux": "^7.2.4",
     "react-responsive-carousel": "^3.2.20",
