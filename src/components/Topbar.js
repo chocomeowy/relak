@@ -83,40 +83,23 @@ const Topbar = () => {
           </Menu>
         </Header>
       ) : (
-        <>
-          {/* <Header className="header">
-            <Menu theme="dark" mode="horizontal">
-              <div style={{ display: "flex" }}>
-                <Space size={20} wrap>
-                  <Space size={30}>
-                    <div>
-                      <Link to="/">{<HomeOutlined />}</Link>
-                    </div>
-                    <div style={{ fontSize: "1.5em" }}>Relak</div>
-                  </Space>
-                  <Button
-                    type="primary"
-                    onClick={showDrawer}
-                    style={{ marginRight: "flex-end" }}
-                  >
-                    Lepak
-                  </Button>
-                </Space>
-              </div>
-            </Menu>
-          </Header> */}
-
+        <div>
           <PageHeader
-            className="site-page-header"
-            backIcon={<HomeOutlined />}
+            style={{ backgroundColor: "#001529" }}
+            backIcon={<HomeOutlined style={{ color: "#c5c5c5" }} />}
             onBack={() => history.push("/")}
-            extra={[]}
-            title="Relak"
-          >
-            <Button key="1" type="secondary" onClick={showDrawer} ghost>
-              <MenuFoldOutlined />
-            </Button>
-          </PageHeader>
+            title="relak"
+            extra={[
+              <Button
+                key="1"
+                style={{ color: "#c5c5c5" }}
+                ghost
+                onClick={showDrawer}
+              >
+                <MenuFoldOutlined style={{ color: "#c5c5c5" }} />
+              </Button>,
+            ]}
+          ></PageHeader>
 
           <Drawer
             title="Relak"
@@ -125,6 +108,7 @@ const Topbar = () => {
             onClose={showDrawer}
             visible={visible}
             key={"right"}
+            style={{ color: "#c5c5c5" }}
           >
             <List>
               <List.Item key="2" avatar={<HeartOutlined />}>
@@ -165,7 +149,7 @@ const Topbar = () => {
               )}
             </List>
           </Drawer>
-        </>
+        </div>
       )}
     </>
   );

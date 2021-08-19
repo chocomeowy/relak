@@ -72,7 +72,7 @@ const JournalEdit = () => {
       throw new Error("Error in network");
     });
 
-    console.log("Wheeeee you edited your journal entry fam");
+    //console.log("Wheeeee you edited your journal entry fam");
     history.push("/profile/");
   };
 

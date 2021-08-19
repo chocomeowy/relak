@@ -1,6 +1,7 @@
-/* .App {
-  text-align: center;
-} */
+.App {
+  /* text-align: center; */
+  background: #f5f5f5;
+}
 @import "~antd/dist/antd.css";
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap");
 
@@ -39,29 +40,24 @@
 
 body {
   /* display: flex; */
+  background: #f5f5f5;
   align-items: center;
   height: 100vh;
   justify-content: center;
+}
 
-  background-color: #f5f5f5;
+.ant-page-header-heading-title {
+  color: #c5c5c5 !important;
 }
 
 .site-homepage-carousel {
-  background-color: #f5f5f5;
-}
-
-.site-page-header {
-  display: flex;
-
-  justify-content: space-between;
-  background-color: #4b82db;
-  color: #f5f5f5;
+  background: #f5f5f5;
 }
 
 .site-layout-content {
   min-height: 280px;
   padding: 24px;
-  background: #fff;
+  background: #f5f5f5;
 }
 #components-layout-demo-top .logo {
   float: left;

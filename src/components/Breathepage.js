@@ -3,11 +3,9 @@ import Breathe from "./breathing/Breathe";
 
 const breathepage = () => {
   return (
-    <>
-      <div style={{ backgroundColor: "#f5f5f5" }}>
-        <Breathe />
-      </div>
-    </>
+    <div style={{ padding: "20px" }}>
+      <Breathe />
+    </div>
   );
 };
 
