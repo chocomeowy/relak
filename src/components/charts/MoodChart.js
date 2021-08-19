@@ -13,8 +13,11 @@ import { Slider } from "antd";
 import moment from "moment";
 
 const MoodChart = ({ data }) => {
+  const currentDate = moment.utc();
   const [sliderValue, setSliderValue] = useState(1);
-  // console.log(sliderValue);
+  console.log(currentDate);
+  console.log(currentDate.subtract(24, "hours"));
+  console.log(currentDate.subtract(24, "hours").format());
 
   // ========== add formatted date ==========
   // console.log(data);
@@ -26,6 +29,7 @@ const MoodChart = ({ data }) => {
     }));
   }
   console.log(dataFormatDate);
+  // console.log(moment(data[1].date));
 
   // ========== sort filter ==========
   const sortedData = dataFormatDate.sort((a, b) => {
@@ -38,41 +42,62 @@ const MoodChart = ({ data }) => {
   console.log(sortedData);
 
   const filterData = (value) => {
-    let filtered = [];
+    let filtered;
     if (value === 1) {
-      filtered = sortedData.filter((f) => f.formatDate === "16 Aug");
+      filtered = sortedData.filter((f) =>
+        moment(f.date).isBetween(
+          currentDate.subtract(24, "hours").format(),
+          currentDate.format()
+        )
+      );
+    } else if (value === 7) {
+      filtered = sortedData.filter((f) =>
+        moment(f.date).isBetween(
+          currentDate.subtract(7, "days").format(),
+          currentDate.format()
+        )
+      );
     } else {
-      filtered = sortedData.filter((f) => f.formatDate === "18 Aug");
+      filtered = null;
     }
     return filtered;
   };
+  console.log(filterData(sliderValue));
 
   return (
     <div>
-      <ResponsiveContainer width="100%" height={500}>
-        <AreaChart
-          width={1000}
-          height={400}
-          data={filterData(sliderValue)}
-          margin={{
-            top: 20,
-            // right: "auto",
-            // left: "auto",
-            bottom: 20,
-          }}
-        >
-          <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="formatDate" />
-          <YAxis type="number" domain={["dataMin", "dataMax"]} />
-          <Tooltip />
-          <Area
-            type="monotone"
-            dataKey="mood"
-            stroke="#8884d8"
-            fill="#8884d8"
-          />
-        </AreaChart>
-      </ResponsiveContainer>
+      {filterData(sliderValue).length === 0 ? (
+        <>
+          <p>No data found.</p>
+        </>
+      ) : (
+        <>
+          <ResponsiveContainer width="100%" height={500}>
+            <AreaChart
+              width={1000}
+              height={400}
+              data={filterData(sliderValue)}
+              margin={{
+                top: 20,
+                // right: "auto",
+                // left: "auto",
+                bottom: 20,
+              }}
+            >
+              <CartesianGrid strokeDasharray="3 3" />
+              <XAxis dataKey="formatDate" />
+              <YAxis type="number" domain={[1, 5]} />
+              <Tooltip />
+              <Area
+                type="monotone"
+                dataKey="mood"
+                stroke="#8884d8"
+                fill="#8884d8"
+              />
+            </AreaChart>
+          </ResponsiveContainer>
+        </>
+      )}
       <Slider
         defaultValue={1}
         value={sliderValue}

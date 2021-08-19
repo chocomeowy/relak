@@ -25,7 +25,7 @@ const Profile = () => {
   const [refresh, setRefresh] = useState(false);
   const [error, setError] = useState(null);
   const [post, setPost] = useState();
-  const urlJournals = "http://localhost:8000/journals/";
+  const urlJournals = "https://lepak.herokuapp.com/journals/";
   let history = useHistory();
 
   const dispatch = useDispatch();
