@@ -30,20 +30,22 @@ const Signup = () => {
           // return res.json();
         } else if (res.ok) {
           console.log(res, "res");
-          return history.push("/login/");
+          return res.json();
         }
-
+        console.log("before new Error");
         throw new Error("Error in network");
       })
       .then((resJson) => {
         console.log(resJson);
         if (resJson.message) {
           return setError(resJson.message);
+        } else if (resJson.success) {
+          return history.push("/login/");
         } else {
           //console.log(resJson);
-          dispatch({ ...logInAction(), payload: resJson.token });
-          localStorage.setItem("token", resJson.token);
-          return history.push("/");
+          // dispatch({ ...logInAction(), payload: resJson.token });
+          // localStorage.setItem("token", resJson.token);
+          return history.push("/login/");
         }
       });
   };

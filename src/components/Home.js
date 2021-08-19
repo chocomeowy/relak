@@ -5,6 +5,7 @@ import "react-awesome-button/dist/themes/theme-bojack.css";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Link } from "react-router-dom";
+import AnimatedIcon from "./AnimatedIcon";
 
 const { Title, Text } = Typography;
 
@@ -16,9 +17,6 @@ const Home = () => {
         textAlign: "center",
       }}
     >
-      <Title italic strong style={{ padding: "10px" }}>
-        time to relak
-      </Title>
       <Carousel
         showArrows={false}
         autoPlay={true}
@@ -45,6 +43,10 @@ const Home = () => {
         </div>
       </Carousel>
 
+      <AnimatedIcon />
+      <Title italic strong style={{ padding: "10px" }}>
+        time to relak
+      </Title>
       <Text type="secondary">
         busy day? why not try out our breathing exercise, or listen to some
         calming sounds? there’s no need to commit. need to pen down some

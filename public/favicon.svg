@@ -7,7 +7,10 @@
         </g>
         <path d="M5,2L4,2L4,30L5,30" style="fill:none;stroke:rgb(100,225,207);stroke-width:1px;"/>
     </g>
+<<<<<<< HEAD
+=======
     <g transform="matrix(1,0,0,0.833333,0,1.66667)">
         <path d="M10,10C14.028,10 15.847,17.2 21,17.2C26.153,17.2 29,12.2 29,12.2" style="fill:none;stroke:rgb(100,225,207);stroke-width:1.09px;"/>
     </g>
+>>>>>>> acec14a24ac5b0b6ee01f6ed2f3095af335ba3b8
 </svg>
