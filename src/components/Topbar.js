@@ -84,38 +84,16 @@ const Topbar = () => {
         </Header>
       ) : (
         <div>
-          {/* <Header className="header">
-            <Menu theme="dark" mode="horizontal">
-              <div style={{ display: "flex" }}>
-                <Space size={20} wrap>
-                  <Space size={30}>
-                    <div>
-                      <Link to="/">{<HomeOutlined />}</Link>
-                    </div>
-                    <div style={{ fontSize: "1.5em" }}>Relak</div>
-                  </Space>
-                  <Button
-                    type="primary"
-                    onClick={showDrawer}
-                    style={{ marginRight: "flex-end" }}
-                  >
-                    Lepak
-                  </Button>
-                </Space>
-              </div>
-            </Menu>
-          </Header> */}
-
           <PageHeader
-            className="site-page-header"
-            backIcon={<HomeOutlined />}
+            style={{ backgroundColor: "#001529" }}
+            backIcon={<HomeOutlined style={{ color: "#c5c5c5" }} />}
             onBack={() => history.push("/")}
+            title="relak"
             extra={[
-              <Button key="1" type="secondary" onClick={showDrawer} ghost>
-                <MenuFoldOutlined />
+              <Button key="1" style={{ color: "#c5c5c5" }} ghost>
+                <MenuFoldOutlined style={{ color: "#c5c5c5" }} />
               </Button>,
             ]}
-            title="Relak"
           ></PageHeader>
 
           <Drawer
