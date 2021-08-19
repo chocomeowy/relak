@@ -98,19 +98,19 @@ const Home = () => {
             <br />
             <Content>
               <Row>
-                <Col span={6} offset={6}>
-                  <Link to="/breathe">
-                    <AwesomeButton type="secondary" size="medium">
-                      breathe
-                    </AwesomeButton>
-                  </Link>
-                </Col>
-                <Col span={6}>
-                  <Link to="/listen">
-                    <AwesomeButton type="secondary" size="medium">
-                      listen
-                    </AwesomeButton>
-                  </Link>
+                <Col span={24}>
+                  <Space direction="horizontal" size={20}>
+                    <Link to="/breathe">
+                      <AwesomeButton type="secondary" size="medium">
+                        breathe
+                      </AwesomeButton>
+                    </Link>
+                    <Link to="/listen">
+                      <AwesomeButton type="secondary" size="medium">
+                        listen
+                      </AwesomeButton>
+                    </Link>
+                  </Space>
                 </Col>
               </Row>
               <Row>
