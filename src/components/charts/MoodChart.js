@@ -13,11 +13,7 @@ import { Slider } from "antd";
 import moment from "moment";
 
 const MoodChart = ({ data }) => {
-  const currentDate = moment.utc();
   const [sliderValue, setSliderValue] = useState(1);
-  console.log(currentDate);
-  console.log(currentDate.subtract(24, "hours"));
-  console.log(currentDate.subtract(24, "hours").format());
 
   // ========== add formatted date ==========
   // console.log(data);
@@ -29,7 +25,6 @@ const MoodChart = ({ data }) => {
     }));
   }
   console.log(dataFormatDate);
-  // console.log(moment(data[1].date));
 
   // ========== sort filter ==========
   const sortedData = dataFormatDate.sort((a, b) => {
@@ -45,17 +40,23 @@ const MoodChart = ({ data }) => {
     let filtered;
     if (value === 1) {
       filtered = sortedData.filter((f) =>
-        moment(f.date).isBetween(
-          currentDate.subtract(24, "hours").format(),
-          currentDate.format()
-        )
+        moment(f.date).isBetween(moment().subtract(1, "days"), moment())
       );
     } else if (value === 7) {
       filtered = sortedData.filter((f) =>
-        moment(f.date).isBetween(
-          currentDate.subtract(7, "days").format(),
-          currentDate.format()
-        )
+        moment(f.date).isBetween(moment().subtract(7, "days"), moment())
+      );
+    } else if (value === 14) {
+      filtered = sortedData.filter((f) =>
+        moment(f.date).isBetween(moment().subtract(14, "days"), moment())
+      );
+    } else if (value === 21) {
+      filtered = sortedData.filter((f) =>
+        moment(f.date).isBetween(moment().subtract(21, "days"), moment())
+      );
+    } else if (value === 28) {
+      filtered = sortedData.filter((f) =>
+        moment(f.date).isBetween(moment().subtract(28, "days"), moment())
       );
     } else {
       filtered = null;
@@ -66,7 +67,7 @@ const MoodChart = ({ data }) => {
 
   return (
     <div>
-      {filterData(sliderValue).length === 0 ? (
+      {filterData(sliderValue) === null ? (
         <>
           <p>No data found.</p>
         </>
@@ -103,7 +104,7 @@ const MoodChart = ({ data }) => {
         value={sliderValue}
         onChange={(sliderValue) => setSliderValue(sliderValue)}
         min={1}
-        max={7}
+        max={31}
         step={6}
       />
     </div>
