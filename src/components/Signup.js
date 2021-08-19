@@ -68,7 +68,7 @@ const Signup = () => {
         <Row
           type="flex"
           justify="center"
-          style={{ minHeight: "100vh", backgroundColor: "#f5f5f5" }}
+          style={{ backgroundColor: "#f5f5f5" }}
         >
           <Form
             name="basic"
