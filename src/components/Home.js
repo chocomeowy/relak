@@ -101,12 +101,20 @@ const Home = () => {
                 <Col span={24}>
                   <Space direction="horizontal" size={20}>
                     <Link to="/breathe">
-                      <AwesomeButton type="secondary" size="medium">
+                      <AwesomeButton
+                        type="secondary"
+                        size="large"
+                        style={{ "--button-default-border-radius": "13px" }}
+                      >
                         breathe
                       </AwesomeButton>
                     </Link>
                     <Link to="/listen">
-                      <AwesomeButton type="secondary" size="medium">
+                      <AwesomeButton
+                        type="secondary"
+                        size="large"
+                        style={{ "--button-default-border-radius": "13px" }}
+                      >
                         listen
                       </AwesomeButton>
                     </Link>
@@ -119,7 +127,12 @@ const Home = () => {
                     <>
                       <br />
                       <Link to="/login">
-                        <AwesomeButton>login</AwesomeButton>
+                        <AwesomeButton
+                          size="large"
+                          style={{ "--button-default-border-radius": "13px" }}
+                        >
+                          login
+                        </AwesomeButton>
                       </Link>
                     </>
                   ) : (
