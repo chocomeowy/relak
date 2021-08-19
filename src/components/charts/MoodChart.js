@@ -59,7 +59,7 @@ const MoodChart = ({ data }) => {
         moment(f.date).isBetween(moment().subtract(28, "days"), moment())
       );
     } else {
-      filtered = null;
+      filtered = sortedData
     }
     return filtered;
   };
@@ -88,6 +88,8 @@ const MoodChart = ({ data }) => {
               <CartesianGrid strokeDasharray="3 3" />
               <XAxis dataKey="formatDate" />
               <YAxis type="number" domain={[1, 5]} />
+              <YAxis yAxisId="right" type="number" orientation="right" />
+
               <Tooltip />
               <Area
                 type="monotone"
