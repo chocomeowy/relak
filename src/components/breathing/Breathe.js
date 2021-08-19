@@ -1,13 +1,15 @@
 import React, { useState } from "react";
 import styled, { keyframes } from "styled-components";
 import Breathe2 from "./Breathe2";
-import { Button } from "antd";
+import { Button, Typography, Row, Col, Layout, Space } from "antd";
 import Title from "antd/lib/typography/Title";
 import Meditation from "./Meditation";
 import Sleep from "./Sleep";
 import BreathingTechniquesModal from "./BreathingTechniquesModal";
 import Headspace from "./Headspace";
 import BoxBreathe from "./BoxBreathe";
+const { Content } = Layout;
+
 const Breathe = () => {
   const [circle, setCircle] = useState("");
   const [description, setDescription] = useState("Focus on the present moment");
@@ -53,55 +55,84 @@ const Breathe = () => {
     }
     return <Circle />;
   };
+
   return (
-    <>
-      <Title style={{ padding: "10px", textAlign: "center" }}>breathe.</Title>
+    <Layout>
+      <Content>
+        <Title style={{ padding: "10px", textAlign: "center" }}>breathe.</Title>
 
-      <Div>
-        <Button type="dashed" onClick={handleEqualBreathing}>
-          Equal breathing
-        </Button>
-        <Button type="dashed" onClick={handleBox}>
-          Box breathing
-        </Button>
-        <Button type="dashed" onClick={handleDeep}>
-          Deep Calming
-        </Button>
-        <Button type="dashed" onClick={handleApple}>
-          Apple Watch Style
-        </Button>
-        <br />​{description}
-      </Div>
-      {circle === "d" ? (
-        <>
-          <Container style={{ background: "black" }}>
-            <br />
+        <Div>
+          <Row justify="center" gutter={{ xs: 8, sm: 16, md: 24 }}>
+            <Col>
+              <Button type="dashed" onClick={handleEqualBreathing}>
+                Equal breathing
+              </Button>
+            </Col>
+            <Col>
+              <Button type="dashed" onClick={handleBox}>
+                Box breathing
+              </Button>
+            </Col>
+            <Col>
+              <Button type="dashed" onClick={handleDeep}>
+                Deep Calming
+              </Button>
+            </Col>
+            <Col>
+              <Button type="dashed" onClick={handleApple}>
+                Apple Watch Style
+              </Button>
+            </Col>
+          </Row>
+          <Row>
+            <Col span={24}>
+              <br />​{description}
+            </Col>
+          </Row>
+        </Div>
+        {circle === "d" ? (
+          <>
+            <Container style={{ background: "black" }}>
+              <br />
 
-            {displayCircle()}
-          </Container>
-        </>
-      ) : (
-        <>
-          <Container>
-            <br />
+              {displayCircle()}
+            </Container>
+          </>
+        ) : (
+          <>
+            <Container>
+              <br />
 
-            {displayCircle()}
-          </Container>
-        </>
-      )}
-      <div
-        style={{
-          textAlign: "center",
-        }}
-      >
-        <br />
-        <Meditation />
-        <Sleep />
-        <BreathingTechniquesModal />
-        <br />
-        <Headspace />
-      </div>
-    </>
+              {displayCircle()}
+            </Container>
+          </>
+        )}
+        <div
+          style={{
+            textAlign: "center",
+          }}
+        >
+          <Row
+            justify="center"
+            gutter={({ xs: 2, sm: 16, md: 24 }, { xs: 4, sm: 8, md: 16 })}
+          >
+            <Col>
+              <Meditation />
+            </Col>
+            <Col>
+              <Sleep />
+            </Col>
+            <Col>
+              <BreathingTechniquesModal />
+            </Col>
+          </Row>
+          <br />
+          <Row justify="center">
+            <Headspace />
+          </Row>
+        </div>
+      </Content>
+    </Layout>
   );
 };
 
