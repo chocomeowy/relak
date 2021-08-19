@@ -1,5 +1,4 @@
-import { Typography } from "antd";
-import { List, Card, Spin } from "antd";
+import { Typography, List, Card, Spin } from "antd";
 import {
   SmileOutlined,
   SmileTwoTone,
@@ -26,7 +25,7 @@ const Profile = () => {
   const [refresh, setRefresh] = useState(false);
   const [error, setError] = useState(null);
   const [post, setPost] = useState();
-  const urlJournals = "https://lepak.herokuapp.com/journals/";
+  const urlJournals = "http://localhost:8000/journals/";
   let history = useHistory();
 
   const dispatch = useDispatch();
@@ -102,7 +101,9 @@ const Profile = () => {
         <Spin size="large" />
       ) : (
         <>
-          <MoodChart data={post} />
+          <div>
+            <MoodChart data={post} />
+          </div>
           <br />
           <List
             grid={{
