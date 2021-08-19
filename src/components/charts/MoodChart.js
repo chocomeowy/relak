@@ -24,7 +24,7 @@ const MoodChart = ({ data }) => {
       formatDate: moment(d.date).format("DD MMM"),
     }));
   }
-  console.log(dataFormatDate);
+  // console.log(dataFormatDate);
 
   // ========== sort filter ==========
   const sortedData = dataFormatDate.sort((a, b) => {
@@ -34,7 +34,7 @@ const MoodChart = ({ data }) => {
       return 1;
     }
   });
-  console.log(sortedData);
+  // console.log(sortedData);
 
   const filterData = (value) => {
     let filtered;

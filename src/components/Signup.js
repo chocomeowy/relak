@@ -2,12 +2,13 @@ import React, { useState } from "react";
 import { Form, Input, Button, Checkbox, Row } from "antd";
 import { Typography } from "antd";
 import { Link, useHistory } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { logInAction } from "../redux/ducks/accountAuth";
+// import { useDispatch } from "react-redux";
+// import { logInAction } from "../redux/ducks/accountAuth";
+
 const { Title } = Typography;
 const Signup = () => {
   let history = useHistory();
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   const url = "https://lepak.herokuapp.com/user/signup/";
   const [error, setError] = useState(null);
   const onFinish = (event) => {
