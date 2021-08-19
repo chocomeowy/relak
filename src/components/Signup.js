@@ -27,7 +27,7 @@ const Signup = () => {
         if (!res.ok) {
           console.log("res not okay", res);
           console.log("duplicated sign up username");
-          return res.json();
+          // return res.json();
         } else if (res.ok) {
           console.log(res, "res");
           return history.push("/login/");

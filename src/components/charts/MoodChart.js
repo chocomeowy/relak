@@ -1,4 +1,5 @@
 import * as React from "react";
+import { useState } from "react";
 import {
   AreaChart,
   Area,
@@ -8,9 +9,13 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from "recharts";
+import { Slider } from "antd";
 import moment from "moment";
 
 const MoodChart = ({ data }) => {
+  const [sliderValue, setSliderValue] = useState(1);
+  // console.log(sliderValue);
+
   // ========== add formatted date ==========
   // console.log(data);
   let dataFormatDate = [];
@@ -19,10 +24,28 @@ const MoodChart = ({ data }) => {
       ...d,
       formatDate: moment(d.date).format("DD MMM"),
     }));
-    console.log(dataFormatDate);
   }
+  console.log(dataFormatDate);
 
-  // ========== filter sort ==========
+  // ========== sort filter ==========
+  const sortedData = dataFormatDate.sort((a, b) => {
+    if (moment(a.date).isBefore(b.date)) {
+      return -1;
+    } else {
+      return 1;
+    }
+  });
+  console.log(sortedData);
+
+  const filterData = (value) => {
+    let filtered = [];
+    if (value === 1) {
+      filtered = sortedData.filter((f) => f.formatDate === "16 Aug");
+    } else {
+      filtered = sortedData.filter((f) => f.formatDate === "18 Aug");
+    }
+    return filtered;
+  };
 
   return (
     <div>
@@ -30,7 +53,7 @@ const MoodChart = ({ data }) => {
         <AreaChart
           width={1000}
           height={400}
-          data={dataFormatDate}
+          data={filterData(sliderValue)}
           margin={{
             top: 20,
             // right: "auto",
@@ -40,7 +63,7 @@ const MoodChart = ({ data }) => {
         >
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis dataKey="formatDate" />
-          <YAxis type="number" domain={['dataMin', 'dataMax']} />
+          <YAxis type="number" domain={["dataMin", "dataMax"]} />
           <Tooltip />
           <Area
             type="monotone"
@@ -50,6 +73,14 @@ const MoodChart = ({ data }) => {
           />
         </AreaChart>
       </ResponsiveContainer>
+      <Slider
+        defaultValue={1}
+        value={sliderValue}
+        onChange={(sliderValue) => setSliderValue(sliderValue)}
+        min={1}
+        max={7}
+        step={6}
+      />
     </div>
   );
 };
