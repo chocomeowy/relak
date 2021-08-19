@@ -11,11 +11,7 @@ import Login from "./components/Login";
 import Profile from "./components/Profile";
 import Signup from "./components/Signup";
 import Topbar from "./components/Topbar";
-import {
-  AnimatedSwitch,
-  spring,
-  RouteTransition,
-} from "react-router-transition";
+import { AnimatedSwitch, spring } from "react-router-transition";
 function App() {
   // we need to map the `scale` prop we define below
   // to the transform style property
@@ -54,51 +50,45 @@ function App() {
   };
   return (
     <div className="App">
-      <RouteTransition
-        atEnter={{ opacity: 0 }}
-        atLeave={{ opacity: 0 }}
-        atActive={{ opacity: 1 }}
+      <AnimatedSwitch
+        atEnter={bounceTransition.atEnter}
+        atLeave={bounceTransition.atLeave}
+        atActive={bounceTransition.atActive}
+        mapStyles={mapStyles}
+        className="route-wrapper"
       >
-        <AnimatedSwitch
-          atEnter={bounceTransition.atEnter}
-          atLeave={bounceTransition.atLeave}
-          atActive={bounceTransition.atActive}
-          mapStyles={mapStyles}
-          className="route-wrapper"
-        >
-          <Route exact path="/">
-            <Home />
-          </Route>
-          <Topbar />
-        </AnimatedSwitch>
-        <Route path="/breathe">
-          <Breathepage />
+        <Route exact path="/">
+          <Home />
         </Route>
-        <Route path="/journal/:id/edit">
-          <JournalEdit />
-        </Route>
-        <Route exact path="/journal">
-          <Journal />
-        </Route>
-        <Route path="/login">
-          <Login />
-        </Route>
-        <Route path="/signup">
-          <Signup />
-        </Route>
-        <Route path="/profile">
-          <Profile />
-        </Route>
-        <Route path="/gethelp">
-          <Gethelp />
-        </Route>
-        <Route path="/listen">
-          <Listen />
-        </Route>
-        <Route path="/about">
-          <About />
-        </Route>
-      </RouteTransition>
+        <Topbar />
+      </AnimatedSwitch>
+      <Route path="/breathe">
+        <Breathepage />
+      </Route>
+      <Route path="/journal/:id/edit">
+        <JournalEdit />
+      </Route>
+      <Route exact path="/journal">
+        <Journal />
+      </Route>
+      <Route path="/login">
+        <Login />
+      </Route>
+      <Route path="/signup">
+        <Signup />
+      </Route>
+      <Route path="/profile">
+        <Profile />
+      </Route>
+      <Route path="/gethelp">
+        <Gethelp />
+      </Route>
+      <Route path="/listen">
+        <Listen />
+      </Route>
+      <Route path="/about">
+        <About />
+      </Route>
     </div>
   );
 }
