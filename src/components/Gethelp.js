@@ -16,7 +16,7 @@ const Gethelp = () => {
     },
     {
       title: "Chat with professionals",
-      content: [`Chat with a dedicated professional from CHAT`],
+      content: [`Do you need someone to talk to?` ,`Chat with a dedicated, anonymous professional from CHAT`],
       link: `https://www.chat.mentalhealth.sg/`,
       linkName: "Chat here",
     },
