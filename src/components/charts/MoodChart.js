@@ -37,7 +37,7 @@ const MoodChart = ({ data }) => {
   console.log(sortedData);
 
   const filterData = (value) => {
-    let filtered = [];
+    let filtered;
     if (value === 1) {
       filtered = sortedData.filter((f) =>
         moment(f.date).isBetween(moment().subtract(1, "days"), moment())
@@ -59,10 +59,11 @@ const MoodChart = ({ data }) => {
         moment(f.date).isBetween(moment().subtract(28, "days"), moment())
       );
     } else {
-      filtered = sortedData.filter((f) => f.formatDate === "18 Aug");
+      filtered = null;
     }
     return filtered;
   };
+  console.log(filterData(sliderValue));
 
   return (
     <div>
