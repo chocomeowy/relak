@@ -37,7 +37,11 @@ const Gethelp = () => {
   ];
 
   return (
-    <div>
+    <div
+      style={{
+        padding: "10px",
+      }}
+    >
       <Title style={{ padding: "10px", textAlign: "center" }}>help.</Title>
 
       <List
@@ -55,8 +59,8 @@ const Gethelp = () => {
           <List.Item>
             <Card
               hoverable
-              title={<span style={{ fontSize: "2em" }}>{item.title}</span>}
-              style={{ fontSize: "1.5em" }}
+              title={<span style={{ fontSize: "1.5em" }}>{item.title}</span>}
+              style={{ fontSize: "1.2em" }}
             >
               <p>
                 {item.content[0]}
@@ -68,7 +72,9 @@ const Gethelp = () => {
                 <a href={item.link3}>{item.link3Name}</a>
               </p>
               <br />
-              <a href={item.link}>{item.linkName}</a>
+              <a href={item.link} target="_blank" rel="noreferrer">
+                {item.linkName}
+              </a>
             </Card>
           </List.Item>
         )}

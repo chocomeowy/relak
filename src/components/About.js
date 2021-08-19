@@ -17,9 +17,9 @@ const About = () => {
         padding: "10px",
       }}
     >
-      <Title style={{ textAlign: "center" }}>Welcome to relak.</Title>
+      <Title style={{ textAlign: "center" }}>welcome to relak.</Title>
       <Title level={3} style={{ textAlign: "center" }}>
-        The wellness app for Singaporeans, by Singaporeans.
+        the wellness app for Singaporeans, by Singaporeans.
       </Title>
       {error && <div>Failed to get inspirational quotes...</div>}
       {isLoading ? (

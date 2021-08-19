@@ -59,11 +59,11 @@ const MoodChart = ({ data }) => {
         moment(f.date).isBetween(moment().subtract(28, "days"), moment())
       );
     } else {
-      filtered = sortedData
+      filtered = sortedData;
     }
     return filtered;
   };
-  console.log(filterData(sliderValue));
+  //console.log(filterData(sliderValue));
 
   return (
     <div>
