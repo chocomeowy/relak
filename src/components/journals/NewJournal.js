@@ -71,6 +71,7 @@ const NewJournal = () => {
       className="site-layout-content"
       style={{
         textAlign: "center",
+        backgroundColor: "#f5f5f5",
       }}
     >
       <Title>write.</Title>
@@ -79,6 +80,7 @@ const NewJournal = () => {
           name="nest-messages"
           onFinish={onFinish}
           validateMessages={validateMessages}
+          style={{ backgroundColor: "#f5f5f5" }}
           initialValues={{
             mood: 0,
           }}

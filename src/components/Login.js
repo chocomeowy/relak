@@ -52,12 +52,17 @@ const Login = () => {
         className="site-layout-content"
         style={{
           textAlign: "center",
+          backgroundColor: "#f5f5f5",
         }}
       >
         <Title>login.</Title>
         <Title level={4}>welcome back.</Title>
         <br />
-        <Row type="flex" justify="center" style={{ minHeight: "100vh" }}>
+        <Row
+          type="flex"
+          justify="center"
+          style={{ minHeight: "100vh", backgroundColor: "#f5f5f5" }}
+        >
           <Form
             name="basic"
             initialValues={{ remember: true }}
