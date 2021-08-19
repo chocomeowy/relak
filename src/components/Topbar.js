@@ -90,7 +90,12 @@ const Topbar = () => {
             onBack={() => history.push("/")}
             title="relak"
             extra={[
-              <Button key="1" style={{ color: "#c5c5c5" }} ghost>
+              <Button
+                key="1"
+                style={{ color: "#c5c5c5" }}
+                ghost
+                onClick={showDrawer}
+              >
                 <MenuFoldOutlined style={{ color: "#c5c5c5" }} />
               </Button>,
             ]}
@@ -103,6 +108,7 @@ const Topbar = () => {
             onClose={showDrawer}
             visible={visible}
             key={"right"}
+            style={{ color: "#c5c5c5" }}
           >
             <List>
               <List.Item key="2" avatar={<HeartOutlined />}>
