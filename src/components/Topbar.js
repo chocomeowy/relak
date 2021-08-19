@@ -83,7 +83,7 @@ const Topbar = () => {
           </Menu>
         </Header>
       ) : (
-        <>
+        <div>
           {/* <Header className="header">
             <Menu theme="dark" mode="horizontal">
               <div style={{ display: "flex" }}>
@@ -110,13 +110,13 @@ const Topbar = () => {
             className="site-page-header"
             backIcon={<HomeOutlined />}
             onBack={() => history.push("/")}
-            extra={[]}
+            extra={[
+              <Button key="1" type="secondary" onClick={showDrawer} ghost>
+                <MenuFoldOutlined />
+              </Button>,
+            ]}
             title="Relak"
-          >
-            <Button key="1" type="secondary" onClick={showDrawer} ghost>
-              <MenuFoldOutlined />
-            </Button>
-          </PageHeader>
+          ></PageHeader>
 
           <Drawer
             title="Relak"
@@ -165,7 +165,7 @@ const Topbar = () => {
               )}
             </List>
           </Drawer>
-        </>
+        </div>
       )}
     </>
   );
