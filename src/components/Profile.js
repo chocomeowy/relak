@@ -76,14 +76,14 @@ const Profile = () => {
 
   // ========== DELETE one journal ==========
   const deleteJournal = async (journal) => {
-    const response = await fetch(urlJournals + journal.id + "/", {
+    await fetch(urlJournals + journal.id + "/", {
       method: "delete",
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
       },
     });
-    console.log(response);
+    //console.log(response);
     setRefresh(!refresh);
   };
 

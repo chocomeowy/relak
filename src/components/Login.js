@@ -28,18 +28,18 @@ const Login = () => {
           //console.log(res);
           return res.json();
         } else if (!res.ok) {
-          console.log("res not okay", res);
+          //console.log("res not okay", res);
           return res.json();
         }
         throw new Error("Error in network");
       })
       .then((resJson) => {
-        console.log(resJson);
+        //console.log(resJson);
         if (resJson.detail) {
           setError(resJson.detail);
           return;
         }
-        console.log(resJson);
+        //console.log(resJson);
 
         localStorage.setItem("token", resJson.access);
         return history.push("/profile");
@@ -61,7 +61,7 @@ const Login = () => {
         <Row
           type="flex"
           justify="center"
-          style={{ minHeight: "100vh", backgroundColor: "#f5f5f5" }}
+          style={{ backgroundColor: "#f5f5f5" }}
         >
           <Form
             name="basic"

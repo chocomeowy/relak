@@ -72,7 +72,7 @@ const JournalEdit = () => {
       throw new Error("Error in network");
     });
 
-    console.log("Wheeeee you edited your journal entry fam");
+    //console.log("Wheeeee you edited your journal entry fam");
     history.push("/profile/");
   };
 
@@ -81,10 +81,11 @@ const JournalEdit = () => {
       className="site-layout-content"
       style={{
         textAlign: "center",
+        backgroundColor: "#f5f5f5",
       }}
     >
       <Title>change the past.</Title>
-      <Row type="flex" justify="center">
+      <Row type="flex" justify="center" style={{ backgroundColor: "#f5f5f5" }}>
         {obj ? (
           <Form
             name="nest-messages"

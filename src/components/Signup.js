@@ -26,18 +26,18 @@ const Signup = () => {
     })
       .then((res) => {
         if (!res.ok) {
-          console.log("res not okay", res);
-          console.log("duplicated sign up username");
-          // return res.json();
+          //console.log("res not okay", res);
+          //console.log("duplicated sign up username");
+          return res.json();
         } else if (res.ok) {
-          console.log(res, "res");
+          //console.log(res, "res");
           return res.json();
         }
-        console.log("before new Error");
+        //console.log("before new Error");
         throw new Error("Error in network");
       })
       .then((resJson) => {
-        console.log(resJson);
+        //console.log(resJson);
         if (resJson.message) {
           return setError(resJson.message);
         } else if (resJson.success) {
@@ -68,7 +68,7 @@ const Signup = () => {
         <Row
           type="flex"
           justify="center"
-          style={{ minHeight: "100vh", backgroundColor: "#f5f5f5" }}
+          style={{ backgroundColor: "#f5f5f5" }}
         >
           <Form
             name="basic"
