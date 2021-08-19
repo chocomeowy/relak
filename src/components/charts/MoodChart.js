@@ -14,7 +14,6 @@ import moment from "moment";
 
 const MoodChart = ({ data }) => {
   const [sliderValue, setSliderValue] = useState(1);
-  // console.log(sliderValue);
 
   // ========== add formatted date ==========
   // console.log(data);
@@ -40,7 +39,25 @@ const MoodChart = ({ data }) => {
   const filterData = (value) => {
     let filtered = [];
     if (value === 1) {
-      filtered = sortedData.filter((f) => f.formatDate === "16 Aug");
+      filtered = sortedData.filter((f) =>
+        moment(f.date).isBetween(moment().subtract(1, "days"), moment())
+      );
+    } else if (value === 7) {
+      filtered = sortedData.filter((f) =>
+        moment(f.date).isBetween(moment().subtract(7, "days"), moment())
+      );
+    } else if (value === 14) {
+      filtered = sortedData.filter((f) =>
+        moment(f.date).isBetween(moment().subtract(14, "days"), moment())
+      );
+    } else if (value === 21) {
+      filtered = sortedData.filter((f) =>
+        moment(f.date).isBetween(moment().subtract(21, "days"), moment())
+      );
+    } else if (value === 28) {
+      filtered = sortedData.filter((f) =>
+        moment(f.date).isBetween(moment().subtract(28, "days"), moment())
+      );
     } else {
       filtered = sortedData.filter((f) => f.formatDate === "18 Aug");
     }
@@ -49,36 +66,44 @@ const MoodChart = ({ data }) => {
 
   return (
     <div>
-      <ResponsiveContainer width="100%" height={500}>
-        <AreaChart
-          width={1000}
-          height={400}
-          data={filterData(sliderValue)}
-          margin={{
-            top: 20,
-            // right: "auto",
-            // left: "auto",
-            bottom: 20,
-          }}
-        >
-          <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="formatDate" />
-          <YAxis type="number" domain={["dataMin", "dataMax"]} />
-          <Tooltip />
-          <Area
-            type="monotone"
-            dataKey="mood"
-            stroke="#8884d8"
-            fill="#8884d8"
-          />
-        </AreaChart>
-      </ResponsiveContainer>
+      {filterData(sliderValue) === null ? (
+        <>
+          <p>No data found.</p>
+        </>
+      ) : (
+        <>
+          <ResponsiveContainer width="100%" height={500}>
+            <AreaChart
+              width={1000}
+              height={400}
+              data={filterData(sliderValue)}
+              margin={{
+                top: 20,
+                // right: "auto",
+                // left: "auto",
+                bottom: 20,
+              }}
+            >
+              <CartesianGrid strokeDasharray="3 3" />
+              <XAxis dataKey="formatDate" />
+              <YAxis type="number" domain={[1, 5]} />
+              <Tooltip />
+              <Area
+                type="monotone"
+                dataKey="mood"
+                stroke="#8884d8"
+                fill="#8884d8"
+              />
+            </AreaChart>
+          </ResponsiveContainer>
+        </>
+      )}
       <Slider
         defaultValue={1}
         value={sliderValue}
         onChange={(sliderValue) => setSliderValue(sliderValue)}
         min={1}
-        max={7}
+        max={31}
         step={6}
       />
     </div>
