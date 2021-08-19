@@ -57,7 +57,7 @@ const Breathe = () => {
   };
 
   return (
-    <Layout>
+    <Layout style={{ backgroundColor: "#f5f5f5" }}>
       <Content>
         <Title style={{ padding: "10px", textAlign: "center" }}>breathe.</Title>
 
