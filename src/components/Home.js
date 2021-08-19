@@ -36,6 +36,9 @@ const Home = () => {
           <img src="https://i.imgur.com/7TVncOv.jpg?3" alt="3" />
         </div>
         <div>
+          <img src="https://i.imgur.com/ypb9Smm.jpg" alt="3" />
+        </div>
+        <div>
           <img src="https://i.imgur.com/1D3iD7I.jpg?1" alt="3" />
         </div>
         <div>
