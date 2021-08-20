@@ -142,9 +142,9 @@ const Home = () => {
               </Row>
             </Content>
           </Space>
-          <Footer>
+          <Footer style={{ marginTop: "50px", textAlign: "center" }}>
             <Text type="secondary" style={{ fontSize: "10px" }} italic>
-              Made with love by Gordon, Fah Jin, and Charlene.
+              &copy; 2021. Made with love by Gordon, Fah Jin, and Charlene.
               <br />
               Check out our GitHub{" "}
               <a href="https://github.com/chocomeowy/relak">here</a> and{" "}
