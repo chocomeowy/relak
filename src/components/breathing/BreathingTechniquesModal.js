@@ -38,14 +38,26 @@ const BreathingTechniquesModal = () => {
             when taking slow, deep breaths. It can heighten performance and
             concentration while also being a powerful stress reliever. It’s also
             called four-square breathing. -
-            https://www.healthline.com/health/box-breathing
+            <a
+              href="https://www.healthline.com/health/box-breathing"
+              target="_blank"
+              rel="noreferrer"
+            >
+              https://www.healthline.com/health/box-breathing
+            </a>
           </li>
           <li>
             The 4-7-8 breathing technique is based on pranayama breathing
             exercises. Pranayama is the ancient yogic practice of controlling
             your breath. These types of mindful breathing exercises have been
             shown to have many benefits for stress reduction and relaxation. -
-            https://www.webmd.com/balance/what-to-know-4-7-8-breathing
+            <a
+              href="https://www.webmd.com/balance/what-to-know-4-7-8-breathing"
+              target="_blank"
+              rel="noreferrer"
+            >
+              https://www.webmd.com/balance/what-to-know-4-7-8-breathing
+            </a>
           </li>
         </ul>
       </Modal>
