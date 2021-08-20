@@ -9,8 +9,9 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from "recharts";
-import { Slider } from "antd";
+import { Slider, Col, Typography } from "antd";
 import moment from "moment";
+const { Text } = Typography;
 
 const MoodChart = ({ data }) => {
   const [sliderValue, setSliderValue] = useState(1);
@@ -101,14 +102,19 @@ const MoodChart = ({ data }) => {
           </ResponsiveContainer>
         </>
       )}
-      <Slider
-        defaultValue={1}
-        value={sliderValue}
-        onChange={(sliderValue) => setSliderValue(sliderValue)}
-        min={1}
-        max={31}
-        step={6}
-      />
+      <Col span={8} offset={8}>
+        <Slider
+          defaultValue={1}
+          value={sliderValue}
+          onChange={(sliderValue) => setSliderValue(sliderValue)}
+          min={1}
+          max={31}
+          step={6}
+        />
+        <Text type="secondary" italic>
+          Choose Day Range
+        </Text>
+      </Col>
     </div>
   );
 };

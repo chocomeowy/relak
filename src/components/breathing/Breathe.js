@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled, { keyframes } from "styled-components";
 import Breathe2 from "./Breathe2";
-import { Button, Typography, Row, Col, Layout, Space } from "antd";
+import { Button, Row, Col, Layout } from "antd";
 import Title from "antd/lib/typography/Title";
 import Meditation from "./Meditation";
 import Sleep from "./Sleep";
@@ -112,10 +112,7 @@ const Breathe = () => {
             textAlign: "center",
           }}
         >
-          <Row
-            justify="center"
-            gutter={({ xs: 2, sm: 16, md: 24 }, { xs: 4, sm: 8, md: 16 })}
-          >
+          <Row justify="center" gutter={{ xs: 2, sm: 16, md: 24 }}>
             <Col>
               <Meditation />
             </Col>

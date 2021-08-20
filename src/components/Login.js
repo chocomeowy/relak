@@ -2,7 +2,7 @@ import { Button, Checkbox, Form, Input, Row, Typography } from "antd";
 import React, { useState } from "react";
 
 import { Link, useHistory } from "react-router-dom";
-const { Title } = Typography;
+const { Title, Text } = Typography;
 
 const Login = () => {
   const [error, setError] = useState(null);
@@ -97,7 +97,7 @@ const Login = () => {
                 Submit
               </Button>
             </Form.Item>
-            {error ? error : <></>}
+            <Text type="danger">{error ? error : <></>}</Text>
             <Title level={5}>
               New here?
               <Link to="/signup"> Register with us!</Link>

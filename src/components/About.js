@@ -1,7 +1,7 @@
 import React from "react";
-import { Collapse, Spin } from "antd";
-import Title from "antd/lib/typography/Title";
+import { Collapse, Spin, Row, Col, Typography } from "antd";
 import { useQuery } from "react-query";
+const { Title, Text } = Typography;
 
 const About = () => {
   const { Panel } = Collapse;
@@ -21,18 +21,29 @@ const About = () => {
       <Title level={3} style={{ textAlign: "center" }}>
         the wellness app for Singaporeans, by Singaporeans.
       </Title>
-      {error && <div>Failed to get inspirational quotes...</div>}
-      {isLoading ? (
-        <div style={{ textAlign: "center" }}>
-          <Spin />
-        </div>
-      ) : (
-        <>
+      <Col span={8} offset={8}>
+        {error && <div>Failed to get inspirational quotes...</div>}
+        {isLoading ? (
           <div style={{ textAlign: "center" }}>
-            {data.content} <br /> {data.author}
+            <Spin />
           </div>
-        </>
-      )}
+        ) : (
+          <div style={{ textAlign: "center" }}>
+            <Row align="center">
+              <Col>
+                <Text type="secondary" italic>
+                  {data.content}
+                </Text>
+              </Col>
+              <Col>
+                <Title level={5} style={{ color: "#c5c5c5" }} italic>
+                  {data.author}
+                </Title>
+              </Col>
+            </Row>
+          </div>
+        )}
+      </Col>
       <Collapse
         accordion
         align="center"

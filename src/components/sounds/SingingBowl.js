@@ -24,7 +24,11 @@ const SingingBowl = () => {
       ) : (
         <></>
       )}
-      <AwesomeButton size="icon" onPress={handlePlay}>
+      <AwesomeButton
+        size="icon"
+        onPress={handlePlay}
+        style={{ "--button-default-border-radius": "10px" }}
+      >
         {play ? (
           <>{<PauseCircleOutlined />} </>
         ) : (

@@ -5,7 +5,7 @@ import { Link, useHistory } from "react-router-dom";
 // import { useDispatch } from "react-redux";
 // import { logInAction } from "../redux/ducks/accountAuth";
 
-const { Title } = Typography;
+const { Title, Text } = Typography;
 const Signup = () => {
   let history = useHistory();
   // const dispatch = useDispatch();
@@ -105,7 +105,7 @@ const Signup = () => {
                 Submit
               </Button>
             </Form.Item>
-            {error ? error : <></>}
+            <Text type="danger">{error ? error : <></>}</Text>
             <Title level={5}>
               Already have an account?
               <Link to="/login"> Login!</Link>
