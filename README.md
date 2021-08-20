@@ -18,6 +18,7 @@ Relak is often used in Singlish context, as a bastardisation of the English word
 * Recharts
     * for graphing
 * Styled components
+    * for css in component 
 * react-responsive-carousel
     * for the front page
 * react-awesome-button
@@ -25,16 +26,17 @@ Relak is often used in Singlish context, as a bastardisation of the English word
 * moment.js
     * date/time conversion for journals
 * react-media-hook
+    * to query for media size to change navbar 
 * react-router-transition
+    * animation from front page to other pages     
 * react-howler
     * sound component for the 'listen' page
 * framer-motion
-    * animated logo
+    * animated logo and box breathing
 * react-query
 * react-markdown
 * react-parallax-tilt
 * react-dom
-* react-router-transition
 * jwt-decode
 
 ## Back-end
