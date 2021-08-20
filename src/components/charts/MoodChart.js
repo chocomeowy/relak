@@ -13,6 +13,14 @@ import { Slider, Col, Typography } from "antd";
 import moment from "moment";
 const { Text } = Typography;
 
+const formatTip = (value) => {
+  if (value === 1) {
+    return `${value} day before`;
+  } else {
+    return `${value} days before`;
+  }
+};
+
 const MoodChart = ({ data }) => {
   const [sliderValue, setSliderValue] = useState(1);
 
@@ -107,6 +115,7 @@ const MoodChart = ({ data }) => {
           defaultValue={1}
           value={sliderValue}
           onChange={(sliderValue) => setSliderValue(sliderValue)}
+          tipFormatter={formatTip}
           min={1}
           max={31}
           step={6}
