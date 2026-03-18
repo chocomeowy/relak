@@ -1,16 +1,18 @@
 import React from "react";
 import { Collapse, Spin, Layout, Row, Col, Typography } from "antd";
-import { useQuery } from "react-query";
+import { useQuery } from "@tanstack/react-query";
 const { Title, Text } = Typography;
 const { Content, Footer } = Layout;
 
 const About = () => {
   const { Panel } = Collapse;
-  const { isLoading, error, data } = useQuery("fetchQuote", () =>
-    fetch(
-      "https://api.quotable.io/random?tags=inspirational|faith|life|future"
-    ).then((res) => res.json())
-  );
+  const { isLoading, error, data } = useQuery({
+    queryKey: ["fetchQuote"],
+    queryFn: () =>
+      fetch(
+        "https://api.quotable.io/random?tags=inspirational|faith|life|future"
+      ).then((res) => res.json()),
+  });
 
   return (
     <div
@@ -76,7 +78,7 @@ const About = () => {
             </Panel>
             <Panel header="How much is it?" key="3">
               <p>
-                It’s free, and always will be. Mental wellness should never come
+                It's free, and always will be. Mental wellness should never come
                 at a price.
               </p>
             </Panel>
@@ -96,13 +98,13 @@ const About = () => {
               <br />
               <p>
                 Check out the mood journal too. Enter in your moods and how you
-                feel, and look at the chart for an overview of how you’ve been
+                feel, and look at the chart for an overview of how you've been
                 over the week.
               </p>
               <br />
               <p>
                 If you need help - be it chat or counselling, click on{" "}
-                <b>“Get Help”</b> - there are many resources there which can
+                <b>"Get Help"</b> - there are many resources there which can
                 steer you in the right direction.
               </p>
             </Panel>

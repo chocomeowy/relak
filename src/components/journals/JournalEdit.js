@@ -5,9 +5,9 @@ import "react-awesome-button/dist/themes/theme-bojack.css";
 
 import * as React from "react";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router";
-import { useHistory } from "react-router-dom";
-import jwt_decode from "jwt-decode";
+import { useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { jwtDecode } from "jwt-decode";
 
 const { Title, Text } = Typography;
 
@@ -22,14 +22,13 @@ const customIcons = {
 const JournalEdit = () => {
   const [obj, setObj] = useState();
   const [error, setError] = useState(null);
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const params = useParams();
   const url = `https://lepak.herokuapp.com/journals/${params.id}/`;
 
   const token = localStorage.token;
-  const decoded = jwt_decode(token);
-  //console.log(decoded);
+  const decoded = jwtDecode(token);
 
   // ========== GET one journal ==========
   useEffect(() => {
@@ -41,11 +40,9 @@ const JournalEdit = () => {
       },
     })
       .then((res) => {
-        //console.log(res);
         return res.json();
       })
       .then((data) => {
-        //console.log(data);
         setObj(data);
       })
       .catch((err) => console.error({ Error: err }));
@@ -80,18 +77,14 @@ const JournalEdit = () => {
         throw new Error("Error in network");
       })
       .then((resJson) => {
-        // console.log(typeof resJson.mood);
         if (typeof resJson.mood === "object") {
           setError("Please indicate your mood.");
           return;
         }
         if (resJson.id) {
-          return history.push("/profile/");
+          return navigate("/profile/");
         }
       });
-
-    // history.push("/profile/")
-    //console.log("Wheeeee you edited your journal entry fam");
   };
 
   return (

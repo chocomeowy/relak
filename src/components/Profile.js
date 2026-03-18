@@ -10,11 +10,11 @@ import {
 } from "@ant-design/icons";
 import React from "react";
 import { useEffect, useState } from "react";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { logInAction } from "../redux/ducks/accountAuth";
 import moment from "moment";
-import jwt_decode from "jwt-decode";
+import { jwtDecode } from "jwt-decode";
 import MoodChart from "./charts/MoodChart";
 import ReactMarkdown from "react-markdown";
 
@@ -26,12 +26,11 @@ const Profile = () => {
   const [error, setError] = useState(null);
   const [post, setPost] = useState();
   const urlJournals = "https://lepak.herokuapp.com/journals/";
-  let history = useHistory();
+  const navigate = useNavigate();
 
   const dispatch = useDispatch();
   const token = localStorage.token;
-  //console.log(token);
-  const decoded = token ? jwt_decode(token) : history.push(`/login`);
+  const decoded = token ? jwtDecode(token) : navigate(`/login`);
 
   // ========== GET all journals ==========
   useEffect(() => {
@@ -46,21 +45,16 @@ const Profile = () => {
     })
       .then((res) => {
         if (res.ok) {
-          //console.log(res);
           return res.json();
         } else if (!res.ok) {
-          //console.log(res);
           return res.json();
         }
         throw new Error("Error in network");
       })
       .then((data) => {
-        //console.log(data);
         setPost(data);
         setWaiting(false);
         if (data.message) {
-          // An error will occur if the token is invalid.
-          // If this happens, you may want to remove the invalid token.
           setError(data.message);
           localStorage.removeItem("token");
         } else {
@@ -71,7 +65,7 @@ const Profile = () => {
 
   // ========== UPDATE one journal ==========
   const updateJournal = (journalid) => {
-    history.push(`/journal/${journalid}/edit`);
+    navigate(`/journal/${journalid}/edit`);
   };
 
   // ========== DELETE one journal ==========
@@ -83,7 +77,6 @@ const Profile = () => {
         Authorization: `Bearer ${token}`,
       },
     });
-    //console.log(response);
     setRefresh(!refresh);
   };
 

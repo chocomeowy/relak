@@ -11,10 +11,10 @@ import {
   UserOutlined,
   MenuFoldOutlined,
 } from "@ant-design/icons";
-import { Layout, Menu, Drawer, Button, List, PageHeader } from "antd";
+import { Layout, Menu, Drawer, Button, List } from "antd";
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { Link, useHistory } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { logOutAction } from "../redux/ducks/accountAuth";
 import { useMediaPredicate } from "react-media-hook";
 
@@ -24,13 +24,12 @@ const Topbar = () => {
   const biggerThan910 = useMediaPredicate("(min-width: 910px)");
   const [visible, setVisible] = useState(false);
   const token = localStorage.token;
-  const history = useHistory();
-  //console.log(token);
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const signOut = () => {
     dispatch(logOutAction());
     localStorage.removeItem("token");
-    history.push("/login");
+    navigate("/login");
   };
 
   const showDrawer = () => {
@@ -84,29 +83,38 @@ const Topbar = () => {
         </Header>
       ) : (
         <div>
-          <PageHeader
-            style={{ backgroundColor: "#001529" }}
-            backIcon={<HomeOutlined style={{ color: "#c5c5c5" }} />}
-            onBack={() => history.push("/")}
-            title="relak"
-            extra={[
-              <Button
-                // key="1"
-                style={{ color: "#c5c5c5" }}
-                ghost
-                onClick={showDrawer}
-              >
-                <MenuFoldOutlined style={{ color: "#c5c5c5" }} />
-              </Button>,
-            ]}
-          ></PageHeader>
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between",
+              backgroundColor: "#001529",
+              padding: "12px 16px",
+            }}
+          >
+            <Button
+              type="text"
+              icon={<HomeOutlined style={{ color: "#c5c5c5" }} />}
+              onClick={() => navigate("/")}
+              style={{ color: "#c5c5c5" }}
+            >
+              relak
+            </Button>
+            <Button
+              ghost
+              style={{ color: "#c5c5c5", border: "none" }}
+              onClick={showDrawer}
+            >
+              <MenuFoldOutlined style={{ color: "#c5c5c5" }} />
+            </Button>
+          </div>
 
           <Drawer
             title="Relak"
             placement={"right"}
             closable={false}
             onClose={showDrawer}
-            visible={visible}
+            open={visible}
             key={"right"}
             style={{ color: "#c5c5c5" }}
           >

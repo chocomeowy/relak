@@ -1,10 +1,10 @@
-import { combineReducers, createStore } from "redux";
+import { configureStore } from "@reduxjs/toolkit";
 import accountAuthReducer from "./ducks/accountAuth";
 
-const reducer = combineReducers({
-  auth: accountAuthReducer,
+const store = configureStore({
+  reducer: {
+    auth: accountAuthReducer,
+  },
 });
-
-const store = createStore(reducer);
 
 export default store;

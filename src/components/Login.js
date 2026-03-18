@@ -1,7 +1,7 @@
 import { Button, Checkbox, Form, Input, Row, Typography } from "antd";
 import React, { useState } from "react";
 
-import { Link, useHistory } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 const { Title, Text } = Typography;
 
 const Login = () => {
@@ -9,10 +9,8 @@ const Login = () => {
 
   const url = "https://lepak.herokuapp.com/api/token/";
 
-  let history = useHistory();
+  const navigate = useNavigate();
   const onFinish = (event) => {
-    //console.log(event);
-
     fetch(url, {
       method: "POST",
       body: JSON.stringify({
@@ -25,24 +23,20 @@ const Login = () => {
     })
       .then((res) => {
         if (res.ok) {
-          //console.log(res);
           return res.json();
         } else if (!res.ok) {
-          //console.log("res not okay", res);
           return res.json();
         }
         throw new Error("Error in network");
       })
       .then((resJson) => {
-        //console.log(resJson);
         if (resJson.detail) {
           setError(resJson.detail);
           return;
         }
-        //console.log(resJson);
 
         localStorage.setItem("token", resJson.access);
-        return history.push("/profile");
+        return navigate("/profile");
       });
   };
 
@@ -58,11 +52,7 @@ const Login = () => {
         <Title>login.</Title>
         <Title level={4}>welcome back.</Title>
         <br />
-        <Row
-          type="flex"
-          justify="center"
-          style={{ backgroundColor: "#f5f5f5" }}
-        >
+        <Row justify="center" style={{ backgroundColor: "#f5f5f5" }}>
           <Form
             name="basic"
             initialValues={{ remember: true }}

@@ -2,8 +2,8 @@ import { Form, Input, Row, Col, Typography, Rate } from "antd";
 import { FrownOutlined, MehOutlined, SmileOutlined } from "@ant-design/icons";
 import { AwesomeButton } from "react-awesome-button";
 import "react-awesome-button/dist/themes/theme-bojack.css";
-import jwt_decode from "jwt-decode";
-import { useHistory } from "react-router-dom";
+import { jwtDecode } from "jwt-decode";
+import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 const { Title, Text } = Typography;
 
@@ -17,11 +17,10 @@ const customIcons = {
 
 const NewJournal = () => {
   const [error, setError] = useState(null);
-  const history = useHistory();
+  const navigate = useNavigate();
   const url = "https://lepak.herokuapp.com/journals/";
   const token = localStorage.token;
-  const decoded = jwt_decode(token);
-  //console.log(decoded);
+  const decoded = jwtDecode(token);
   const onFinish = (event) => {
     fetch(url, {
       method: "POST",
@@ -40,22 +39,18 @@ const NewJournal = () => {
     })
       .then((res) => {
         if (res.ok) {
-          //console.log(res);
           return res.json();
         } else if (!res.ok) {
-          //console.log(res);
           return res.json();
         }
         throw new Error("Error in network");
       })
       .then((resJson) => {
-        //console.log(resJson);
         if (resJson.message) {
           setError(resJson.message);
           return;
         }
-        // console.log("Wheeeee you got a new journal entry fam");
-        history.push("/profile");
+        navigate("/profile");
       });
   };
 
