@@ -1,19 +1,14 @@
 import React, { useState } from "react";
 import { Form, Input, Button, Checkbox, Row } from "antd";
 import { Typography } from "antd";
-import { Link, useHistory } from "react-router-dom";
-// import { useDispatch } from "react-redux";
-// import { logInAction } from "../redux/ducks/accountAuth";
+import { Link, useNavigate } from "react-router-dom";
 
 const { Title, Text } = Typography;
 const Signup = () => {
-  let history = useHistory();
-  // const dispatch = useDispatch();
+  const navigate = useNavigate();
   const url = "https://lepak.herokuapp.com/user/signup/";
   const [error, setError] = useState(null);
   const onFinish = (event) => {
-    //console.log(event);
-
     fetch(url, {
       method: "POST",
       body: JSON.stringify({
@@ -26,27 +21,19 @@ const Signup = () => {
     })
       .then((res) => {
         if (!res.ok) {
-          //console.log("res not okay", res);
-          //console.log("duplicated sign up username");
           return res.json();
         } else if (res.ok) {
-          //console.log(res, "res");
           return res.json();
         }
-        //console.log("before new Error");
         throw new Error("Error in network");
       })
       .then((resJson) => {
-        //console.log(resJson);
         if (resJson.message) {
           return setError(resJson.message);
         } else if (resJson.success) {
-          return history.push("/login/");
+          return navigate("/login/");
         } else {
-          //console.log(resJson);
-          // dispatch({ ...logInAction(), payload: resJson.token });
-          // localStorage.setItem("token", resJson.token);
-          return history.push("/login/");
+          return navigate("/login/");
         }
       });
   };
@@ -65,11 +52,7 @@ const Signup = () => {
         <Title>sign up.</Title>
         <Title level={4}>say hello. track your progress with us.</Title>
         <br />
-        <Row
-          type="flex"
-          justify="center"
-          style={{ backgroundColor: "#f5f5f5" }}
-        >
+        <Row justify="center" style={{ backgroundColor: "#f5f5f5" }}>
           <Form
             name="basic"
             initialValues={{ remember: true }}

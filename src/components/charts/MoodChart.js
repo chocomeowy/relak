@@ -25,7 +25,6 @@ const MoodChart = ({ data }) => {
   const [sliderValue, setSliderValue] = useState(1);
 
   // ========== add formatted date ==========
-  // console.log(data);
   let dataFormatDate = [];
   if (data) {
     dataFormatDate = data?.map((d) => ({
@@ -33,7 +32,6 @@ const MoodChart = ({ data }) => {
       formatDate: moment(d.date).format("DD MMM"),
     }));
   }
-  // console.log(dataFormatDate);
 
   // ========== sort filter ==========
   const sortedData = dataFormatDate.sort((a, b) => {
@@ -43,7 +41,6 @@ const MoodChart = ({ data }) => {
       return 1;
     }
   });
-  // console.log(sortedData);
 
   const filterData = (value) => {
     let filtered;
@@ -72,7 +69,6 @@ const MoodChart = ({ data }) => {
     }
     return filtered;
   };
-  //console.log(filterData(sliderValue));
 
   return (
     <div>
@@ -89,8 +85,6 @@ const MoodChart = ({ data }) => {
               data={filterData(sliderValue)}
               margin={{
                 top: 20,
-                // right: "auto",
-                // left: "auto",
                 bottom: 20,
               }}
             >
@@ -115,7 +109,7 @@ const MoodChart = ({ data }) => {
           defaultValue={1}
           value={sliderValue}
           onChange={(sliderValue) => setSliderValue(sliderValue)}
-          tipFormatter={formatTip}
+          tooltip={{ formatter: formatTip }}
           min={1}
           max={31}
           step={6}

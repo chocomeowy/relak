@@ -1,9 +1,9 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap");
+
 .App {
   /* text-align: center; */
   background: #f5f5f5;
 }
-@import "~antd/dist/antd.css";
-@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap");
 
 .App-logo {
   height: 40vmin;
