@@ -35,5 +35,8 @@
     "build": "vite build",
     "preview": "vite preview",
     "test": "vitest"
+  },
+  "engines": {
+    "node": "24.x"
   }
 }

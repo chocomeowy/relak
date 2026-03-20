@@ -1,0 +1,5 @@
+{
+  "functions": {
+    "nodeVersion": "24.x"
+  }
+}
