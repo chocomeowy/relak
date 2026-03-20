@@ -1,224 +1,190 @@
-import React, { useState } from "react";
-import styled, { keyframes } from "styled-components";
-import Breathe2 from "./Breathe2";
-import { Button, Row, Col, Layout } from "antd";
-import Title from "antd/lib/typography/Title";
+import React, { useState, useEffect } from "react";
+import { Button, Row, Col, Layout, Space, Typography, Segmented } from "antd";
+import { motion, AnimatePresence } from "framer-motion";
+import FramerMotionBreathe from "./FramerMotionBreathe";
 import Meditation from "./Meditation";
 import Sleep from "./Sleep";
 import BreathingTechniquesModal from "./BreathingTechniquesModal";
 import Headspace from "./Headspace";
-import BoxBreathe from "./BoxBreathe";
+import Breathe2 from "./Breathe2";
+
 const { Content } = Layout;
+const { Title, Text } = Typography;
 
 const Breathe = () => {
-  const [circle, setCircle] = useState("");
-  const [description, setDescription] = useState("Focus on the present moment");
+  const [pattern, setPattern] = useState("equal");
+  const [isActive, setIsActive] = useState(false);
+  const [instruction, setInstruction] = useState("Ready to begin?");
+  const [step, setStep] = useState(0);
 
-  const handleEqualBreathing = () => {
-    setCircle("a");
-
-    setDescription("6s-6s Sama Vritti or “equal breathing”");
+  const patterns = {
+    equal: {
+      label: "Equal Breathing",
+      desc: "6s-6s Sama Vritti",
+      instructions: ["Inhale...", "", "Exhale...", ""],
+      times: [6, 0, 6, 0],
+    },
+    box: {
+      label: "Box Breathing",
+      desc: "4s-4s-4s-4s - focus and calm",
+      instructions: ["Inhale", "Hold", "Exhale", "Hold"],
+      times: [4, 4, 4, 4],
+    },
+    deep: {
+      label: "Deep Calming",
+      desc: "4s-7s-8s - deep relaxation",
+      instructions: ["Inhale", "Hold", "Exhale", ""],
+      times: [4, 7, 8, 0],
+    },
+    apple: {
+      label: "Apple Style",
+      desc: "Visual focus exercise",
+      instructions: ["Breathe in", "", "Breathe out", ""],
+      times: [4, 0, 4, 0],
+    },
   };
-  const handleBox = () => {
-    setCircle("b");
 
-    setDescription("4s-4s-4s-4s - box breathing");
-  };
-  const handleDeep = () => {
-    setCircle("c");
-
-    setDescription("4s-7s-8s - based on yoga’s pranayama - Deep Calming");
-  };
-  const handleApple = () => {
-    setCircle("d");
-
-    setDescription(
-      <a href="https://css-tricks.com/recreating-apple-watch-breathe-app-animation/">
-        Credits
-      </a>
-    );
-  };
-
-  const displayCircle = () => {
-    if (circle === "") {
-      return <div>Click button to start</div>;
+  useEffect(() => {
+    if (!isActive) {
+      setInstruction("Focus on the present moment");
+      setStep(0);
+      return;
     }
-    if (circle === "b") {
-      return <BoxBreathe />;
+
+    const currentPattern = patterns[pattern];
+    setInstruction(currentPattern.instructions[step]);
+    
+    const duration = currentPattern.times[step];
+    
+    if (duration === 0) {
+      setStep((prev) => (prev + 1) % 4);
+      return;
     }
 
-    if (circle === "c") {
-      return <Circle3 />;
-    }
-    if (circle === "d") {
-      return <Breathe2 />;
-    }
-    return <Circle />;
-  };
+    const timeoutId = setTimeout(() => {
+      setStep((prev) => (prev + 1) % 4);
+    }, duration * 1000);
+    
+    return () => clearTimeout(timeoutId);
+  }, [isActive, pattern, step]);
 
   return (
-    <Layout style={{ backgroundColor: "#f5f5f5" }}>
-      <Content>
-        <Title style={{ padding: "10px", textAlign: "center" }}>breathe.</Title>
+    <Layout style={{ background: "transparent", minHeight: "80vh" }}>
+      <Content style={{ padding: "40px 24px" }}>
+        <AnimatePresence mode="wait">
+          {!isActive ? (
+            <motion.div
+              key="setup"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              style={{ textAlign: "center" }}
+            >
+              <Title className="brand-font" style={{ color: "var(--primary)" }}>
+                breathe.
+              </Title>
+              <Space direction="vertical" size={32} style={{ width: "100%" }}>
+                <Segmented
+                  size="large"
+                  options={[
+                    { label: "Equal", value: "equal" },
+                    { label: "Box", value: "box" },
+                    { label: "Deep", value: "deep" },
+                    { label: "Apple", value: "apple" },
+                  ]}
+                  value={pattern}
+                  onChange={setPattern}
+                />
+                
+                <div style={{ height: "60px" }}>
+                  <Text type="secondary" style={{ fontSize: "18px" }}>
+                    {patterns[pattern].desc}
+                  </Text>
+                </div>
 
-        <Div>
-          <Row justify="center" gutter={{ xs: 8, sm: 16, md: 24 }}>
-            <Col>
-              <Button type="dashed" onClick={handleEqualBreathing}>
-                Equal breathing
-              </Button>
-            </Col>
-            <Col>
-              <Button type="dashed" onClick={handleBox}>
-                Box breathing
-              </Button>
-            </Col>
-            <Col>
-              <Button type="dashed" onClick={handleDeep}>
-                Deep Calming
-              </Button>
-            </Col>
-            <Col>
-              <Button type="dashed" onClick={handleApple}>
-                Apple Watch Style
-              </Button>
-            </Col>
-          </Row>
-          <Row>
-            <Col span={24}>
-              <br />​{description}
-            </Col>
-          </Row>
-        </Div>
-        {circle === "d" ? (
-          <>
-            <Container style={{ background: "black" }}>
-              <br />
+                <Button
+                  type="primary"
+                  size="large"
+                  onClick={() => setIsActive(true)}
+                  style={{
+                    height: "56px",
+                    borderRadius: "28px",
+                    padding: "0 60px",
+                    backgroundColor: "var(--primary)",
+                    border: "none",
+                  }}
+                >
+                  Start Exercise
+                </Button>
+              </Space>
+            </motion.div>
+          ) : (
+            <motion.div
+              key="active"
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0 }}
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                justifyContent: "center",
+                height: "60vh",
+              }}
+            >
+              <div style={{ marginBottom: "60px" }}>
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={instruction}
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -10 }}
+                    transition={{ duration: 0.5 }}
+                  >
+                    <Title level={2} style={{ fontWeight: 300, color: "var(--text-secondary)" }}>
+                      {instruction}
+                    </Title>
+                  </motion.div>
+                </AnimatePresence>
+              </div>
 
-              {displayCircle()}
-            </Container>
-          </>
-        ) : (
-          <>
-            <Container>
-              <br />
+              {pattern === "apple" ? (
+                <Breathe2 />
+              ) : (
+                <FramerMotionBreathe pattern={pattern} step={step} />
+              )}
 
-              {displayCircle()}
-            </Container>
-          </>
+              <Button
+                type="text"
+                onClick={() => setIsActive(false)}
+                style={{ marginTop: "100px", color: "var(--text-secondary)" }}
+              >
+                End Session
+              </Button>
+            </motion.div>
+          )}
+        </AnimatePresence>
+
+        {!isActive && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.3 }}
+            style={{ marginTop: "80px", textAlign: "center" }}
+          >
+            <Row justify="center" gutter={[32, 32]}>
+              <Col><Meditation /></Col>
+              <Col><Sleep /></Col>
+              <Col><BreathingTechniquesModal /></Col>
+            </Row>
+            <Row justify="center" style={{ marginTop: "40px" }}>
+              <Headspace />
+            </Row>
+          </motion.div>
         )}
-        <div
-          style={{
-            textAlign: "center",
-          }}
-        >
-          <Row justify="center" gutter={{ xs: 2, sm: 16, md: 24 }}>
-            <Col>
-              <Meditation />
-            </Col>
-            <Col>
-              <Sleep />
-            </Col>
-            <Col>
-              <BreathingTechniquesModal />
-            </Col>
-          </Row>
-          <br />
-          <Row justify="center">
-            <Headspace />
-          </Row>
-        </div>
       </Content>
     </Layout>
   );
 };
 
 export default Breathe;
-
-const Div = styled.div`
-  text-align: center;
-`;
-
-const breatheAnimation = keyframes`
- 0% {box-shadow: 0 0 0 10px rgba(164, 148, 255, 0.3), 
-    0 0 0 20px rgba(164, 148, 255, 0.3), 
-    0 0 0 20px rgba(164, 148, 255, 0.3), 
-    0 0 0 20px rgba(164, 148, 255, 0.3), 
-    0 0 0 20px rgba(164, 148, 255, 0.3);
- }
-
- 50% {
-    box-shadow: 0 0 0 25px rgba(164, 148, 255, 0.3), 
-    0 0 0 50px rgba(164, 148, 255, 0.3), 
-    0 0 0 75px rgba(164, 148, 255, 0.3), 
-    0 0 0 100px rgba(164, 148, 255, 0.3), 
-    0 0 0 125px rgba(164, 148, 255, 0.3);
-     }
-     
- 100% {  box-shadow: 0 0 0 10px rgba(164, 148, 255, 0.3), 
-    0 0 0 20px rgba(164, 148, 255, 0.3), 
-    0 0 0 20px rgba(164, 148, 255, 0.3), 
-    0 0 0 20px rgba(164, 148, 255, 0.3), 
-    0 0 0 20px rgba(164, 148, 255, 0.3);
- }`;
-
-const breatheAnimation3 = keyframes`
- 0% {box-shadow: 0 0 0 10px rgba(174, 225, 225, 0.3), 
-    0 0 0 20px rgba(211, 224, 220, 0.3), 
-    0 0 0 20px rgba(236, 226, 225, 0.3), 
-    0 0 0 20px rgba(252, 209, 209, 0.3), 
-    0 0 0 20px rgba(164, 148, 255, 0.3);
- }
-
- 21% {
-    box-shadow: 0 0 0 25px rgba(252, 209, 209, 0.3), 
-    0 0 0 50px rgba(252, 209, 209, 0.3), 
-    0 0 0 75px rgba(236, 226, 225, 0.3), 
-    0 0 0 100px rgba(211, 224, 220, 0.3), 
-    0 0 0 125px rgba(174, 225, 225, 0.3);
-     }
-60% {
-      box-shadow: 0 0 0 25px rgba(252, 209, 209, 0.6), 
-      0 0 0 50px rgba(252, 209, 209, 0.6), 
-      0 0 0 75px rgba(236, 226, 225, 0.6), 
-      0 0 0 100px rgba(211, 224, 220, 0.6), 
-      0 0 0 125px rgba(174, 225, 225, 0.6);
-       }
-     
- 100% {  box-shadow: 0 0 0 10px rgba(174, 225, 225, 0.3), 
-    0 0 0 20px rgba(211, 224, 220, 0.3), 
-    0 0 0 20px rgba(236, 226, 225, 0.3), 
-    0 0 0 20px rgba(252, 209, 209, 0.3), 
-    0 0 0 20px rgba(164, 148, 255, 0.3);
- }`;
-
-const Circle = styled.div`
-  height: 50px;
-  width: 50px;
-
-  border-width: 5px;
-  border-radius: 50%;
-  border-color: blue;
-  animation-name: ${breatheAnimation};
-  animation-duration: 12s;
-  animation-iteration-count: infinite;
-`;
-
-const Circle3 = styled.div`
-  height: 50px;
-  width: 50px;
-
-  border-width: 5px;
-  border-radius: 50%;
-  border-color: blue;
-  animation-name: ${breatheAnimation3};
-  animation-duration: 19s;
-  animation-iteration-count: infinite;
-`;
-const Container = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  height: 450px;
-`;

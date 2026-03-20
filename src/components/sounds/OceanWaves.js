@@ -5,18 +5,21 @@ import { PlayCircleFilled, PauseCircleFilled } from "@ant-design/icons";
 
 const { Text } = Typography;
 
-const BrownNoise = () => {
+const OceanWaves = () => {
   const [play, setPlay] = useState(false);
-  const url = "https://upload.wikimedia.org/wikipedia/commons/c/c9/Brownnoise.ogg";
 
   return (
     <Space direction="vertical" size={16} style={{ width: "100%" }}>
       <div>
-        <Text strong style={{ fontSize: "18px", display: "block" }}>Brown Noise</Text>
-        <Text type="secondary" style={{ fontSize: "12px" }}>Deep frequency focus.</Text>
+        <Text strong style={{ fontSize: "18px", display: "block" }}>Ocean Waves</Text>
+        <Text type="secondary" style={{ fontSize: "12px" }}>Rhythmic beach waves.</Text>
       </div>
-
-      <ReactHowler src={url} playing={play} loop={true} volume={0.2} />
+      
+      <ReactHowler 
+        src="https://actions.google.com/sounds/v1/water/waves_crashing_on_rock_beach.ogg" 
+        playing={play} 
+        loop={true} 
+      />
 
       <Button
         type={play ? "primary" : "default"}
@@ -36,4 +39,4 @@ const BrownNoise = () => {
   );
 };
 
-export default BrownNoise;
+export default OceanWaves;

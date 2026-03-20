@@ -1,159 +1,152 @@
-import { Typography, Row, Col, Layout, Space } from "antd";
+import { Typography, Row, Col, Layout, Space, Button } from "antd";
 import React from "react";
-import { AwesomeButton } from "react-awesome-button";
-import "react-awesome-button/dist/themes/theme-bojack.css";
-import { Carousel } from "react-responsive-carousel";
-import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 import AnimatedIcon from "./AnimatedIcon";
 import Tilt from "react-parallax-tilt";
+
 const { Title, Text } = Typography;
 const { Footer, Content } = Layout;
 
 const Home = () => {
   const token = localStorage.token;
+
   return (
-    <div
-      style={{
-        textAlign: "center",
-      }}
-    >
-      <Space direction="vertical" size={50}>
-        <Layout>
-          <Carousel
-            className="site-homepage-carousel"
-            showArrows={false}
-            autoPlay={true}
-            emulateTouch={true}
-            infiniteLoop={true}
-            showThumbs={false}
-            useKeyboardArrows={true}
-            showStatus={false}
-          >
-            <div>
-              <img src="https://i.imgur.com/awMl5my.jpg?2" alt="1" />
-            </div>
-            <div>
-              <img src="https://i.imgur.com/1Wguprp.jpg?1" alt="2" />
-            </div>
-            <div>
-              <img src="https://i.imgur.com/7TVncOv.jpg?3" alt="3" />
-            </div>
-            <div>
-              <img src="https://i.imgur.com/ypb9Smm.jpg" alt="3" />
-            </div>
-            <div>
-              <img src="https://i.imgur.com/1D3iD7I.jpg?1" alt="3" />
-            </div>
-            <div>
-              <img src="https://i.imgur.com/7UMyV8I.jpg?2" alt="5" />
-            </div>
-          </Carousel>
-          <br style={{ backgroundColor: "#f5f5f5" }} />
-          <Space direction="vertical" size={16}>
-            <Content>
-              <Space direction="vertical">
-                <Row>
-                  <Col span={24}>
-                    <Tilt gyroscope={true}>
-                      <div style={{ height: "100px" }}>
-                        <AnimatedIcon />
-                      </div>
-                    </Tilt>
-                  </Col>
-                </Row>
-                <Row>
-                  <Col span={24}>
-                    <Title italic strong style={{ padding: "10px" }}>
-                      time to relak
-                    </Title>
-                  </Col>
-                </Row>
-                <Row>
-                  <Col span={24}>
-                    <Space direction="vertical" size={24}>
-                      <Text type="secondary">busy day?</Text>
-                      <Space direction="vertical" size={2}>
-                        <Text type="secondary">
-                          why not try out our breathing exercise,
-                        </Text>
-                        <Text type="secondary">
-                          or listen to some calming sounds?
-                        </Text>
-                      </Space>
-                      <Space direction="vertical" size={2}>
-                        <Text type="secondary">there’s no need to commit.</Text>
-                        <Text type="secondary">
-                          need to pen down some thoughts?
-                        </Text>
-                        <Text type="secondary">
-                          we’ll gladly lend you a listening ear.
-                        </Text>
-                      </Space>
-                    </Space>
-                  </Col>
-                </Row>
+    <Layout style={{ background: "transparent" }}>
+      <Content style={{ padding: "60px 24px", minHeight: "calc(100vh - 150px)" }}>
+        <Row justify="center" align="middle" gutter={[0, 48]}>
+          <Col xs={24} md={20} lg={16} style={{ textAlign: "center" }}>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+            >
+              <Space direction="vertical" size={24} style={{ width: "100%" }}>
+                <Tilt
+                  perspective={1000}
+                  glareEnable={true}
+                  glareMaxOpacity={0.45}
+                  scale={1.02}
+                  gyroscope={true}
+                >
+                  <div
+                    style={{
+                      height: "120px",
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItems: "center",
+                      marginBottom: "20px",
+                    }}
+                  >
+                    <AnimatedIcon />
+                  </div>
+                </Tilt>
+
+                <Title
+                  className="brand-font"
+                  style={{
+                    fontSize: "clamp(3rem, 10vw, 5rem)",
+                    marginBottom: 0,
+                    color: "var(--primary)",
+                    letterSpacing: "-2px",
+                  }}
+                >
+                  time to relak
+                </Title>
+
+                <div style={{ maxWidth: "600px", margin: "0 auto" }}>
+                  <Text
+                    style={{
+                      fontSize: "20px",
+                      color: "var(--text-secondary)",
+                      lineHeight: "1.6",
+                    }}
+                  >
+                    A sanctuary for your thoughts. Breathe, listen, and find
+                    your center in the heart of Singapore.
+                  </Text>
+                </div>
+
+                <Space
+                  direction="horizontal"
+                  size={20}
+                  style={{ marginTop: "40px" }}
+                >
+                  <Link to="/breathe">
+                    <Button
+                      type="primary"
+                      size="large"
+                      style={{
+                        height: "56px",
+                        padding: "0 40px",
+                        borderRadius: "28px",
+                        fontSize: "18px",
+                        fontWeight: 600,
+                        backgroundColor: "var(--primary)",
+                        border: "none",
+                        boxShadow: "0 10px 20px rgba(45, 90, 94, 0.2)",
+                      }}
+                    >
+                      Breathe
+                    </Button>
+                  </Link>
+                  <Link to="/listen">
+                    <Button
+                      size="large"
+                      style={{
+                        height: "56px",
+                        padding: "0 40px",
+                        borderRadius: "28px",
+                        fontSize: "18px",
+                        fontWeight: 600,
+                        border: "2px solid var(--primary)",
+                        color: "var(--primary)",
+                        background: "transparent",
+                      }}
+                    >
+                      Listen
+                    </Button>
+                  </Link>
+                </Space>
+
+                {token === undefined && (
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 0.5, duration: 1 }}
+                    style={{ marginTop: "24px" }}
+                  >
+                    <Link to="/login">
+                      <Button
+                        type="link"
+                        style={{ color: "var(--text-secondary)" }}
+                      >
+                        Already have an account? Login here.
+                      </Button>
+                    </Link>
+                  </motion.div>
+                )}
               </Space>
-            </Content>
-            <br />
-            <Content>
-              <Row>
-                <Col span={24}>
-                  <Space direction="horizontal" size={20}>
-                    <Link to="/breathe">
-                      <AwesomeButton
-                        type="secondary"
-                        size="large"
-                        style={{ "--button-default-border-radius": "13px" }}
-                      >
-                        breathe
-                      </AwesomeButton>
-                    </Link>
-                    <Link to="/listen">
-                      <AwesomeButton
-                        type="secondary"
-                        size="large"
-                        style={{ "--button-default-border-radius": "13px" }}
-                      >
-                        listen
-                      </AwesomeButton>
-                    </Link>
-                  </Space>
-                </Col>
-              </Row>
-              <Row>
-                <Col span={24}>
-                  {token === undefined ? (
-                    <>
-                      <br />
-                      <Link to="/login">
-                        <AwesomeButton
-                          size="large"
-                          style={{ "--button-default-border-radius": "13px" }}
-                        >
-                          login
-                        </AwesomeButton>
-                      </Link>
-                    </>
-                  ) : (
-                    <></>
-                  )}
-                </Col>
-              </Row>
-            </Content>
+            </motion.div>
+          </Col>
+        </Row>
+      </Content>
+
+      <Footer style={{ textAlign: "center", background: "transparent", paddingBottom: "40px" }}>
+        <Text type="secondary" style={{ fontSize: "14px" }}>
+          &copy; {new Date().getFullYear()} Relak. Made with love for Singaporeans.
+          <br />
+          <Space split={<span style={{ color: "#ccc" }}>|</span>} style={{ marginTop: "8px" }}>
+            <a href="https://github.com/chocomeowy/relak" target="_blank" rel="noreferrer">
+              Relak Frontend
+            </a>
+            <a href="https://github.com/chocomeowy/lepak" target="_blank" rel="noreferrer">
+              Lepak Backend
+            </a>
           </Space>
-          <Footer style={{ marginTop: "50px", textAlign: "center" }}>
-            <Text type="secondary" style={{ fontSize: "10px" }} italic>
-              &copy; 2021. Made with love by Gordon, Fah Jin, and Charlene.
-              <br />
-              Check out our GitHub{" "}
-              <a href="https://github.com/chocomeowy/relak">here</a> and{" "}
-              <a href="https://github.com/chocomeowy/lepak">here</a>.
-            </Text>
-          </Footer>
-        </Layout>
-      </Space>
-    </div>
+        </Text>
+      </Footer>
+    </Layout>
   );
 };
 

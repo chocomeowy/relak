@@ -1,41 +1,38 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 import ReactHowler from "react-howler";
-import { AwesomeButton } from "react-awesome-button";
-import { PlayCircleOutlined, PauseCircleOutlined } from "@ant-design/icons";
+import { Button, Typography, Space } from "antd";
+import { PlayCircleFilled, PauseCircleFilled } from "@ant-design/icons";
+
+const { Text } = Typography;
 
 const BirdsSound = () => {
   const [play, setPlay] = useState(false);
-  const url =
-    "https://dl.dropboxusercontent.com/s/q1kp2np2vazyf2w/BirdsIGuess.mp3?dl=0";
-
-  const handlePlay = () => {
-    setPlay(!play);
-  };
+  const url = "https://dl.dropboxusercontent.com/s/q1kp2np2vazyf2w/BirdsIGuess.mp3?dl=0";
 
   return (
-    <div>
-      <h2>Birds</h2>
-      <h4>Listen to the chirping of birds in the forest.</h4>
-      {play ? (
-        <>
-          <ReactHowler src={url} playing={true} loop={true} />
-        </>
-      ) : (
-        <></>
-      )}
-      <AwesomeButton
-        size="icon"
-        onPress={handlePlay}
-        style={{ "--button-default-border-radius": "10px" }}
-      >
-        {play ? (
-          <>{<PauseCircleOutlined />} </>
-        ) : (
-          <>{<PlayCircleOutlined />} </>
-        )}
-      </AwesomeButton>
-    </div>
+    <Space direction="vertical" size={16} style={{ width: "100%" }}>
+      <div>
+        <Text strong style={{ fontSize: "18px", display: "block" }}>Birds</Text>
+        <Text type="secondary" style={{ fontSize: "12px" }}>Chirping in the woods.</Text>
+      </div>
+
+      <ReactHowler src={url} playing={play} loop={true} />
+
+      <Button
+        type={play ? "primary" : "default"}
+        shape="circle"
+        icon={play ? <PauseCircleFilled style={{ fontSize: '24px' }} /> : <PlayCircleFilled style={{ fontSize: '24px' }} />}
+        onClick={() => setPlay(!play)}
+        style={{
+          width: "64px",
+          height: "64px",
+          border: play ? "none" : "1px solid var(--primary)",
+          backgroundColor: play ? "var(--primary)" : "transparent",
+          color: play ? "white" : "var(--primary)",
+          boxShadow: play ? "0 4px 12px rgba(45, 90, 94, 0.3)" : "none",
+        }}
+      />
+    </Space>
   );
 };
 

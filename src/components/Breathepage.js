@@ -1,12 +1,17 @@
 import React from "react";
 import Breathe from "./breathing/Breathe";
+import { Layout } from "antd";
 
-const breathepage = () => {
+const { Content } = Layout;
+
+const Breathepage = () => {
   return (
-    <div style={{ padding: "20px" }}>
-      <Breathe />
-    </div>
+    <Layout style={{ background: "transparent" }}>
+      <Content style={{ padding: "20px 0" }}>
+        <Breathe />
+      </Content>
+    </Layout>
   );
 };
 
-export default breathepage;
+export default Breathepage;
