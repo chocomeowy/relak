@@ -1,11 +1,12 @@
-import { Form, Input, Row, Col, Typography, Rate } from "antd";
+import { Form, Input, Row, Col, Typography, Rate, Button, Space, Layout, Card } from "antd";
 import { FrownOutlined, MehOutlined, SmileOutlined } from "@ant-design/icons";
-import { AwesomeButton } from "react-awesome-button";
-import "react-awesome-button/dist/themes/theme-bojack.css";
 import { jwtDecode } from "jwt-decode";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { motion } from "framer-motion";
+
 const { Title, Text } = Typography;
+const { Content } = Layout;
 
 const customIcons = {
   1: <FrownOutlined />,
@@ -20,17 +21,19 @@ const NewJournal = () => {
   const navigate = useNavigate();
   const url = "https://lepak.herokuapp.com/journals/";
   const token = localStorage.token;
-  const decoded = jwtDecode(token);
-  const onFinish = (event) => {
+  const decoded = token ? jwtDecode(token) : null;
+
+  const onFinish = (values) => {
+    if (!decoded) return;
+    
     fetch(url, {
       method: "POST",
       body: JSON.stringify({
-        title: event.title,
-        entry: event.entry,
-        mood: event.mood,
+        title: values.title,
+        entry: values.entry,
+        mood: values.mood,
         profile: decoded.user_id,
       }),
-
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
@@ -38,11 +41,7 @@ const NewJournal = () => {
       },
     })
       .then((res) => {
-        if (res.ok) {
-          return res.json();
-        } else if (!res.ok) {
-          return res.json();
-        }
+        if (res.ok) return res.json();
         throw new Error("Error in network");
       })
       .then((resJson) => {
@@ -55,50 +54,89 @@ const NewJournal = () => {
   };
 
   return (
-    <div
-      className="site-layout-content"
-      style={{
-        textAlign: "center",
-        backgroundColor: "#f5f5f5",
-      }}
-    >
-      <Title>write.</Title>
-      <Row type="flex" justify="center">
-        <Col span={16}>
-          <Form
-            name="nest-messages"
-            layout="vertical"
-            onFinish={onFinish}
-            style={{ backgroundColor: "#f5f5f5" }}
-            initialValues={{
-              mood: 0,
-            }}
-          >
-            <Form.Item name="title" label="Title">
-              <Input />
-            </Form.Item>
-            <Form.Item name="entry" label="Entry">
-              <Input.TextArea />
-            </Form.Item>
-            <Form.Item name="mood" label="Mood" rules={[{ required: true }]}>
-              <Rate character={({ index }) => customIcons[index + 1]} />
-            </Form.Item>
-            <Text type="danger">{error ? error : <></>}</Text>
-            <Form.Item>
-              <br />
-              <AwesomeButton
-                type="secondary"
-                size="medium"
-                style={{ "--button-default-border-radius": "13px" }}
-                htmlType="submit"
-              >
-                post
-              </AwesomeButton>
-            </Form.Item>
-          </Form>
-        </Col>
-      </Row>
-    </div>
+    <Layout style={{ background: "transparent" }}>
+      <Content style={{ padding: "40px 24px" }}>
+        <motion.div
+          initial={{ opacity: 0, scale: 0.98 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.5 }}
+        >
+          <div style={{ textAlign: "center", marginBottom: "48px" }}>
+            <Title className="brand-font" style={{ color: "var(--primary)" }}>write.</Title>
+            <Text type="secondary" style={{ fontSize: "18px" }}>
+              Capture your thoughts and feelings.
+            </Text>
+          </div>
+
+          <Row justify="center">
+            <Col xs={24} sm={20} md={16} lg={12}>
+              <Card className="glass-card" style={{ border: "none", borderRadius: "24px" }}>
+                <Form
+                  name="journal-form"
+                  layout="vertical"
+                  onFinish={onFinish}
+                  initialValues={{ mood: 3 }}
+                  size="large"
+                >
+                  <Form.Item
+                    name="title"
+                    label="Title"
+                    rules={[{ required: true, message: 'Please enter a title' }]}
+                  >
+                    <Input placeholder="What's on your mind?" style={{ borderRadius: "8px" }} />
+                  </Form.Item>
+
+                  <Form.Item
+                    name="entry"
+                    label="Journal Entry"
+                    rules={[{ required: true, message: 'Please write something' }]}
+                  >
+                    <Input.TextArea 
+                      rows={6} 
+                      placeholder="Today felt like..." 
+                      style={{ borderRadius: "8px" }}
+                    />
+                  </Form.Item>
+
+                  <Form.Item 
+                    name="mood" 
+                    label="How are you feeling?" 
+                    rules={[{ required: true }]}
+                    style={{ textAlign: "center" }}
+                  >
+                    <Rate 
+                      character={({ index }) => customIcons[index + 1]} 
+                      style={{ fontSize: "48px", color: "var(--primary)" }}
+                    />
+                  </Form.Item>
+
+                  {error && <div style={{ marginBottom: "20px" }}><Text type="danger">{error}</Text></div>}
+
+                  <Form.Item style={{ textAlign: "center", marginBottom: 0 }}>
+                    <Button
+                      type="primary"
+                      htmlType="submit"
+                      style={{
+                        height: "56px",
+                        borderRadius: "28px",
+                        padding: "0 60px",
+                        backgroundColor: "var(--primary)",
+                        border: "none",
+                        fontSize: "18px",
+                        fontWeight: 600,
+                        boxShadow: "0 8px 16px rgba(45, 90, 94, 0.2)",
+                      }}
+                    >
+                      Post Entry
+                    </Button>
+                  </Form.Item>
+                </Form>
+              </Card>
+            </Col>
+          </Row>
+        </motion.div>
+      </Content>
+    </Layout>
   );
 };
 

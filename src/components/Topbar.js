@@ -26,6 +26,7 @@ const Topbar = () => {
   const token = localStorage.token;
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
   const signOut = () => {
     dispatch(logOutAction());
     localStorage.removeItem("token");
@@ -35,131 +36,107 @@ const Topbar = () => {
   const showDrawer = () => {
     setVisible(!visible);
   };
-  return (
-    <>
-      {biggerThan910 ? (
-        <Header className="header" defaultselectedkeys={["1"]}>
-          <Menu theme="dark" mode="horizontal">
-            <Menu.Item key="1" icon={<HomeOutlined />}>
-              <Link to="/">Main</Link>
-            </Menu.Item>
-            <Menu.Item key="2" icon={<HeartOutlined />}>
-              <Link to="/breathe">Breathe</Link>
-            </Menu.Item>
-            <Menu.Item key="3" icon={<SoundOutlined />}>
-              <Link to="/listen">Listen</Link>
-            </Menu.Item>
-            <Menu.Item key="4" icon={<QuestionCircleOutlined />}>
-              <Link to="/gethelp">Get Help</Link>
-            </Menu.Item>
-            <Menu.Item key="10" icon={<SmileOutlined />}>
-              <Link to="/about">About us</Link>
-            </Menu.Item>
-            {token === undefined ? (
-              <>
-                <Menu.Item key="5" icon={<LoginOutlined />}>
-                  <Link to="/login">Login</Link>
-                </Menu.Item>
-                <Menu.Item key="6" icon={<UserOutlined />}>
-                  <Link to="/signup">Sign up</Link>
-                </Menu.Item>
-              </>
-            ) : (
-              <>
-                <Menu.Item key="7" icon={<FormOutlined />}>
-                  <Link to="/journal">Journal</Link>
-                </Menu.Item>
-                <Menu.Item key="8" icon={<LineChartOutlined />}>
-                  <Link to="/profile">Profile</Link>
-                </Menu.Item>
-                <Menu.Item key="9" icon={<LogoutOutlined />}>
-                  <Link to="login" onClick={signOut}>
-                    Log Out
-                  </Link>
-                </Menu.Item>
-              </>
-            )}
-          </Menu>
-        </Header>
-      ) : (
-        <div>
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "space-between",
-              backgroundColor: "#001529",
-              padding: "12px 16px",
-            }}
-          >
-            <Button
-              type="text"
-              icon={<HomeOutlined style={{ color: "#c5c5c5" }} />}
-              onClick={() => navigate("/")}
-              style={{ color: "#c5c5c5" }}
-            >
-              relak
-            </Button>
-            <Button
-              ghost
-              style={{ color: "#c5c5c5", border: "none" }}
-              onClick={showDrawer}
-            >
-              <MenuFoldOutlined style={{ color: "#c5c5c5" }} />
-            </Button>
-          </div>
 
+  const menuItems = [
+    { key: "1", icon: <HomeOutlined />, label: <Link to="/">Main</Link> },
+    { key: "2", icon: <HeartOutlined />, label: <Link to="/breathe">Breathe</Link> },
+    { key: "3", icon: <SoundOutlined />, label: <Link to="/listen">Listen</Link> },
+    { key: "4", icon: <QuestionCircleOutlined />, label: <Link to="/gethelp">Get Help</Link> },
+    { key: "10", icon: <SmileOutlined />, label: <Link to="/about">About Us</Link> },
+  ];
+
+  const authItems = token === undefined
+    ? [
+        { key: "5", icon: <LoginOutlined />, label: <Link to="/login">Login</Link> },
+        { key: "6", icon: <UserOutlined />, label: <Link to="/signup">Sign Up</Link> },
+      ]
+    : [
+        { key: "7", icon: <FormOutlined />, label: <Link to="/journal">Journal</Link> },
+        { key: "8", icon: <LineChartOutlined />, label: <Link to="/profile">Profile</Link> },
+        {
+          key: "9",
+          icon: <LogoutOutlined />,
+          label: (
+            <Link to="/login" onClick={signOut}>
+              Log Out
+            </Link>
+          ),
+        },
+      ];
+
+  const allItems = [...menuItems, ...authItems];
+
+  return (
+    <Header
+      style={{
+        position: "sticky",
+        top: 0,
+        zIndex: 1000,
+        width: "100%",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "space-between",
+        padding: "0 24px",
+        background: "rgba(255, 255, 255, 0.8)",
+        backdropFilter: "blur(10px)",
+        borderBottom: "1px solid rgba(0, 0, 0, 0.05)",
+        lineHeight: "64px",
+      }}
+    >
+      <div
+        className="brand-font"
+        style={{
+          fontSize: "24px",
+          fontWeight: 600,
+          color: "var(--primary)",
+          cursor: "pointer",
+          display: "flex",
+          alignItems: "center",
+          gap: "8px",
+        }}
+        onClick={() => navigate("/")}
+      >
+        relak
+      </div>
+
+      {biggerThan910 ? (
+        <Menu
+          mode="horizontal"
+          items={allItems}
+          style={{
+            flex: 1,
+            justifyContent: "flex-end",
+            border: "none",
+            background: "transparent",
+            minWidth: 0,
+          }}
+          className="custom-menu"
+        />
+      ) : (
+        <>
+          <Button
+            type="text"
+            icon={<MenuFoldOutlined style={{ fontSize: "20px" }} />}
+            onClick={showDrawer}
+          />
           <Drawer
             title="Relak"
-            placement={"right"}
-            closable={false}
+            placement="right"
+            closable={true}
             onClose={showDrawer}
             open={visible}
-            key={"right"}
-            style={{ color: "#c5c5c5" }}
+            width={280}
           >
-            <List>
-              <List.Item key="2" avatar={<HeartOutlined />}>
-                <Link to="/breathe">Breathe</Link>
-              </List.Item>
-              <List.Item key="3" icon={<SoundOutlined />}>
-                <Link to="/listen">Listen</Link>
-              </List.Item>
-              <List.Item key="4" icon={<QuestionCircleOutlined />}>
-                <Link to="/gethelp">Get Help</Link>
-              </List.Item>
-              <List.Item key="10" icon={<SmileOutlined />}>
-                <Link to="/about">About us</Link>
-              </List.Item>
-              {token === undefined ? (
-                <>
-                  <List.Item key="5" icon={<LoginOutlined />}>
-                    <Link to="/login">Login</Link>
-                  </List.Item>
-                  <List.Item key="6" icon={<UserOutlined />}>
-                    <Link to="/signup">Sign up</Link>
-                  </List.Item>
-                </>
-              ) : (
-                <>
-                  <List.Item key="7" icon={<FormOutlined />}>
-                    <Link to="/journal">Journal</Link>
-                  </List.Item>
-                  <List.Item key="8" icon={<LineChartOutlined />}>
-                    <Link to="/profile">Profile</Link>
-                  </List.Item>
-                  <List.Item key="9" icon={<LogoutOutlined />}>
-                    <Link to="login" onClick={signOut}>
-                      Log Out
-                    </Link>
-                  </List.Item>
-                </>
-              )}
-            </List>
+            <Menu
+              mode="vertical"
+              items={allItems}
+              style={{ border: "none" }}
+              onClick={showDrawer}
+            />
           </Drawer>
-        </div>
+        </>
       )}
-    </>
+    </Header>
   );
 };
 
